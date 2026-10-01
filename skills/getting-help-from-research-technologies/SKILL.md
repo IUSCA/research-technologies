@@ -92,9 +92,9 @@ than 20 hours needs a signed agreement between the researcher and UITS
 
 The KB states content requirements only for sponsorship requests: the
 person's IU username and a short justification (KB0022656). The SDA account
-form asks for department, phone, space needed now and at 6 and 12 months,
-file count, duration, average file size, and a project description
-(KB0025574).
+form asks for department, phone, and space needed now and at 6 and 12 months.
+It also asks for file count, duration, average file size, and a project
+description (KB0025574).
 
 For other requests, include these. This list is house practice, not KB
 policy:

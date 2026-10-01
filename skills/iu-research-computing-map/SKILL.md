@@ -224,9 +224,12 @@ Departments can buy Quartz-compatible nodes that UITS hosts and manages for
 their sole use (KB0024661). Ask HPS about this colocation service when a
 service needs dedicated capacity.
 
-**Open items:** Whether HPS allows a service to submit jobs as a researcher. Whether
-`scrontab` or cron may run on login nodes. Whether a Slurm REST endpoint
-exists. Ask HPS before designing around any of these.
+**Open items.** The KB does not answer these. Ask HPS before designing
+around any of them.
+
+- May a service submit jobs as, or on behalf of, a researcher?
+- May `scrontab` or cron run on login nodes?
+- Does a Slurm REST endpoint exist for IU clusters?
 
 ## Keep this file current
 
