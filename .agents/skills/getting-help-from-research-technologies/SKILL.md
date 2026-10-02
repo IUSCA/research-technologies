@@ -22,11 +22,13 @@ Answer these from the KB or the system itself before opening a request:
   (KB0023298).
 - Available software: run `module spider <word>` (KB0023985).
 - Quotas: run `quota` (KB0023985).
-- Your Slurm Account Name: the RT Projects home page (KB0023298).
+- Your Slurm Account Name: the RT Projects home page (KB0023298). Confirm it
+  on a cluster with `sacctmgr show assoc user=$USER format=Account%30`.
+- Whether your access is in place: the `checking-iu-research-access` skill.
 - Which systems may hold PHI: KB0023515 and KB0025747.
 
-`tools/iukb.py` in this repository searches and reads KB articles from a
-terminal. See `CONTRIBUTING.md`.
+The `searching-the-iu-knowledge-base` skill searches and reads KB articles
+from a terminal.
 
 ## Ask a person when
 
@@ -44,7 +46,10 @@ terminal. See `CONTRIBUTING.md`.
 | --- | --- | --- | --- |
 | Quartz or Big Red 200 system issues, accounts, queues, colocation nodes | High Performance Systems (HPS) | `https://projects.rt.iu.edu/help/?queue=hps` | KB0023697, KB0024661 |
 | Compilers, libraries, debuggers, scientific software, programming help, containers | Research Applications and Deep Learning (RADL) | `https://projects.rt.iu.edu/help/?queue=radl` | KB0023697, KB0025214 |
-| Research Desktop (RED) | RED development team, part of RADL | `https://projects.rt.iu.edu/help/?queue=red` | KB0023697 |
+| Research Desktop (RED) | RED development team, part of RADL | `https://projects.rt.iu.edu/help/?queue=red` | KB0023697, KB0023170 |
+| RT Projects itself: projects, allocations, membership | RT Projects | `https://projects.rt.iu.edu/help/?queue=projects-incoming` | KB0024132 |
+| REALLMS API and Chat, Posit Connect | The REALLMS team (KB0026671); "Research Technologies" for Posit Connect (KB0025370) | `https://projects.rt.iu.edu/help/?queue=racs` | KB0026671, KB0027272, KB0025370 |
+| Account for a non-IU collaborator | The sponsor uses "Manage your affiliates" in One.IU | See KB0023488 | KB0023488 |
 | Slate, Slate-Project, Slate-Scratch | High Performance File Systems (HPFS) | `https://projects.rt.iu.edu/help/?queue=hpfs` | KB0023697 |
 | SDA, home directories, Geode-Project, HSI, HTAR | Research Storage | store-admin@iu.edu | KB0023697 |
 | PHI, HIPAA, data classification, grant or DUA security terms | SecureMyResearch | securemyresearch@iu.edu | KB0025362 |
@@ -60,12 +65,11 @@ terminal. See `CONTRIBUTING.md`.
 
 **Open items:**
 
-- KB0023170 points RED questions to the RADL queue. KB0023697 points them to
-  a separate `red` queue. Either appears to reach the RED team.
-- A general RT Projects contact address is not in the KB. Ask HPS about RT
-  Projects problems until one is found.
-- The KB names no support channel for Posit Connect or REALLMS in the articles
-  read. Search the KB for each before asking.
+- Most RED articles use the `red` queue. A few specific RED problems link to
+  the `radl` queue instead (KB0023170, KB0023231, KB0023162). The RED team is
+  part of RADL (KB0023697), so either likely reaches it.
+- KB0023697, the support overview, does not list the `racs` or
+  `projects-incoming` queues. The service articles above do.
 
 ### Data classification questions
 
@@ -137,22 +141,29 @@ All IU KB articles, read 2026-10-01. URL form:
 - [KB0022486](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022486) Policies regarding UITS research systems
 - [KB0022647](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022647) Get additional IU computing accounts
 - [KB0022656](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022656) Computing accounts at IU
+- [KB0023162](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023162) Download, install, and configure ThinLinc Client to use Research Desktop (RED) at IU
 - [KB0023170](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023170) Research Desktop (RED) usage policies and interface features
+- [KB0023231](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023231) Troubleshoot Research Desktop
 - [KB0023298](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023298) Use Slurm to submit and manage jobs on IU's research computing systems
 - [KB0023420](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023420) Get computing help for biomedical research
+- [KB0023488](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023488) Sponsor a computing account for an IU affiliate
 - [KB0023515](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023515) UITS Research Technologies systems and services for researchers working with data containing HIPAA-regulated PHI
 - [KB0023697](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023697) Research computing support at IU
 - [KB0023985](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023985) About Quartz at IU
 - [KB0024086](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024086) About the IU HPC and AI User Community Slack
+- [KB0024132](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024132) Use RT Projects to request and manage access to specialized Research Technologies resources
 - [KB0024406](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024406) About the Scholarly Data Archive (SDA) at Indiana University
 - [KB0024420](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024420) About Jetstream2
 - [KB0024661](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024661) Research computing services at IU
 - [KB0024722](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024722) About archived content in the IU Knowledge Base
 - [KB0025214](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025214) Use Apptainer on Quartz or Big Red 200 at IU
 - [KB0025362](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025362) About SecureMyResearch
+- [KB0025370](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025370) About Posit Connect at IU
 - [KB0025574](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025574) Questions you'll need to answer when requesting research computing accounts
 - [KB0025747](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025747) Types of sensitive institutional data appropriate for UITS Research Technologies services
 - [KB0025948](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025948) Get started on IU research HPC and storage systems
+- [KB0026671](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0026671) About Research and Academic LLM Services (REALLMS) at IU
+- [KB0027272](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0027272) About the Research and Academic LLM Services (REALLMS) API at IU
 
 External, read 2026-10-01:
 
