@@ -24,7 +24,7 @@ these two. Any other cluster name is retired; see
 | Big Red 200 | HPE Cray EX supercomputer, `bigred200.uits.iu.edu` | Large parallel and A100 GPU work without PHI |
 | Research Desktop (RED) | Graphical desktop on Quartz-dedicated VMs | GUI applications, Jupyter, light interactive work |
 | Jetstream2 | ACCESS-allocated OpenStack cloud | Gateways, always-on services, prototyping |
-| Home directory (Geode) | 100 GB per user per system | Scripts, configuration, small files |
+| Home directory (Geode) | 100 GB per user, shared across systems | Scripts, configuration, small files |
 | Slate | Lustre, persistent, per user | Working data for one person |
 | Slate-Project | Lustre, persistent, per project | Shared working data for a group |
 | Slate-Scratch | Lustre, purged | Temporary job data |
@@ -125,8 +125,9 @@ A job in `h100-single` gets at most one quarter of a node (KB0022436). Quartz
 renamed `gpu` to `v100` and `hopper` to `h100-multi` on 2026-08-09. Jobs that
 use the old names are rejected (KB0022436).
 
-**Open item:** KB0023985 says Quartz has 88 GPU nodes. The partition table in
-KB0022436 sums to 86 nodes. The GPU counts (248 H100 and 96 V100) agree.
+KB0023985 says Quartz has 88 GPU nodes, but KB0022436's partition table sums
+to 86. The system settles counts like this. Run `describe-cluster.sh` from the
+`submitting-hpc-jobs` skill, and trust its output over either article.
 
 ### Research Desktop (RED)
 
@@ -136,7 +137,8 @@ at `https://red.uits.iu.edu`. It needs a Quartz account and Duo.
 
 RED nodes are login nodes. Run compute-heavy or memory-heavy work on Quartz
 compute nodes instead (KB0023170). Each user may use at most 100 GB of RAM in a
-session. RED kills the largest process past that limit (KB0023167, KB0023170).
+session. Past that limit, RED terminates the largest process (KB0023167) or one or
+more processes (KB0023170). See the `using-research-desktop` skill.
 
 **Open item:** KB0023167 asks users to limit parallelism to 4 to 8 processors.
 KB0023170 says to limit it to 5 or fewer.
@@ -153,36 +155,33 @@ skill.
 
 ## Storage
 
-Default sizes and purge rules come from KB0022439 unless another article is
-named.
+This table is the overview. The `storing-and-moving-research-data` skill has
+paths, quota checks, transfers, sharing, and the PHI procedure. Check live
+quotas with `quota` on a login node rather than trusting a size here.
 
-| Storage | Path | Default size | Backup | Purge |
+| Storage | Path | Default size | Backup | When data is removed |
 | --- | --- | --- | --- | --- |
-| Home directory | `/N/u/<user>/Quartz`, `/N/u/<user>/BigRed200` | 100 GB | Monthly backup, 30 days of daily snapshots in `.snap` (KB0025028) | None stated |
-| Slate | `/N/slate/<user>` | 800 GiB, up to 1.6 TiB on request | None | None |
-| Slate-Project | `/N/project/<project>` | Up to 120 TB without fee | None | After expired allocations (KB0022423) |
-| Slate-Scratch | `/N/scratch/<user>` | Up to 100 TiB | None | Files not accessed for 30 days |
-| Quartz local scratch | `/tmp` on a node | 1.7 TB | None | Files older than 10 days |
-| Geode-Project | Mounted on clusters and campus | Set by MOU | 30 days of daily snapshots | None stated |
-| SDA | HSI, HTAR, SFTP, Globus | 50 TB | Two tape copies at two sites | Never, while the owner's IU account is valid (KB0024406) |
+| Home directory | `/N/u/<user>/Quartz`, `/N/u/<user>/BigRed200` | 100 GB, shared across all your supercomputer accounts (KB0025028) | Monthly backup and daily snapshots in `.snap` (KB0023379) | 180 days after the account is disabled (KB0023379) |
+| Slate | `/N/slate/<user>` | 800 GiB, up to 1.6 TiB on request (KB0022439) | None (KB0022439) | 180 days after the account is disabled (KB0022391) |
+| Slate-Project | `/N/project/<project>` | Up to 120 TiB without fee (KB0022586) | None (KB0022439) | 180 days after an incomplete annual review; class allocations 30 days after expiry (KB0022423) |
+| Slate-Scratch | `/N/scratch/<user>` | Up to 100 TiB (KB0025317) | None (KB0022439) | Files unaccessed for 30 days; oldest first when the system passes 80% full (KB0025317) |
+| Quartz local scratch | `/tmp` on a node | 1.7 TB (KB0022439) | None | Files older than 10 days (KB0022439) |
+| Geode-Project | Mounted on clusters and campus | Set by agreement (KB0022439) | Not backed up; replicated to two data centers, with daily snapshots (KB0023373) | 180 days after the account is disabled (KB0023373) |
+| SDA | HSI, HTAR, SFTP, Globus | 50 TB (KB0024406) | Two tape copies at two sites (KB0024406) | Never while the owner's account is valid (KB0024406). Deletions are permanent (KB0024366). |
 
 Points that change a design:
 
-- Slate, Slate-Project, and Slate-Scratch are working storage. They are not
-  for permanent data and are not backed up (KB0023515, KB0022439).
-- Archive anything worth keeping to the SDA (KB0022439).
+- Slate, Slate-Project, and Slate-Scratch are working storage, not backed up
+  (KB0023515, KB0022439). Archive anything worth keeping to the SDA
+  (KB0022439).
 - Slate-Project needs an RT Projects allocation. Allocations above 120 TB are
   direct-billed (KB0022439).
-- Geode-Project needs a memo of understanding (MOU) with Research
-  Technologies. The KB points to fee-based storage for it (KB0022439,
-  KB0024967).
-- Slate-Project research allocations are purged 180 days after an incomplete
-  annual review (KB0022423).
-- The SDA is offline every Sunday 7am to 10am (KB0024406).
-- The SDA suits large files. Many small files perform badly (KB0024406).
+- The SDA is offline every Sunday 7am to 10am. It suits large files; many
+  small files perform badly (KB0024406).
 
-**Open item:** KB0022439 gives the SDA a 25,000-file limit for new accounts.
-KB0024406 says new accounts start at 5,000 files, raised to 25,000 on request.
+KB articles disagree on several storage numbers, such as SDA file-count limits
+and TB versus TiB. The `storing-and-moving-research-data` skill lists them as
+open items.
 
 ## Platform services hand computation to a cluster
 
@@ -244,28 +243,34 @@ team answers it, and cite that answer.
 All IU KB articles, read 2026-10-01. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
+- [KB0022391](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022391) Slate high performance storage system: Terms of service
 - [KB0022423](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022423) Slate-Project high performance storage system: Terms of service
 - [KB0022436](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022436) Run GPU-accelerated jobs on Quartz or Big Red 200 at IU
 - [KB0022439](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022439) Available access to allocated and short-term storage capacity on IU's research systems
 - [KB0022478](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022478) Secure research data containing HIPAA-regulated PHI on high performance file systems at IU
 - [KB0022486](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022486) Policies regarding UITS research systems
+- [KB0022586](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022586) About Slate-Project high performance project space at IU
 - [KB0022647](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022647) Get additional IU computing accounts
 - [KB0022656](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022656) Computing accounts at IU
 - [KB0022668](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022668) About Geode at Indiana University
 - [KB0023167](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023167) About Research Desktop (RED) at IU
 - [KB0023170](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023170) Research Desktop (RED) usage policies and interface features
 - [KB0023238](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023238) Research and high performance computing
+- [KB0023373](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023373) Geode-Project: Terms of service
+- [KB0023379](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023379) Geode home directory file system: Terms of service
 - [KB0023407](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023407) Your legal responsibilities for protecting data containing PHI when using UITS Research Technologies systems and services
 - [KB0023515](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023515) UITS Research Technologies systems and services for researchers working with data containing HIPAA-regulated PHI
 - [KB0023647](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023647) Supercomputers for academic research at IU
 - [KB0023985](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023985) About Quartz at IU
 - [KB0024132](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024132) Use RT Projects to request and manage access to specialized Research Technologies resources
+- [KB0024366](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024366) About accidentally deleted SDA files
 - [KB0024406](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024406) About the Scholarly Data Archive (SDA) at Indiana University
 - [KB0024420](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024420) About Jetstream2
 - [KB0024661](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024661) Research computing services at IU
 - [KB0024967](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024967) Request a project space allocation on Geode-Project
 - [KB0025028](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025028) About home directory space on IU research supercomputers
 - [KB0025040](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025040) Hostnames of IU research supercomputers
+- [KB0025317](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025317) Slate-Scratch high performance file system: Terms of service
 - [KB0025362](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025362) About SecureMyResearch
 - [KB0025574](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025574) Questions you'll need to answer when requesting research computing accounts
 - [KB0025672](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025672) Use Jupyter Notebook on Quartz
