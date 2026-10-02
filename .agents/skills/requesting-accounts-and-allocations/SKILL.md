@@ -20,12 +20,15 @@ job will run (KB0025948).
 3. The PI requests allocations inside the project: compute, Slate-Project, or
    Geode-Project (KB0024132).
 4. The PI adds members to the project, then to each allocation (KB0024132).
+   The `managing-rt-projects` skill covers membership.
 5. Members create any storage account the allocation needs, such as a
-   Slate-Project account (KB0026672).
+   Slate-Project account (KB0026672). Slate-Project lets a member be added
+   first; they show as "Eligible" until the account exists (KB0026672).
 6. Members submit jobs with the project's Slurm Account Name (KB0023298).
 
-A user must already hold the system account before being added to an
-allocation that needs it (KB0024132).
+KB0024132 says a user must hold the system account before being added to an
+allocation that needs it. KB0026672 allows the reverse order for
+Slate-Project. **Open item:** confirm the order for compute allocations.
 
 ## Personal accounts
 
@@ -70,7 +73,7 @@ before anyone can create a project naming them (KB0024132). Students may
 request a project but need a faculty or staff PI (KB0024132).
 
 A student without a faculty or staff sponsor can ask to join the "HPC for
-Students" project. Search RT Projects for PI `lamhuber` (KB0025604).
+Students" project. Search RT Projects for it; KB0025604 names its PI.
 
 A PI gets one research project and one class project by default. Several
 research efforts go into one project as multiple abstracts. Contact Research
@@ -89,43 +92,25 @@ The description should cover (KB0024132):
 Project titles and PIs are searchable by anyone. Descriptions and allocation
 requests are visible only to Research Technologies staff (KB0024132).
 
-### Roles
-
-The PI owns the project and every allocation in it. The PI controls access for
-everyone (KB0024132). The requester and the PI have the Manager role. A Manager
-can change membership, request allocations, and help with renewal
-(KB0024132). Each allocation keeps its own member list drawn from the project
-(KB0024132).
-
 ### Turnaround
 
-RT Projects says you will hear about a new request within two business days.
-Renewals are also reviewed within two business days (KB0024132). Membership
-changes on a Slate-Project allocation can take up to an hour (KB0026672). The
-KB states no turnaround for system accounts.
+RT Projects says you will hear about a new request within two business days
+(KB0024132). The KB states no turnaround for system accounts.
 
-### Renewal
+### After the project exists
 
-Research projects renew every year (KB0024132):
-
-- Renewal opens June 1.
-- Projects expire June 30.
-- After July 31, Slurm accounts on the project's compute allocations are
-  deactivated. You must then request a new project.
-- The requester and PI get an email 30 days before expiry.
-
-Class projects expire at the end of each semester and cannot be renewed
-(KB0024132).
-
-Archiving a project ends access to all its allocations at once. Archiving
-cannot be undone (KB0024132).
+Roles, adding members and collaborators, the yearly June renewal, and
+archiving are in the `managing-rt-projects` skill. Research projects renew
+every year between June 1 and June 30 (KB0024132). Missing renewal
+deactivates the project's Slurm accounts after July 31 (KB0024132).
 
 ## Project storage
 
 ### Slate-Project
 
 Only faculty or staff who are already RT Project PIs may request Slate-Project
-space (KB0022586). Request it from the project's "Request Resource
+space (KB0022586). **Open item:** KB0022423 also allows Academic Non-Paid
+(ACNP) appointees to own Slate-Project space. Request it from the project's "Request Resource
 Allocation" page, under "Storages" (KB0026672).
 
 - Initial requests are limited to 30 TiB (KB0022586).
@@ -137,8 +122,8 @@ Allocation" page, under "Storages" (KB0026672).
   (KB0022423).
 - A departed user's data is purged 180 days after they leave IU (KB0022423).
 
-**Open item:** KB0022439 states the free limit as "120 TB". KB0022586 states
-it as "120 TiB".
+**Open item:** KB0022439 states the free limit as "120 TB". KB0022586 and
+KB0022423 state it as "120 TiB".
 
 ### Geode-Project
 
