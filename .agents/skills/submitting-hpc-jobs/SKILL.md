@@ -88,8 +88,20 @@ sbatch quartz-minimal.sbatch
 
 ## Partitions
 
-Run `sinfo` on the system for the current list. Each system shows different
-partitions (KB0023298). These names appear in the KB:
+The system is the judge of its own partitions and limits. Before choosing a
+partition, run [scripts/describe-cluster.sh](scripts/describe-cluster.sh) on
+a login node:
+
+```bash
+ssh <username>@quartz.uits.iu.edu 'bash -s' < scripts/describe-cluster.sh
+```
+
+It prints each partition's time limit, node count, CPUs, memory, and GPUs. It
+also prints partition limits, QOS limits, and the largest job array allowed.
+It is light work and safe on a login node. Its output outranks the tables
+below and the KB. Each system shows different partitions (KB0023298).
+
+The KB names these partitions:
 
 | System | Partition | Purpose | Source |
 | --- | --- | --- | --- |
@@ -102,17 +114,16 @@ partitions (KB0023298). These names appear in the KB:
 | Quartz | `h100-multi` | 12 nodes, 4 H100 each | KB0022436 |
 | Big Red 200 | `gpu` | 64 nodes, 4 A100 each. Sample output shows a 2-day limit. | KB0022436 |
 
+The KB does not name Big Red 200's CPU partitions. Use the script's output.
+
 The Quartz partitions `gpu` and `hopper` were renamed on 2026-08-09. Jobs
 naming the old partitions are rejected (KB0022436).
 
-Check the per-job and per-user limits with this command (KB0023298):
+The KB's own command for per-job and per-user limits also works (KB0023298):
 
 ```bash
 sacctmgr show qos allocated format=Name%15,MaxTres%20,MaxSubmitPU
 ```
-
-**Open item:** the KB does not name Big Red 200's CPU partitions. Run `sinfo`
-on Big Red 200 and record what you find here.
 
 ## GPU jobs
 
@@ -161,9 +172,10 @@ Quartz compute node (KB0023170).
 
 The KB mentions job arrays only as an alternative to PCP (KB0023513). It does
 not document IU-specific array limits. Standard Slurm syntax is
-`#SBATCH --array=1-100` with `$SLURM_ARRAY_TASK_ID` in the script.
-**Open item:** confirm array size limits on each system with HPS or with
-`scontrol show config`.
+`#SBATCH --array=1-100` with `$SLURM_ARRAY_TASK_ID` in the script. The
+largest index allowed is one less than `MaxArraySize`, which
+`describe-cluster.sh` prints. Per-user job limits in its QOS table also cap
+how many array tasks run at once.
 
 PCP runs a list of serial commands across the cores of one job (KB0023513).
 Load it with `module load pcp`. Put one command per line in a text file. It
@@ -199,19 +211,16 @@ efficiently than many separate jobs (KB0023513).
 
 ## Where job data goes
 
-| Location | Use it for | Rule |
-| --- | --- | --- |
-| Home, `/N/u/<user>/Quartz` | Scripts, configuration, builds | 100 GB. Slow I/O. Not for large data (KB0022439). |
-| Slate-Scratch, `/N/scratch/<user>` | Job input and output while running | Purged after 30 days without access. Not backed up (KB0022439). |
-| Node `/tmp` on Quartz | Per-job temporary files | 1.7 TB. Deleted after 10 days (KB0022439). |
-| Slate, `/N/slate/<user>` | Personal working data that must persist | Not backed up (KB0022439). |
-| Slate-Project, `/N/project/<project>` | Shared project data | Not backed up. Needs an allocation (KB0022439). |
-| SDA | Anything worth keeping | Tape archive, two copies (KB0024406). |
+Read job input from and write output to Slate-Scratch, `/N/scratch/<user>`.
+It is purged after 30 days without access and is not backed up (KB0022439).
+Quartz nodes also have 1.7 TB of `/tmp`, deleted after 10 days (KB0022439).
+Keep scripts in the home directory, which is small and slow for data
+(KB0022439).
 
-Check quotas with `quota`, after `module load quota` if needed (KB0023985).
-
-For PHI, keep files in a `chmod 700` directory, encrypt them with GPG at rest,
-and share with ACLs only (KB0022478).
+Copy results somewhere persistent at the end of the job script. The
+`storing-and-moving-research-data` skill covers Slate, Slate-Project, the
+SDA, quotas, transfers, and PHI handling. Check quotas with `quota`, after
+`module load quota` if needed (KB0023985).
 
 ## Common causes of failure
 
@@ -226,15 +235,16 @@ on the cause, not the message.
 | A process on the login node vanished | It exceeded 20 minutes of CPU time | KB0022436 |
 | A RED process vanished | The session exceeded 100 GB of RAM | KB0023170 |
 | SSH session dropped | Idle for 60 minutes | KB0023985 |
-| Files missing from scratch | Not accessed for 30 days, so purged | KB0022439 |
+| Files missing from scratch | Not accessed for 30 days, or the file system passed 80% full | KB0022439, KB0025317 |
 | Everything down on a Sunday | Monthly maintenance, second Sunday, 7am to 7pm | KB0023985 |
 | SDA unreachable on a Sunday morning | Weekly SDA maintenance, 7am to 10am | KB0024406 |
 | Account disabled | Not used for six months | KB0022486 |
 
 ## Keep this file current
 
-Run `sinfo` and `sacctmgr show qos allocated` when you are on a system. Record
-any partition or limit that differs from this file, with the date. Re-read
+Run `scripts/describe-cluster.sh` on each system whenever you can log in.
+Record any partition or limit that differs from this file as Observed, with
+the date and host. Re-read
 KB0023298 and KB0022436 before changing the skeleton or the GPU section. Add
 real Slurm error text to the failure table once you have seen it, and say it
 was observed rather than read in the KB.
@@ -256,6 +266,7 @@ All IU KB articles, read 2026-10-01. URL form:
 - [KB0024406](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024406) About the Scholarly Data Archive (SDA) at Indiana University
 - [KB0024539](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024539) Use Python on IU research supercomputers
 - [KB0025214](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025214) Use Apptainer on Quartz or Big Red 200 at IU
+- [KB0025317](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025317) Slate-Scratch high performance file system: Terms of service
 - [KB0025672](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025672) Use Jupyter Notebook on Quartz
 - [KB0025948](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025948) Get started on IU research HPC and storage systems
 - [KB0026317](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0026317) About Big Red 200 at IU
