@@ -258,9 +258,10 @@ limit (KB0024132).
 **Open item:** The KB does not say how to move an RT Project to a new PI. A
 storage owner change needs a new service agreement (KB0022423, KB0023373).
 
-**Open item:** KB0026680 says "anyone with an active IU account" can get
-Geode-Project access. KB0024359 says you can share "only with other IU
-research supercomputer users".
+**Geode-Project access.** Group access and ACL sharing differ. Anyone with an active IU account can join
+the allocation's Active Directory groups (KB0026680). They can mount the space
+without a supercomputer account (KB0025090). File-level NFSv4 ACL sharing
+reaches only IU research supercomputer users (KB0024359).
 
 ## Where to ask
 
@@ -294,6 +295,7 @@ All IU KB articles, read 2026-10-01. KB0024668, KB0025016, and KB0025574 re-read
 - [KB0024668](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024668) Sources of funding to acknowledge in published work if you use IU's research cyberinfrastructure
 - [KB0024967](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024967) Request a project space allocation on Geode-Project
 - [KB0025016](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025016) IU account types and eligibility
+- [KB0025090](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025090) Map or mount a drive to your Geode-Project space
 - [KB0025370](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025370) About Posit Connect at IU
 - [KB0025574](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025574) Questions you'll need to answer when requesting research computing accounts
 - [KB0025604](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025604) About RT Projects at IU

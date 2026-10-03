@@ -63,6 +63,8 @@ redirect to the KB home page and lose the article. The
 | [requesting-accounts-and-allocations](.agents/skills/requesting-accounts-and-allocations/SKILL.md) | Getting a personal account, an RT Projects allocation, or project storage for the first time. |
 | [managing-rt-projects](.agents/skills/managing-rt-projects/SKILL.md) | Running an RT Project: allocations, members, collaborators, renewal, and archiving. |
 | [storing-and-moving-research-data](.agents/skills/storing-and-moving-research-data/SKILL.md) | Using Slate, Slate-Project, Slate-Scratch, Geode-Project, or the SDA, or moving data with Globus. |
+| [planning-research-computing-work](.agents/skills/planning-research-computing-work/SKILL.md) | Turning a described workflow into a plan: which IU system, storage, transfers, and allocations each stage needs. |
+| [managing-python-environments](.agents/skills/managing-python-environments/SKILL.md) | Installing Python or R packages, creating conda or virtual environments, moving caches out of home, or adding a Jupyter kernel on Quartz or Big Red 200. |
 | [using-research-desktop](.agents/skills/using-research-desktop/SKILL.md) | Needing a graphical desktop, RStudio, MATLAB, or Jupyter on Quartz. |
 | [using-reallms](.agents/skills/using-reallms/SKILL.md) | Calling IU's LLM service from research code, or choosing an IU LLM service for research data. |
 | [jetstream2](.agents/skills/jetstream2/SKILL.md) | Considering Jetstream2 cloud for a gateway, a service, or interactive work. |

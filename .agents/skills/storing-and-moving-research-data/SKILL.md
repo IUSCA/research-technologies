@@ -154,6 +154,10 @@ Slate, Slate-Project, and Slate-Scratch have no backup of any kind
   `/geode3/projects`. `nfs4_getfacl` read a project directory's ACL, while
   `mmgetacl` failed with `Function not implemented`. KB0024359 still names
   `mmgetacl` and `mmeditacl`; treat it as lagging.
+- Group access and ACL sharing differ. Anyone with an active IU account can join
+  the allocation's Active Directory groups (KB0026680). They can mount the space
+  without a supercomputer account (KB0025090). File-level NFSv4 ACL sharing
+  reaches only IU research supercomputer users (KB0024359).
 - **Practice:** do not `chmod` in Geode-Project. It rewrites the NFSv4 ACL
   and can drop the entries that grant group access. Change access with
   `nfs4_setfacl` instead.
@@ -315,9 +319,6 @@ More PHI rules for storage and transfer:
   allows Academic Non-Paid (ACNP).
 - **Geode-Project fee.** KB0022439 lists it under fee-based storage.
   KB0023604 says "No fee (up to 10 TB)."
-- **Geode-Project access.** KB0024359 says sharing is only with "other IU
-  research supercomputer users." KB0026680 says "Anyone with an active IU
-  account." KB0025090 says no supercomputer account is needed.
 - **Geode-Project collection name.** KB0025535 says `IURT - Geode Projects`.
   KB0026500 says `IURT - Geode Project`.
 - **HSI and HTAR workstation clients.** KB0022463 offers version 10.3 for
