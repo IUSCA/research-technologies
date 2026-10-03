@@ -233,6 +233,12 @@ Log in at `https://globus.iu.edu` as Indiana University, with Duo
   fresh `setfacl -R -m` after moving files in (KB0022478).
 - **Practice:** if `getfacl` shows `#effective:---` beside a granted user,
   the ACL mask blocks it. Set the mask, as in `setfacl -m m::rx <path>`.
+- **Never share by a hidden path.** Do not give "other" users `x` on a
+  parent and send someone the name (**Practice**). It opens the path to every
+  cluster account. Paths leak through job scripts, history, and `ps`. You
+  cannot revoke one person. For PHI it also breaks "no access at all" for
+  other users (KB0022478). Check with `getfacl` that no `other::` entry grants
+  access.
 - **Slate-Project:** add members in RT Projects with read-write or read-only
   access. Changes take up to an hour (KB0026672).
 - **Geode-Project:** add usernames to the project's ADS groups, then refine
