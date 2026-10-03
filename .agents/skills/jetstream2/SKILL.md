@@ -5,7 +5,8 @@ description: Use Jetstream2, the IU-hosted OpenStack research cloud allocated th
 
 # Jetstream2
 
-Verified 2026-10-01. IU KB claims cite their KB number. Claims from the
+Verified 2026-10-03 (KB0023515 and KB0025747 only). Other sources were verified
+2026-10-01. IU KB claims cite their KB number. Claims from the
 Jetstream2 documentation are marked **External**. Links are in Sources.
 
 Jetstream2 is a cloud, not a cluster. Use it for services and interactive
@@ -120,7 +121,8 @@ change. Record a resolved open item with its source.
 
 ## Sources
 
-IU KB articles, read 2026-10-01. URL form:
+IU KB articles, read 2026-10-01. KB0023515 and KB0025747 re-read
+2026-10-03. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022739](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022739) Acknowledge use of Jetstream or Jetstream2 in your published work
