@@ -16,6 +16,7 @@ Step 7 of `MAINTAINING.md` explains the test.
 | Our Slurm account stopped working in July. | `managing-rt-projects` |
 | Who do I ask about a Slate-Scratch outage? | `getting-help-from-research-technologies` |
 | Should our science gateway run on Jetstream2? | `jetstream2` |
+| I have a 5 TB imaging dataset and a GPU training pipeline. Plan where each step should run at IU. | `planning-research-computing-work` |
 | Check whether I'm set up to use IU research computing. | `checking-iu-research-access` |
 | Which of my Slurm accounts should this job use? | `checking-iu-research-access` (read the resources file) |
 | Copy 40 TB from Slate-Project to the SDA. | `storing-and-moving-research-data` |
