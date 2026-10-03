@@ -5,8 +5,9 @@ description: Use IU Research Desktop (RED), the ThinLinc remote desktop on Quart
 
 # Using Research Desktop (RED)
 
-Verified 2026-10-01 against the IU Knowledge Base (KB). Each claim names its
-KB article; links are in Sources at the end.
+Verified 2026-10-03 (KB0023515 and KB0025747 only) against the IU
+Knowledge Base (KB). Other sources were verified 2026-10-01. Each claim
+names its KB article; links are in Sources at the end.
 
 RED is a graphical desktop for Quartz users, not a place for heavy compute.
 Send anything parallel, long, or memory-heavy to a Quartz compute node
@@ -203,7 +204,8 @@ answer from the owning team.
 
 ## Sources
 
-All IU KB articles, read 2026-10-01. URL form:
+All IU KB articles, read 2026-10-01. KB0023515 and KB0025747 re-read
+2026-10-03. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022379](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022379) Install packages in a conda environment on IU's high performance computers

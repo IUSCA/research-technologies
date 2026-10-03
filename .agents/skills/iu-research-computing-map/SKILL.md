@@ -5,8 +5,9 @@ description: Orientation to Indiana University research computing systems (Quart
 
 # IU research computing map
 
-Verified 2026-10-01 against the IU Knowledge Base (KB). Each claim names its
-KB article; links are in Sources at the end.
+Verified 2026-10-03 (KB0023515, KB0025574, and KB0025747 only) against the IU
+Knowledge Base (KB). Other sources were verified 2026-10-01. Each claim
+names its KB article; links are in Sources at the end.
 
 Check data classification before anything else. A system that is fast and
 available is still the wrong system if it is not approved for the data.
@@ -240,7 +241,8 @@ team answers it, and cite that answer.
 
 ## Sources
 
-All IU KB articles, read 2026-10-01. URL form:
+All IU KB articles, read 2026-10-01. KB0023515, KB0025574, and KB0025747 re-read
+2026-10-03. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022391](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022391) Slate high performance storage system: Terms of service

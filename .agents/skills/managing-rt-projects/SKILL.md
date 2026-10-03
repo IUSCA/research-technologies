@@ -5,8 +5,9 @@ description: Run an IU RT Projects (projects.rt.iu.edu, ColdFront) project day t
 
 # Managing an RT Project
 
-Verified 2026-10-01 against the IU Knowledge Base (KB). Each claim names its
-KB article; links are in Sources at the end.
+Verified 2026-10-03 (KB0024668, KB0025016, and KB0025574 only) against the IU
+Knowledge Base (KB). Other sources were verified 2026-10-01. Each claim
+names its KB article; links are in Sources at the end.
 
 An RT Project owns allocations, members, and renewal. RT Projects runs on
 ColdFront (KB0025604). For first-time accounts, see the
@@ -277,7 +278,8 @@ only with a citation that settles it.
 
 ## Sources
 
-All IU KB articles, read 2026-10-01. URL form:
+All IU KB articles, read 2026-10-01. KB0024668, KB0025016, and KB0025574 re-read
+2026-10-03. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022423](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022423) Slate-Project high performance storage system: Terms of service
