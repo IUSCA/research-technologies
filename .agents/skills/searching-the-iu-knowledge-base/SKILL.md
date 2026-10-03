@@ -31,6 +31,12 @@ KB.
 Search terms match titles and bodies. Try the system name, the task, and any
 old name. The published date shows how recently an article changed.
 
+The API limits request rates. **Observed 2026-10-03:** after heavy parallel
+use it returned `429 Too Many Requests` with `X-RateLimit-Limit: 500` and a
+`Retry-After` of about 19 minutes. Each `read` costs two requests. Read
+articles one agent at a time, and save text you will reuse. The script
+retries short waits and reports a long one instead of hanging.
+
 ## Retired articles disappear
 
 Retired articles drop out of KB search (KB0024722). `read` then reports the

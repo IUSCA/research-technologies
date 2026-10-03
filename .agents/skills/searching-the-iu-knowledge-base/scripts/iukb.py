@@ -26,6 +26,11 @@ API = "https://servicenow.iu.edu/api/sn_km_api/knowledge/articles"
 ARTICLE_URL = "https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article={}"
 
 
+# The KB API allows about 500 requests an hour (X-RateLimit-Limit, observed
+# 2026-10-03). Short waits are retried; a long one is reported instead.
+MAX_WAIT = 120
+
+
 def _get(url, attempts=5):
     # The KB answers 429 when queried quickly; wait and retry, honoring
     # Retry-After when it is given.
@@ -37,7 +42,11 @@ def _get(url, attempts=5):
             if err.code not in (429, 503) or attempt == attempts - 1:
                 raise
             wait = err.headers.get("Retry-After", "")
-            time.sleep(int(wait) if wait.isdigit() else 5 * 2 ** attempt)
+            wait = int(wait) if wait.isdigit() else 5 * 2 ** attempt
+            if wait > MAX_WAIT:
+                sys.exit(f"iukb: KB API rate limit reached (HTTP {err.code}); "
+                         f"retry in about {wait // 60 + 1} minutes.")
+            time.sleep(wait)
 
 
 def search(query, limit=10):
