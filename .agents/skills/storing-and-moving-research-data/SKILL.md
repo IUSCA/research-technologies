@@ -149,8 +149,14 @@ Slate, Slate-Project, and Slate-Scratch have no backup of any kind
 - Recover files from `.snap` the same way as home (KB0026290).
 - Access is through two ADS groups, Admins and Users, plus NFSv4 ACLs
   (KB0026680).
-- Edit ACLs with `mmgetacl` and `mmeditacl` after adding
-  `/usr/lpp/mmfs/bin` to `PATH` (KB0024359).
+- Read and edit ACLs with `nfs4_getfacl` and `nfs4_setfacl`. **Observed
+  2026-10-03** on Quartz: Geode-Project is an NFSv4.1 mount at
+  `/geode3/projects`. `nfs4_getfacl` read a project directory's ACL, while
+  `mmgetacl` failed with `Function not implemented`. KB0024359 still names
+  `mmgetacl` and `mmeditacl`; treat it as lagging.
+- **Practice:** do not `chmod` in Geode-Project. It rewrites the NFSv4 ACL
+  and can drop the entries that grant group access. Change access with
+  `nfs4_setfacl` instead.
 - Every file must carry the project's group ID. Geode-Project quotas are
   per group (KB0023373).
 - No automated purge. A user's data is removed 180 days after their account
