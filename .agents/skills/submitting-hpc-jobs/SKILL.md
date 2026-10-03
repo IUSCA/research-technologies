@@ -38,7 +38,9 @@ Login needs your IU passphrase and Duo (KB0025948). SSH keys need the signed
 sessions close after 60 minutes (KB0023985).
 
 Do not compute on login nodes. Processes there are killed after 20 minutes of
-CPU time, without warning (KB0022436).
+CPU time, without warning (KB0022436). **Practice:** `nohup`, `screen`, `tmux`,
+and `disown` do not change this; the limit counts CPU time, not the session.
+Use a batch job, an interactive job, or Research Desktop.
 
 ## Batch job skeleton
 
@@ -64,6 +66,12 @@ srun ./my_program my_program_arguments
 
 `%j` becomes the job ID (KB0023298). `--mail-type=ALL` sends a resource
 summary when the job ends, which helps size `--mem` (KB0022436).
+
+A job starts in the directory it was submitted from. Submitted from home, it
+reads and writes home; see "Where job data goes". Add
+`#SBATCH --chdir=/N/scratch/<username>/<job>` to the skeleton, or `cd` there
+before `sbatch`. Relative `-o` and `-e` paths then land there too.
+**Observed 2026-10-02** on Quartz: `sbatch --help` lists `-D, --chdir`.
 
 A minimal runnable script is in
 [scripts/quartz-minimal.sbatch](scripts/quartz-minimal.sbatch). Its directives
@@ -193,6 +201,13 @@ efficiently than many separate jobs (KB0023513).
 | Cancel by name | `scancel -n <job_name>` | KB0023298 |
 | Cancel all your jobs | `scancel -u <username>` | KB0023298 |
 | Partitions and limits | `sinfo`, or `sinfo -No "%10P %8N %4c %7m %10l %.6t"` | KB0023298 |
+| Estimated start of pending jobs | `squeue -u <username> --start` | Observed 2026-10-02, Quartz |
+| Your fair share on each account | `sshare -U` | Observed 2026-10-02, Quartz |
+| Working directory of your jobs | `squeue -u <username> -o "%.10i %Z"` | Observed 2026-10-02, Quartz |
+
+**Practice:** Slurm uses fair share, so heavy recent use on an account lowers
+the priority of its next jobs. A priority boost that HPS grants is used with
+`--qos=<name>`. `sshare -U` shows where you stand.
 
 ## Software: modules, Python, containers
 
@@ -211,11 +226,28 @@ efficiently than many separate jobs (KB0023513).
 
 ## Where job data goes
 
-Read job input from and write output to Slate-Scratch, `/N/scratch/<user>`.
-It is purged after 30 days without access and is not backed up (KB0022439).
-Quartz nodes also have 1.7 TB of `/tmp`, deleted after 10 days (KB0022439).
-Keep scripts in the home directory, which is small and slow for data
-(KB0022439).
+Never run a job's I/O in the home directory. The KB says home is not
+"capable of handling data-intensive computational I/O from parallel compute
+jobs". Use Slate, Slate-Project, or Slate-Scratch (KB0025028).
+
+**Practice:** this is the most common mistake on the clusters, and it hurts
+everyone. Home is the file system every login reads. Heavy job I/O there
+makes logins, shells, and `module` commands slow for all users. **Observed
+2026-10-02** on Quartz: `squeue -h -o "%Z"` showed 11 of 2,340 jobs with a
+working directory under `/N/u/`.
+
+Before submitting, check that the job's directory and paths are not under
+`/N/u/`. After submitting, `squeue -u <username> -o "%.10i %Z"` shows each
+job's working directory.
+
+- **Job input, intermediates, and output:** Slate-Scratch,
+  `/N/scratch/<user>`. It is purged after 30 days without access and is not
+  backed up (KB0022439).
+- **Data a group shares across jobs:** Slate-Project (KB0022586).
+- **Node-local temporary files:** Quartz nodes have 1.7 TB of `/tmp`, deleted
+  after 10 days (KB0022439).
+- **Scripts, configuration, and source code:** home is fine. It is small and
+  slow for data (KB0022439).
 
 Copy results somewhere persistent at the end of the job script. The
 `storing-and-moving-research-data` skill covers Slate, Slate-Project, the
@@ -239,6 +271,7 @@ on the cause, not the message.
 | Everything down on a Sunday | Monthly maintenance, second Sunday, 7am to 7pm | KB0023985 |
 | SDA unreachable on a Sunday morning | Weekly SDA maintenance, 7am to 10am | KB0024406 |
 | Account disabled | Not used for six months | KB0022486 |
+| Logins and shells slow for everyone | Jobs doing heavy I/O in home directories | KB0025028; Practice |
 
 ## Keep this file current
 
@@ -258,6 +291,7 @@ All IU KB articles, read 2026-10-01. URL form:
 - [KB0022439](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022439) Available access to allocated and short-term storage capacity on IU's research systems
 - [KB0022478](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022478) Secure research data containing HIPAA-regulated PHI on high performance file systems at IU
 - [KB0022486](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022486) Policies regarding UITS research systems
+- [KB0022586](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022586) About Slate-Project high performance project space at IU (read 2026-10-02)
 - [KB0023170](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023170) Research Desktop (RED) usage policies and interface features
 - [KB0023298](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023298) Use Slurm to submit and manage jobs on IU's research computing systems
 - [KB0023513](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023513) Use PCP to bundle multiple serial jobs to run in parallel on IU research supercomputers
@@ -265,6 +299,7 @@ All IU KB articles, read 2026-10-01. URL form:
 - [KB0024132](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024132) Use RT Projects to request and manage access to specialized Research Technologies resources
 - [KB0024406](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024406) About the Scholarly Data Archive (SDA) at Indiana University
 - [KB0024539](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024539) Use Python on IU research supercomputers
+- [KB0025028](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025028) About home directory space on IU research supercomputers (read 2026-10-02)
 - [KB0025214](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025214) Use Apptainer on Quartz or Big Red 200 at IU
 - [KB0025317](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025317) Slate-Scratch high performance file system: Terms of service
 - [KB0025672](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025672) Use Jupyter Notebook on Quartz
