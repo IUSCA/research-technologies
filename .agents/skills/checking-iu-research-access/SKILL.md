@@ -1,6 +1,6 @@
 ---
 name: checking-iu-research-access
-description: Bootstrap and verify a person's access to IU research computing before doing real work - network reach and SSH login to Quartz and Big Red 200, Duo and the one-time human login an agent needs, Slurm accounts from RT Projects, Slate, Slate-Scratch, Slate-Project, and SDA access, REALLMS API keys, and Jetstream2 credentials. Runs read-only check scripts and says where to go for each missing piece. Use at the start of any IU research computing session, when a job, login, or transfer fails for an unclear reason, or when onboarding a new lab member.
+description: Bootstrap and verify a person's access to IU research computing before doing real work - network reach and SSH login to Quartz and Big Red 200, Duo and the one-time human login an agent needs, Slurm accounts from RT Projects, Slate, Slate-Scratch, Slate-Project, and SDA access, REALLMS API keys, and Jetstream2 credentials. Runs read-only check scripts, says where to go for each missing piece, and surveys the person's Slurm accounts into a private resources file outside the repository. Use at the start of any IU research computing session, when a job, login, or transfer fails for an unclear reason, or when onboarding a new lab member, or to decide which of a person's Slurm accounts or project directories fits the work.
 ---
 
 # Checking IU research access
@@ -10,6 +10,19 @@ KB article; links are in Sources at the end.
 
 Check access before planning work. The checks below are read-only. They tell
 you what the person can use today, and where to go for anything missing.
+
+## The person's resources file
+
+What one person can use belongs in a private file, not in this skill or its
+repository. The file lives at `$IU_RESEARCH_NOTES` when that is set, and at
+`~/.config/iu-research/resources.md` otherwise. The person may point it
+anywhere, such as a private notes repository.
+
+Read the file first if it exists. It says which Slurm account and project
+directory fit which work, and when each fact was last seen. Re-check a fact
+older than a quarter before relying on it. Write what the checks below find
+into that file, never into a shared skill. Never write a passphrase, API key,
+or keytab into it.
 
 ## The agent never handles the passphrase or Duo
 
@@ -116,10 +129,35 @@ allocation for the system.
 | Account disabled | Unused for six months, or not used within 30 days of creation | KB0022486 |
 | No Slate-Project directory | The PI requests Slate-Project space in RT Projects | KB0022586 |
 | SDA not confirmed | Create an SDA account, or set up HSI authentication | KB0022647, KB0022463 |
+| SDA account exists, but `hsi` cannot log in non-interactively | The person sets up a keytab; see `references/sda.md` in `storing-and-moving-research-data` | KB0022463 |
 
 The `requesting-accounts-and-allocations` skill covers eligibility and forms.
 The `managing-rt-projects` skill covers allocations and members. The
 `getting-help-from-research-technologies` skill names the team to ask.
+
+## Step 4: record what the person has
+
+If the resources file does not exist, offer to create it from
+[assets/resources-template.md](assets/resources-template.md). Ask before
+creating it, and ask where the person wants it.
+
+Then survey the Slurm accounts on each cluster the work will use:
+
+```bash
+env -u LC_ALL ssh <iu-username>@quartz.uits.iu.edu 'bash -s' < scripts/survey-allocations.sh
+```
+
+It prints Markdown for the file. For each account it gives the member count,
+QOS, CPU hours in the last 90 days, the person's fair share and job count, and
+`condo_` groups that share members. Slurm does not know which RT Project an
+account belongs to; its description is just the account name. **Observed
+2026-10-02** on Quartz: shared membership pointed at several groups per
+account, because one lab's members span many projects. Treat it as a hint.
+The person confirms each account's project and PI in RT Projects, where the
+allocation shows its Slurm Account Name (KB0023298). The `managing-rt-projects`
+skill shows where.
+
+Add the check output's storage and quota lines to the file with today's date.
 
 ## Report back
 
@@ -145,6 +183,7 @@ All IU KB articles, read 2026-10-01. URL form:
 - [KB0022620](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022620) Create your first IU computing accounts (admitted students, faculty, staff, affiliates, and those returning to IU)
 - [KB0022647](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022647) Get additional IU computing accounts
 - [KB0022656](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022656) Computing accounts at IU
+- [KB0023298](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023298) Use Slurm to submit and manage jobs on IU's research computing systems (read 2026-10-02)
 - [KB0023985](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023985) About Quartz at IU
 - [KB0024132](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024132) Use RT Projects to request and manage access to specialized Research Technologies resources
 - [KB0024565](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024565) Get started with Two-Step Login (Duo) at IU

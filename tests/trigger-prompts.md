@@ -17,6 +17,7 @@ Step 7 of `MAINTAINING.md` explains the test.
 | Who do I ask about a Slate-Scratch outage? | `getting-help-from-research-technologies` |
 | Should our science gateway run on Jetstream2? | `jetstream2` |
 | Check whether I'm set up to use IU research computing. | `checking-iu-research-access` |
+| Which of my Slurm accounts should this job use? | `checking-iu-research-access` (read the resources file) |
 | Copy 40 TB from Slate-Project to the SDA. | `storing-and-moving-research-data` |
 | Share a Slate-Project folder with a collaborator outside IU. | `storing-and-moving-research-data` |
 | How do I get a GUI desktop on Quartz? | `using-research-desktop` |

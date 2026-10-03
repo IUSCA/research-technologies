@@ -64,7 +64,23 @@ https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023985
 Each skill keeps its citations in a Sources list at the end. Inline text names
 the KB number next to the claim it supports. Mark a claim from a non-KB source as
 **External** and name it.
-Mark a claim from running a command as **Observed**.
+Mark a claim from running a command as **Observed**. Mark a lesson from
+experience that the KB does not state as **Practice**.
+
+## Write a lesson as Practice
+
+A Practice lesson saves the next person a mistake. Write it so anyone at IU
+can use it:
+
+- State the lesson and the reason, such as the shared system it slows.
+- Give a check or command where one exists.
+- Use placeholders such as `<user>`, `<project>`, and `<keytab>`.
+- Leave out the incident: no hosts, people, tickets, dates of outages, or
+  project names.
+- Prefer a KB citation when one backs the lesson. Then it is not Practice.
+
+Reproduce a number before writing it down. A limit someone once hit may have
+had another cause.
 
 ## Record what is unknown
 
@@ -100,7 +116,9 @@ Observed values carry their own dates.
 - Lead each section with its claim, then support it.
 - End every skill with a "Keep this file current" section, then Sources.
 - Nothing specific to one person or team, such as usernames, project numbers,
-  keys, or internal hostnames.
+  keys, or internal hostnames. A person's own
+  resources go in their private resources file; see
+  `checking-iu-research-access`.
 
 Run `tools/check-skills.py` before committing. It must exit cleanly.
 

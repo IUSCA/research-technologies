@@ -18,12 +18,23 @@ own memory of IU systems. Each skill says where every claim came from.
   KB claim cites its article, and each skill records the date its claims
   were last checked. When a skill and the KB disagree on policy, the KB wins.
 
-A skill also marks two other kinds of statement explicitly:
+A skill also marks three other kinds of statement explicitly:
 
 - **Open item.** Neither the system nor the KB answers the question, or KB
   articles contradict each other. The skill says so instead of guessing.
 - **External.** The claim comes from a non-KB source, such as the Jetstream2
   documentation. The source is named.
+- **Practice.** Experienced users learned it the hard way, and the KB does
+  not say it. It is advice, not IU policy. The skill says how to check it
+  where a check exists.
+
+## What stays out
+
+The skills hold what is true for anyone at IU. What one person can use, such
+as their Slurm accounts, project directories, and quotas, belongs in that
+person's private resources file. It lives at `$IU_RESEARCH_NOTES`, or at
+`~/.config/iu-research/resources.md` by default.
+`checking-iu-research-access` explains how an agent fills and uses it.
 
 The KB now lives at `servicenow.iu.edu/kb`. Old `kb.iu.edu/d/<id>` links
 redirect to the KB home page and lose the article. The
