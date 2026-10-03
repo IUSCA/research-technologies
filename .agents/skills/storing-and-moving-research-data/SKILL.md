@@ -116,6 +116,24 @@ Slate, Slate-Project, and Slate-Scratch have no backup of any kind
 - Members get full access by default, including deleting others' files
   (KB0022423).
 - Keep the group ownership HPFS assigned on every file (KB0022423).
+  **Observed 2026-10-02** on Quartz: each project's group is named
+  `condo_<project>`, and `quota` reports project usage under that name.
+- **Practice:** `mv`, `rsync -a`, and unpacking an archive keep each file's
+  old group and drop the directory's setgid bit. The files then fall outside
+  the project's group, and other members may be locked out. Copy in with
+  `cp -r` or `rsync -rlt`, which take the directory's group.
+- **Practice:** fix the group on files you own. Only a file's owner can, so
+  each member fixes their own; the owner asks HPFS for a bulk reset.
+
+  ```bash
+  find <dir> -user $USER ! -group condo_<project> -exec chgrp -h condo_<project> {} +
+  find <dir> -user $USER -type d -exec chmod g+rwxs {} +
+  find <dir> -user $USER -type f -exec chmod g+rw {} +
+  ```
+
+- **Practice:** for data the whole project edits, set `umask 0007` in your
+  shell profile so new files are group-writable. Not for PHI, which uses
+  `umask 077` (KB0022478).
 - ACLs can narrow or widen access per path. They do not show in RT Projects
   (KB0025963).
 - Purge: research allocations 180 days after an incomplete annual review.
@@ -204,7 +222,11 @@ Log in at `https://globus.iu.edu` as Indiana University, with Duo
 ### With IU users
 
 - **Slate, Slate-Scratch, or a PHI directory:** POSIX ACLs with `setfacl`.
-  See the PHI section (KB0022478).
+  See the PHI section (KB0022478). The same steps work for other data: `x`
+  on each parent, the ACL on the directory, a default ACL with `-d`, and a
+  fresh `setfacl -R -m` after moving files in (KB0022478).
+- **Practice:** if `getfacl` shows `#effective:---` beside a granted user,
+  the ACL mask blocks it. Set the mask, as in `setfacl -m m::rx <path>`.
 - **Slate-Project:** add members in RT Projects with read-write or read-only
   access. Changes take up to an hour (KB0026672).
 - **Geode-Project:** add usernames to the project's ADS groups, then refine
