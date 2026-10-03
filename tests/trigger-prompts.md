@@ -23,3 +23,4 @@ Step 7 of `MAINTAINING.md` explains the test.
 | How do I get a GUI desktop on Quartz? | `using-research-desktop` |
 | Call IU's LLM API from Python. | `using-reallms` |
 | This kb.iu.edu link goes to the KB home page. Find the article. | `searching-the-iu-knowledge-base` |
+| My Quartz home directory is full of .conda files. Where should my conda environments go? | `managing-python-environments` |
