@@ -70,8 +70,8 @@ its replacement, and record a retired system in
 `.agents/skills/iu-research-computing-map/references/retired-and-renamed.md`.
 
 Update a skill's Verified line only after re-reading every article in its
-Sources list. Otherwise use a partial line, such as
-`Verified 2026-10-01 (partitions only)`.
+Sources list. Otherwise use the partial form in `CONTRIBUTING.md`, which names the
+articles re-read and keeps the older date for the rest.
 
 ### 3. Let the systems report their own facts
 

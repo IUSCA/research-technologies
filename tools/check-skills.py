@@ -23,6 +23,10 @@ sys.path.insert(0, str(SKILLS / "searching-the-iu-knowledge-base" / "scripts"))
 
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 VERIFIED_RE = re.compile(r"^Verified (\d{4}-\d{2}-\d{2})", re.M)
+# A partial check reads "Verified D1 (KB... only) ... Other sources were
+# verified D2". The named articles count as checked on D1, the rest on D2.
+PARTIAL_RE = re.compile(r"\(([^)]*\bKB\d{7}[^)]*)\bonly\)")
+OTHERS_RE = re.compile(r"Other sources were\s+verified\s+(\d{4}-\d{2}-\d{2})")
 KB_RE = re.compile(r"\bKB\d{7}\b")
 SOURCE_RE = re.compile(r"\[(KB\d{7})\]\(https://servicenow\.iu\.edu/kb")
 
@@ -85,7 +89,15 @@ def check_format(skill_dir):
         cited |= set(SOURCE_RE.findall(md_text))
     for number in sorted(mentioned - cited):
         problems.append(("WARN", f"{number} is mentioned but not in a Sources list"))
-    return problems, (match.group(1) if match else None), cited
+    verified = None
+    if match:
+        para = body[match.start():].split("\n\n", 1)[0]
+        partial, others = PARTIAL_RE.search(para), OTHERS_RE.search(para)
+        if partial and others:
+            verified = (match.group(1), set(KB_RE.findall(partial.group(1))), others.group(1))
+        else:
+            verified = (match.group(1), set(), match.group(1))
+    return problems, verified, cited
 
 
 def check_kb(cited, verified, cache):
@@ -99,8 +111,10 @@ def check_kb(cited, verified, cache):
         row = cache[number]
         if row is None:
             problems.append(("STALE", f"{number} not found by KB search; retired or renumbered?"))
-        elif verified and row[2] > verified:
-            problems.append(("STALE", f"{number} published {row[2]}, after Verified {verified}: {row[3]}"))
+        elif verified:
+            date = verified[0] if number in verified[1] else verified[2]
+            if row[2] > date:
+                problems.append(("STALE", f"{number} published {row[2]}, after Verified {date}: {row[3]}"))
     return problems
 
 
@@ -113,7 +127,8 @@ def main(argv):
         if with_kb:
             problems += check_kb(cited, verified, cache)
         status = "ok" if not problems else ""
-        print(f"{skill_dir.name}: verified {verified}, {len(cited)} KB articles {status}")
+        shown = verified and (verified[0] if verified[0] == verified[2] else f"{verified[0]} (partial; others {verified[2]})")
+        print(f"{skill_dir.name}: verified {shown}, {len(cited)} KB articles {status}")
         for level, message in problems:
             print(f"  {level:5} {message}")
             failed |= level == "ERROR"

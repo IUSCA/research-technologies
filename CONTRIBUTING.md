@@ -95,8 +95,11 @@ listed may assume it still exists.
 ## Update the verified date
 
 Each skill carries a `Verified <date>` line near the top. Change it only after
-re-reading every article in that skill's Sources list. A partial check updates
-the line for the claims checked, as in `Verified 2026-10-01 (partitions only)`.
+re-reading every article in that skill's Sources list. A partial re-read names
+the articles it covered, in exactly this form:
+`Verified 2026-10-03 (KB0023515 and KB0025747 only). Other sources were
+verified 2026-10-01.` `tools/check-skills.py --kb` then checks each article
+against its own date.
 Observed values carry their own dates.
 
 ## Format and style
