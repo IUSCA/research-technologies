@@ -179,8 +179,12 @@ ssh <user>@quartz.uits.iu.edu 'bash -l -s' < scripts/check-env-locations.sh
 ```
 
 It is read-only and light. Add `--sizes` to count files in `~/.conda`,
-`~/.cache`, and similar trees. It has not yet been run on a cluster. Run it
-once and record the result as Observed.
+`~/.cache`, and similar trees. **Observed 2026-10-03** on Quartz
+with `ssh <host> 'bash -l -s' < scripts/check-env-locations.sh`: on an account
+with default settings, the pip, uv, and Apptainer caches, conda's `pkgs_dirs`
+and `envs_dirs`, and `R_LIBS_USER` all pointed into home. The conda module's
+own package and environment directories are not writable, so conda falls back
+to `~/.conda`.
 
 ## R libraries and Jupyter kernels
 
