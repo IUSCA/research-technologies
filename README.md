@@ -5,6 +5,19 @@ They help a coding agent check a person's access, pick the right IU system,
 request access, submit Slurm jobs, store and move data, and reach the right
 support team.
 
+## Quickstart
+
+1. Clone this repository.
+2. Start your agent in the clone. Claude Code, Codex, OpenCode, and pi all
+   find the skills there with no install step.
+3. Ask: "Check whether I'm set up to use IU research computing."
+
+The agent will ask you to log in to a cluster once yourself, with your
+passphrase and Duo. It then records your own Slurm accounts and storage in a
+private file, `~/.config/iu-research/resources.md` or `$IU_RESEARCH_NOTES`.
+That file stays outside the repository. To use the skills in another
+project, see [Use the skills](#use-the-skills).
+
 ## What the skills trust
 
 Systems at IU retire and get renamed often, so an agent must not trust its
