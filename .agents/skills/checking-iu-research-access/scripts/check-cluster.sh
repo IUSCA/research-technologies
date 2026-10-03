@@ -2,11 +2,14 @@
 # Report what your account can use on an IU research supercomputer.
 # Run it on a login node. It is read-only and light enough for a login node.
 #
-#   ssh <user>@quartz.uits.iu.edu 'bash -s' < check-cluster.sh
+#   env -u LC_ALL ssh <user>@quartz.uits.iu.edu 'bash -s' < check-cluster.sh
+#
+# env -u LC_ALL keeps ssh from forwarding a locale the cluster lacks.
 #
 # Each line starts with OK, MISSING, or INFO.
 
 set -u
+unset LC_ALL
 say() { printf '%-8s %s\n' "$1" "$2"; }
 # A non-interactive shell may not define the module command.
 if ! type module >/dev/null 2>&1; then
@@ -47,18 +50,21 @@ fi
 # A Scholarly Data Archive account shows up as working HSI access.
 # HSI loads with "module load hpss" (KB0022463). It may want a password,
 # so stdin is closed and a prompt counts as "not confirmed".
+# The quota report lists an "sda" line when the account exists.
+command -v quota >/dev/null 2>&1 || module load quota >/dev/null 2>&1
+quota_out=$(command -v quota >/dev/null 2>&1 && quota 2>&1 | sed 's/\x1b\[[0-9;]*m//g')
 command -v hsi >/dev/null 2>&1 || module load hpss >/dev/null 2>&1
-if command -v hsi >/dev/null 2>&1; then
-  if timeout 60 hsi -q 'pwd' </dev/null >/dev/null 2>&1; then
-    say OK "SDA reachable with hsi"
-  else
-    say INFO "SDA not confirmed. Causes: no SDA account, hsi wants a password or keytab (KB0022463), or Sunday 7-10am maintenance."
-  fi
+if command -v hsi >/dev/null 2>&1 && timeout 60 hsi -q 'pwd' </dev/null >/dev/null 2>&1; then
+  say OK "SDA reachable with hsi"
+elif printf '%s\n' "$quota_out" | grep -q '^ *sda '; then
+  say INFO "SDA account exists (quota lists sda), but hsi cannot log in non-interactively. Set up HSI authentication, such as a keytab (KB0022463)."
+elif command -v hsi >/dev/null 2>&1; then
+  say INFO "SDA not confirmed. Causes: no SDA account, hsi wants a password or keytab (KB0022463), or Sunday 7-10am maintenance."
 else
   say INFO "hsi not available; SDA access not checked"
 fi
 
-if command -v quota >/dev/null 2>&1 || module load quota >/dev/null 2>&1; then
+if [ -n "$quota_out" ]; then
   say INFO "quota:"
-  quota 2>&1 | sed 's/^/         /'
+  printf '%s\n' "$quota_out" | sed 's/^/         /'
 fi

@@ -94,7 +94,7 @@ Run both scripts from `checking-iu-research-access` with a real account.
 
 ```bash
 .agents/skills/checking-iu-research-access/scripts/check-local.sh <user>
-ssh <user>@quartz.uits.iu.edu 'bash -s' < .agents/skills/checking-iu-research-access/scripts/check-cluster.sh
+env -u LC_ALL ssh <user>@quartz.uits.iu.edu 'bash -s' < .agents/skills/checking-iu-research-access/scripts/check-cluster.sh
 ```
 
 Every line should match what you know of that account. Fix a script that

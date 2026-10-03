@@ -37,6 +37,12 @@ The KB does not mention connection sharing. It does close SSH connections
 idle for 60 minutes (KB0023985). Do not add keepalives to defeat that limit.
 When the shared connection drops, ask the person to log in again.
 
+**Observed 2026-10-02**, Quartz: the shared connection worked after one
+interactive login with Duo Push. `ssh -O check quartz.uits.iu.edu` reports
+whether it is still open. With no shared connection, Quartz refused with
+`Permission denied (gssapi-keyex,gssapi-with-mic,password,keyboard-interactive)`.
+It did not offer `publickey` for an account with no signed key agreement.
+
 SSH keys are another option. They need the signed "SSH public key
 authentication to HPS systems" agreement and a passphrase on the key
 (KB0023985). An agent still cannot type that key passphrase.
@@ -66,13 +72,24 @@ With a working connection, run
 [scripts/check-cluster.sh](scripts/check-cluster.sh) on a login node:
 
 ```bash
-ssh <iu-username>@quartz.uits.iu.edu 'bash -s' < scripts/check-cluster.sh
+env -u LC_ALL ssh <iu-username>@quartz.uits.iu.edu 'bash -s' < scripts/check-cluster.sh
 ```
 
 It reports the person's groups, home, Slate, and Slate-Scratch directories,
 and writable Slate-Project directories. It lists the Slurm accounts usable
 with `-A`, checks SDA access through HSI, and prints quotas. It is light work
 and safe on a login node. Run it on Big Red 200 too if the work goes there.
+
+`env -u LC_ALL` matters when the computer sets `LC_ALL=C.UTF-8` and ssh
+forwards `LC_*`. **Observed 2026-10-02:** Quartz lacks that locale, and every
+shell then printed a `setlocale` warning.
+
+An SDA account can exist while the HSI check fails. **Observed 2026-10-02**,
+Quartz: `quota` listed `sda` with a 48.8T quota. A non-interactive `hsi`
+failed with `No credentials cache found` and `Not running interactively &
+username not set - PAM authentication failed`. The script now reports this
+case separately. HSI needs a keytab or other set-up authentication before an
+agent can use it (KB0022463).
 
 A Slurm account is how an RT Projects allocation appears on the cluster.
 Every job must name one with `-A` (KB0024132). An empty list means the person

@@ -23,8 +23,9 @@ for host in $clusters; do
     continue
   fi
   # BatchMode fails instead of prompting. It succeeds only through an
-  # existing shared connection or an approved SSH key.
-  if out=$(timeout 15 ssh -o BatchMode=yes -o ConnectTimeout=8 \
+  # existing shared connection or an approved SSH key. env -u LC_ALL stops
+  # ssh forwarding a locale the cluster lacks, which adds warnings.
+  if out=$(timeout 15 env -u LC_ALL ssh -o BatchMode=yes -o ConnectTimeout=8 \
       "$user@$host" 'echo "$(hostname) $(id -un)"' 2>&1); then
     say OK "$host login works without a prompt: $out"
   else
