@@ -135,6 +135,29 @@ The `requesting-accounts-and-allocations` skill covers eligibility and forms.
 The `managing-rt-projects` skill covers allocations and members. The
 `getting-help-from-research-technologies` skill names the team to ask.
 
+## When login or SSH misbehaves
+
+- **Practice:** OpenSSH ignores keys and config files that others can write.
+  Run `chmod 700 ~/.ssh` and `chmod 600 ~/.ssh/*` on both ends.
+- **Practice:** `Too many authentication failures` usually means the client
+  offered too many keys before the password prompt. Add `IdentitiesOnly yes`
+  to that host's block, or name one key with `IdentityFile`.
+- **Practice:** if a login hangs after Duo, the stall is often in the login
+  profile, such as a `module restore`, a conda initialization, or a slow file
+  system it reads. Skip the profile to tell:
+
+  ```bash
+  ssh <host> -- bash --noprofile --norc -c 'echo ok; cat /proc/loadavg'
+  ```
+
+  If that answers at once, look in `~/.bashrc`, `~/.bash_profile`, and a
+  saved Lmod collection in `~/.lmod.d/`. If it hangs too, the system itself
+  is struggling. Check Status.IU and tell HPS.
+- **Practice:** while a file system is slow, avoid `df`, `quota`, `ls ~`, and
+  `module avail`. Each touches the slow mount and adds another stuck process.
+- **Practice:** `lfs` in an Lmod traceback is LuaFileSystem, not Lustre.
+  Lmod uses it to walk module directories.
+
 ## Step 4: record what the person has
 
 If the resources file does not exist, offer to create it from
