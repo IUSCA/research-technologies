@@ -67,6 +67,56 @@ Use a Kerberos keytab so a script never holds a plaintext password
 `~/.hsirc` on the client host, never in the SDA home directory (KB0022463).
 `hsi -A combo` is a common fix for authentication trouble (KB0022463).
 
+### Set up a keytab
+
+The person creates the keytab, because it needs their passphrase. An agent
+never types it. With MIT Kerberos (KB0024956):
+
+```text
+$ ktutil
+ktutil: addent -password -p <username>@ADS.IU.EDU -k 1 -e aes256-cts
+Password for <username>@ADS.IU.EDU:
+ktutil: wkt <username>.keytab
+ktutil: quit
+$ chmod 600 <username>.keytab
+$ hsi -A keytab -k <username>.keytab -l <username> pwd
+```
+
+- Anyone who can read the keytab can use it. Restrict it to the owner
+  (KB0024956).
+- A passphrase change invalidates every keytab. Recreate them (KB0024956).
+- `klist -k <keytab>` lists the keys in it (KB0024956).
+- **Practice:** `ktutil` does not check the passphrase. A typo surfaces
+  later as `Ticket expired on krb5_mk_req`. Delete the file and recreate it.
+- **Practice:** `wkt` appends to an existing file. Delete an old keytab
+  before writing a new one with the same name.
+- **Practice:** test right away with the `hsi ... pwd` line above. An earlier
+  interactive HSI session can hide a broken configuration.
+- **Practice:** the startup file is `~/.hsirc`. A misnamed file is silently
+  ignored.
+- When the keytab's principal differs from the local login name, pass
+  `-l <username>` or set `principal` in `~/.hsirc` (KB0022463).
+
+### HSI errors
+
+| Error | Likely cause | Fix |
+| --- | --- | --- |
+| `No credentials cache found` with `Not running interactively` | No keytab or Kerberos credentials, so non-interactive login fails | Set up a keytab, above. **Observed 2026-10-02** on Quartz |
+| `Ticket expired on krb5_mk_req` | Keytab made with a wrong or old passphrase | Recreate the keytab (**Practice**) |
+| Error `-50` on a host with several addresses or behind NAT | HSI advertises the wrong local address | `export HPSS_HOSTNAME=<host's reachable IP>` in the shell profile; setting it in `~/.hsirc` did not work (**Practice**) |
+| Transfers hang behind a firewall | Data connections blocked | `HPSS_PFTPC_PORT_RANGE`, or open inbound traffic (KB0023364) |
+| `Too many regions in file (-1420)` | A sparse file | Bundle it with `tar --sparse` first (**Practice**) |
+| Other negative numbers | An HPSS error code | Look it up in the HPSS Error Manual, then email store-admin@iu.edu with the account, file sizes, commands, and log lines (**Practice**) |
+
+### Check where a file is and that it arrived
+
+- **Practice:** `ls -lU <file>` in HSI shows the class of service and whether
+  a copy is on disk or only on tape. `ls -X <file>` shows each storage level.
+  A level-0 line saying "no data at this level" means tape only; `stage` it
+  before a large `get`.
+- **Practice:** compare `hsi hashlist <file>` with `md5sum <file>` on the
+  source. Matching sums prove the archive copy before you delete the source.
+
 ## HTAR
 
 HTAR writes a `.tar` straight to the SDA and builds a `.idx` index beside it
@@ -177,4 +227,6 @@ URL form: `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<numb
 KB0022463, KB0022483, KB0022499, KB0022605, KB0023281, KB0023364, KB0023774,
 KB0024053, KB0024366, KB0024368, KB0024387, KB0024406, KB0024976, KB0024997,
 KB0025030, KB0025237, KB0025535, KB0025838, KB0026076. Titles are in the
-main `SKILL.md` Sources list.
+main `SKILL.md` Sources list, except
+[KB0024956](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024956)
+Use a keytab (read 2026-10-02).
