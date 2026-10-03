@@ -1,0 +1,23 @@
+# Lint every skill on each pull request and each push to main.
+# tools/check-skills.py exits 1 when any skill has an ERROR line, which
+# fails this job. WARN lines print but do not fail. No network is used.
+name: check-skills
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check skill format
+        run: python tools/check-skills.py

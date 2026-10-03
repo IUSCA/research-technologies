@@ -1,0 +1,63 @@
+# Check every cited KB article once a week, and on demand.
+#
+# tools/check-skills.py --kb prints a STALE line for each cited article that
+# was published after its skill's Verified date, or that KB search no longer
+# finds. STALE lines do not change the exit code, so they never fail the run.
+# Instead, the run opens one issue labeled kb-stale with the full output. If
+# an open kb-stale issue exists, the run comments on it instead.
+#
+# The run fails only when the script exits non-zero. That means an ERROR
+# line in a skill, or a crash such as the KB being unreachable. No issue is
+# filed then.
+name: kb-freshness
+
+on:
+  schedule:
+    - cron: "0 13 * * 1" # Mondays at 13:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  kb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check KB sources
+        # An explicit "shell: bash" adds pipefail, so tee keeps the exit code.
+        shell: bash
+        run: python tools/check-skills.py --kb | tee kb-report.txt
+      - name: Open or update the kb-stale issue
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if ! grep -q STALE kb-report.txt; then
+            echo "No stale or missing KB articles."
+            exit 0
+          fi
+          {
+            echo "\`tools/check-skills.py --kb\` found stale or missing KB articles on $(date -u +%F)."
+            echo "Work each STALE line with step 2 of MAINTAINING.md. Run: $RUN_URL"
+            echo
+            echo '```text'
+            cat kb-report.txt
+            echo '```'
+          } > body.md
+          gh label create kb-stale --color D93F0B \
+            --description "A cited KB article changed or disappeared" 2>/dev/null || true
+          issue=$(gh issue list --label kb-stale --state open --limit 1 \
+            --json number --jq '.[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --body-file body.md
+          else
+            gh issue create --title "Cited KB articles are stale or missing" \
+              --label kb-stale --body-file body.md
+          fi

@@ -27,6 +27,13 @@ and note the KB's figure as lagging. Do not open an item for it.
 | Every quarter (January, April, July, October) | The full review below |
 | Each May, before RT Projects renewal opens on June 1 | `managing-rt-projects` and `requesting-accounts-and-allocations` |
 | A system or service is announced, renamed, or retired | Every skill that names it, plus `references/retired-and-renamed.md` |
+| An open issue labeled `kb-stale` | Step 2, for the articles it lists |
+
+GitHub Actions runs two checks for you. On every pull request and push to
+`main`, `check-skills.yml` runs `tools/check-skills.py` and fails on any
+`ERROR`. Every Monday, `kb-freshness.yml` runs `tools/check-skills.py --kb`.
+When it finds `STALE` lines, it opens an issue labeled `kb-stale`, or comments
+on the one already open. Close that issue once step 2 is done.
 
 ## Full review
 
