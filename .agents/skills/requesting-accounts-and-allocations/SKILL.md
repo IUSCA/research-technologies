@@ -160,6 +160,29 @@ accounts (KB0022647, KB0022656).
   (KB0022645).
 - **A group account may not be used for PHI** (KB0022656, KB0022645).
 
+**Practice:** setting up a group account takes weeks of back and forth.
+Start early, keep the number of group accounts small, and follow this order:
+
+1. Create the group account at `https://access.iu.edu/accounts`.
+2. Set up Duo for it in a private browser window, so your own IU session
+   does not interfere. If the phone option fails, choose the tablet option
+   and scan the QR code from the Duo app.
+3. Log in as the group account and create its Quartz, Slate, and SDA
+   accounts.
+4. A person, not the group account, requests the Slate-Project space in RT
+   Projects. Group accounts cannot own one. Then add the group account to the
+   allocation.
+5. Slate-Project appears as a service for the group account only after its
+   Quartz account exists and it was added to an allocation. If the group
+   account gets "permission denied" on the project directory, add
+   Slate-Project to it at `https://access.iu.edu/accounts`.
+
+- **Practice:** a group account cannot sign the SSH key agreement. Ask HPS
+  to add it to the SSH key exception list. The
+  `getting-help-from-research-technologies` skill names the HPS queue.
+- **Practice:** when a group account's passphrase is reset, ask for its old
+  Duo devices to be cleared too.
+
 ## Jetstream2
 
 Jetstream2 is not in RT Projects. It needs an ACCESS allocation
