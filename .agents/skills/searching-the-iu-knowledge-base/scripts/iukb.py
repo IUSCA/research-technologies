@@ -17,6 +17,8 @@ import html
 import json
 import re
 import sys
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -24,9 +26,18 @@ API = "https://servicenow.iu.edu/api/sn_km_api/knowledge/articles"
 ARTICLE_URL = "https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article={}"
 
 
-def _get(url):
-    with urllib.request.urlopen(url, timeout=60) as resp:
-        return json.load(resp)
+def _get(url, attempts=5):
+    # The KB answers 429 when queried quickly; wait and retry, honoring
+    # Retry-After when it is given.
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(url, timeout=60) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as err:
+            if err.code not in (429, 503) or attempt == attempts - 1:
+                raise
+            wait = err.headers.get("Retry-After", "")
+            time.sleep(int(wait) if wait.isdigit() else 5 * 2 ** attempt)
 
 
 def search(query, limit=10):
