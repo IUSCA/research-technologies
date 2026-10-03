@@ -110,6 +110,12 @@ Sources for these locations, checked 2026-10-01:
 **Observed 2026-10-01:** `npx skills add . --list` finds every skill in this
 repository's `.agents/skills/`.
 
+## Fork it and run it elsewhere
+
+These skills are meant to be adopted. Fork the repository, keep it current
+for your own group, and change what you need. The `MAINTAINING.md` runbook
+works the same in a fork.
+
 ## Maintaining
 
 - [CONTRIBUTING.md](CONTRIBUTING.md) explains how to verify and write a
@@ -120,3 +126,10 @@ repository's `.agents/skills/`.
   missing KB sources.
 - [tests/trigger-prompts.md](tests/trigger-prompts.md) checks that agents
   load the right skill.
+
+## License
+
+Code, meaning scripts and tools, is under the Educational Community License,
+Version 2.0; see [LICENSE](LICENSE). Written content, including every
+`SKILL.md` and reference file, is under CC BY 4.0; see
+[LICENSE-docs](LICENSE-docs). Copyright the Trustees of Indiana University.
