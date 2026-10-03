@@ -5,8 +5,9 @@ description: Get access to IU research computing - personal accounts on Quartz, 
 
 # Requesting accounts and allocations at IU
 
-Verified 2026-10-01 against the IU Knowledge Base (KB). Each claim names its
-KB article; links are in Sources at the end.
+Verified 2026-10-03 (KB0025574 and KB0025016 only) against the IU Knowledge
+Base (KB). Other sources were verified 2026-10-01. Each claim names its KB
+article; links are in Sources at the end.
 
 Access has two layers. A personal account lets you log in. An RT Projects
 allocation lets you run jobs and holds project storage. You need both before a
@@ -49,6 +50,12 @@ and a short justification (KB0022656):
 - Big Red 200: the High Performance Systems (HPS) team.
 - ResDB: resdb@iu.edu.
 - SDA: store-admin@iu.edu.
+
+**Open item:** KB0025016 and KB0022656 disagree on sponsorship for some staff.
+KB0022656 says graduate students, faculty, and staff can request ResDB and the
+SDA directly. KB0025016 marks ResDB for staff as "Faculty sponsorship
+required". It marks Slate and the SDA for part-time employees the same way.
+Ask the owning team before relying on either article.
 
 The research supercomputer form asks for citizenship and discipline. It asks
 whether you will store PHI. It also asks you to send a yearly citation list to
@@ -204,7 +211,8 @@ with a citation that settles it.
 
 ## Sources
 
-All IU KB articles, read 2026-10-01. URL form:
+All IU KB articles, read 2026-10-01. KB0025016 and KB0025574 re-read
+2026-10-03. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022423](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022423) Slate-Project high performance storage system: Terms of service
@@ -220,6 +228,7 @@ All IU KB articles, read 2026-10-01. URL form:
 - [KB0024406](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024406) About the Scholarly Data Archive (SDA) at Indiana University
 - [KB0024420](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024420) About Jetstream2
 - [KB0024967](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024967) Request a project space allocation on Geode-Project
+- [KB0025016](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025016) IU account types and eligibility
 - [KB0025574](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025574) Questions you'll need to answer when requesting research computing accounts
 - [KB0025604](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025604) About RT Projects at IU
 - [KB0025948](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025948) Get started on IU research HPC and storage systems
