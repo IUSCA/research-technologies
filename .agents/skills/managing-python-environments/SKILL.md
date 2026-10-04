@@ -210,9 +210,11 @@ resolves them together, which avoids conflicts (KB0022379). `mamba` solves
 faster and takes the same arguments. A small `pip install` on a login node is
 fine.
 
-**Open item:** the KB does not say whether compute nodes reach PyPI and
-conda-forge. In an interactive job, check with
-`curl -sI https://pypi.org | head -1`, then record the answer as Observed.
+The KB does not say whether compute nodes reach PyPI and conda-forge.
+**Observed 2026-10-03** on Quartz compute node `c3`, in an `interactive`
+job: `curl -sI https://pypi.org` and `curl -sI
+https://conda.anaconda.org/conda-forge/` both return HTTP 200. Installing
+inside a job works.
 
 ## Write the environment down
 
