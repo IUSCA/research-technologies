@@ -123,9 +123,12 @@ Attributes" (KB0023298). Pass it to every job with `-A` (KB0023298).
 Then check with the `sacctmgr show assoc` command above that Slurm lists
 you on that account. Ask HPS if it does not; the KB states no sync delay.
 
-**Open item:** KB0024132 says RT Projects assigns "each project a Slurm
-Account Name". KB0023298 calls it "your allocation's Slurm Account Name".
-Whether two compute allocations share one name is not stated.
+KB0024132 says RT Projects assigns "each project a Slurm Account Name".
+KB0023298 calls it "your allocation's Slurm Account Name". **Observed
+2026-10-03** with `sacctmgr show assoc` on Quartz and Big Red 200, compared
+with the RT Projects project list: the name is `r` plus the project ID,
+padded to five digits. Project 1234 is `r01234`. Its Quartz and Big Red 200
+allocations share that one name.
 
 ## Add and remove members
 
