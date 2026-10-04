@@ -37,12 +37,15 @@ Run these on a Quartz or Big Red 200 login node:
 | Interactive size browser | `module load ncdu`, then `ncdu` | KB0024053 |
 | Oldest files, at risk of purge | `find . -type f -exec ls -1hltr "{}" +` | KB0025500 |
 | Which project spaces you can see | `ls /N/project` | Not in the KB |
+| Usage and limit for every space you can use | `quota` | Observed 2026-10-03 on Quartz |
 | Mounted size and free space | `df -h /N/slate/$USER`, `df -h /N/project/<project>` | Not in the KB |
 | SDA usage and file count | `hsi`, then `du -ka` | KB0026076 |
 
-**Open item:** the KB gives no command for a Slate-Project quota. It offers
-only `ls -sh` on one file (KB0022586). Try `df -h` on the project path and
-record what it reports.
+The KB gives no command for a Slate-Project quota. It offers only `ls -sh`
+on one file (KB0022586). **Observed 2026-10-03** on Quartz: `quota`, from the
+`quota` module loaded by default, lists home, SDA, Slate, and Slate-Scratch.
+It also lists every Slate-Project you belong to, by group, with usage and
+limit.
 
 ## Choose where data lives
 
@@ -99,6 +102,9 @@ Slate, Slate-Project, and Slate-Scratch have no backup of any kind
 - Path: `/N/scratch/<username>`, created with a supercomputer account
   (KB0025500).
 - Limits: 100 TiB and 10 million files and directories (KB0025317).
+  **Observed 2026-10-03** on Quartz: `lfs quota -h -u $USER /N/scratch` shows
+  a `100T` limit, and `lfs -h` uses binary units. KB0022439's table, "Up to
+  100 TB", lags.
 - Files not accessed for 30 days are deleted without notice (KB0025317).
 - Above 80% capacity, files are deleted oldest first until use falls below
   80% (KB0025317).
@@ -213,11 +219,18 @@ Log in at `https://globus.iu.edu` as Indiana University, with Duo
 | Slate-Project | `IURT - Slate` | `/project/<project>` | KB0025535 |
 | Slate-Scratch | `IURT - Slate` | `/scratch/<username>` | KB0025535 |
 | Home directory | `IURT - Geode Home Directories` | Opens at `/<username>` | KB0025535 |
-| Geode-Project | `IURT - Geode Projects` | Opens at `/` | KB0025535 |
+| Geode-Project | `IURT - Geode Projects` | Opens at `/`; pick your project's folder | KB0025535; Observed 2026-10-03 |
 | OneDrive and SharePoint | `IURT - OneDrive` | Follow the SharePoint site first | KB0025535 |
 
 - `IURT - Slate` may say permission denied until you type the path
   (KB0025535).
+- **Observed 2026-10-03** in the IU Globus web app: `IURT - Geode Projects`
+  is a verified mapped collection on `IURT - RS DTN Endpoint`, owned by
+  `iursdtn@iu.edu`. KB0026500's `IURT - Geode Project` lags. A banner says
+  the collection is "for all Geode Projects created since January 1st, or
+  migrated." Older projects "should continue using the IURT - Geode Projects
+  Legacy collection." The KB does not mention the Legacy collection or the
+  year meant. If your project folder is missing, try the Legacy collection.
 - Encryption is always on for IU Globus transfers (KB0025535).
 - Options include sync, delete at destination, preserve times, and skip
   errors. Integrity checking is on unless you disable it (KB0025535).
@@ -313,14 +326,10 @@ More PHI rules for storage and transfer:
   `du -ka` in HSI.
 - **Slate-Project free limit units.** KB0022439 says "Up to 120 TB."
   KB0022586 and KB0022423 say "120 TiB."
-- **Slate-Scratch units.** KB0022439's table says "Up to 100 TB." Its text
-  and KB0025317 say "100 TiB."
 - **Slate-Project owner.** KB0022586 says faculty or staff. KB0022423 also
   allows Academic Non-Paid (ACNP).
 - **Geode-Project fee.** KB0022439 lists it under fee-based storage.
   KB0023604 says "No fee (up to 10 TB)."
-- **Geode-Project collection name.** KB0025535 says `IURT - Geode Projects`.
-  KB0026500 says `IURT - Geode Project`.
 - **HSI and HTAR workstation clients.** KB0022463 offers version 10.3 for
   64-bit Linux only. KB0023281 offers bundles for RHEL 5 and 6, Ubuntu,
   macOS, and Windows by email.
@@ -328,7 +337,6 @@ More PHI rules for storage and transfer:
   encrypted. It sends PHI to SFTP, SCP, or Globus instead (KB0022463).
 - **GPG key size.** KB0023296 tells you to choose a 1024-bit key with GnuPG
   2.0.14. Ask SecureMyResearch whether that still meets IU standards.
-- **Slate-Project quota command.** The KB gives none. See the first section.
 
 ## Keep this file current
 
