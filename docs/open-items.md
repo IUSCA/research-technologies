@@ -15,166 +15,50 @@ items." Work the sections in order:
    question batched. Close an item only with the ticket number and the date
    of the reply.
 
+As of 2026-10-03 the first two sections are empty. Every remaining item
+needs an owning team.
+
 Regenerate this file each quarter with `grep -rn -i "open item"
 .agents/skills`. Delete an entry once its skill no longer carries the item.
+Entries name skill sections rather than line numbers, which drift.
 
 Every KB article named here was re-read on 2026-10-03. That includes
 KB0023515 and KB0025747, which were republished on 2026-10-02. Neither
 change settles an item below.
 
+### Settled on 2026-10-03
+
+These are recorded in their skills and dropped from this file.
+
+| Item | Settled by | Skill |
+| --- | --- | --- |
+| One Slurm Account Name per project, or per allocation | Observed: `sacctmgr` on both clusters, matched to RT Projects project IDs | `managing-rt-projects` |
+| The Geode-Project Globus collection name | Observed: the IU Globus web app | `storing-and-moving-research-data` |
+| Who can get Geode-Project access | KB0026680, KB0025090, KB0024359 | `managing-rt-projects`, `storing-and-moving-research-data` |
+| Which account the RED Interactive Job icon charges | Observed: its launcher script on Quartz | `using-research-desktop` |
+| The HPC LLM module name | Observed: `module spider hpc_llm` on Quartz | `using-reallms` |
+| A command for a Slate-Project quota | Observed: `quota` on Quartz | `storing-and-moving-research-data` |
+| Slate-Scratch quota units | Observed: `lfs quota -h` on Quartz | `storing-and-moving-research-data` |
+| Whether compute nodes reach PyPI and conda-forge | Observed: `curl` in a Quartz `interactive` job | `managing-python-environments` |
+
 ## Summary
 
-The skills carry 47 open-item mentions. They reduce to 38 distinct questions,
+The skills carry 43 open-item mentions. They reduce to 36 distinct questions,
 because several skills repeat the same question.
 
 | Category | Questions |
 | --- | --- |
-| Answerable from the KB | 1 |
-| Answerable by the system | 7 |
 | High Performance Systems (HPS) | 4 |
-| Research Desktop (RED) team | 2 |
+| Research Desktop (RED) team | 3 |
+| Research Applications and Deep Learning (RADL) | 1 |
 | RT Projects | 6 |
 | REALLMS team | 5 |
-| High Performance File Systems (HPFS) | 1 |
-| Research Storage | 4 |
+| High Performance File Systems (HPFS) | 2 |
+| Research Storage | 6 |
+| Research Databases (ResDB) | 1 |
 | SecureMyResearch | 5 |
 | IU Jetstream2 support | 1 |
 | KB team | 2 |
-
-## Answerable from the KB
-
-### K1. Who can get Geode-Project access
-
-Skills: `managing-rt-projects/SKILL.md` line 260 and
-`storing-and-moving-research-data/SKILL.md` line 318.
-
-The three articles describe two different layers of access. They do not
-conflict.
-
-- KB0026680: "Anyone with an active IU account can be given access to the
-  Geode-Project allocation's storage space. The RT Project's PI does this by
-  adding usernames to either of the Active Directory security groups."
-- KB0026680 continues: "Granular file storage access is also managed by the
-  project's PI via NFSv4 ACLs [KB0024359] within the Geode-Project."
-- KB0025090: "An IU research supercomputer account is not required for
-  simple access to an existing Geode-Project space."
-- KB0024359 covers only the ACL layer. "You can share access to your
-  Geode-Project space data only with other IU research supercomputer users."
-
-**Fix.** Replace each open item with a statement of the two layers. Suggested
-text:
-
-> Group access and ACL sharing differ. Anyone with an active IU account can
-> join the allocation's Active Directory groups (KB0026680). They can mount
-> the space without a supercomputer account (KB0025090). File-level NFSv4 ACL
-> sharing reaches only IU research supercomputer users (KB0024359).
-
-## Answerable by the system
-
-Each check needs a person to log in once with their passphrase and Duo. See
-`checking-iu-research-access`. Use placeholders such as `<project>` and
-`<group>` when recording results in a skill.
-
-### Y1. One Slurm Account Name per project, or one per allocation
-
-Skill: `managing-rt-projects/SKILL.md` line 125. KB0024132 says RT Projects
-assigns "each project a Slurm Account Name." KB0023298 says "your
-allocation's Slurm Account Name."
-
-Use an account in a project with both a Quartz and a Big Red 200 allocation.
-Run on each cluster, then compare with each allocation's "Allocation
-Attributes" in RT Projects:
-
-```bash
-sacctmgr -n show assoc user=$USER format=Cluster%15,Account%30
-```
-
-Matching names settle it as one per project. If the person has only one
-compute allocation, ask RT Projects instead.
-
-### Y2. Which account the RED Interactive Job icon charges
-
-Skill: `using-research-desktop/SKILL.md` line 91. The KB does not say which
-Slurm account the icon uses, or whether it works without an allocation.
-
-In a RED session, find the launcher and read the command it runs:
-
-```bash
-grep -ril "interactive" ~/Desktop /usr/share/applications /etc/xdg 2>/dev/null
-grep -i "^Exec" <launcher-file>
-```
-
-Read the script that `Exec` names. Look for `-A`, `--account`, or a lookup
-of the user's associations.
-
-### Y3. Whether the 20-minute CPU limit applies on RED
-
-Skill: `using-research-desktop/SKILL.md` line 62. KB0023170 says "RED nodes
-are login nodes." KB0022436 says login-node processes "that run longer than
-20 minutes are terminated automatically."
-
-Compare a RED node with a Quartz login node:
-
-```bash
-ulimit -t
-grep -ris cpu /etc/security/limits.conf /etc/security/limits.d/
-```
-
-If neither host shows a limit, a monitoring daemon may enforce it. Then ask
-the RED team, and add it to their ticket below.
-
-### Y4. The HPC LLM module name
-
-Skill: `using-reallms/SKILL.md` line 163. KB0027473 writes `hpc_llm/gpu/`
-and `hpc-llm/gpu`. KB0026530 writes `hpc_llm/gpu`.
-
-```bash
-module spider hpc_llm
-module spider hpc-llm
-```
-
-Run on Quartz and Big Red 200. Record the name that resolves.
-
-### Y5. A command for a Slate-Project quota
-
-Skill: `storing-and-moving-research-data/SKILL.md` line 43 and its last open
-item. The KB offers only `ls -sh` on one file (KB0022586).
-
-```bash
-df -h /N/project/<project>
-ls -ld /N/project/<project>                  # shows the owning group
-lfs quota -h -g <group> /N/project
-lfs project -d /N/project/<project>          # shows a project ID, if set
-lfs quota -h -p <project-id> /N/project
-```
-
-Record whichever command reports the allocation's limit.
-
-### Y6. Slate-Scratch quota units
-
-Skill: `storing-and-moving-research-data/SKILL.md`, "Slate-Scratch units."
-KB0022439's table says "Up to 100 TB." Its text and KB0025317 say "100 TiB."
-
-```bash
-lfs quota -h -u $USER /N/scratch
-```
-
-`lfs -h` prints binary units, so a `100T` limit is 100 TiB. Record it as
-Observed, and note KB0022439's table as lagging.
-
-### Y7. The Geode-Project Globus collection name
-
-Skill: `storing-and-moving-research-data/SKILL.md`, "Geode-Project
-collection name." KB0025535 says `IURT - Geode Projects`. KB0026500 says
-`IURT - Geode Project`.
-
-Search for `IURT - Geode` in the IU Globus web app, or with the Globus CLI:
-
-```bash
-globus endpoint search "IURT - Geode"
-```
-
-Record the exact display name, and note the other article as lagging.
 
 ## Questions for the owning teams
 
@@ -217,13 +101,14 @@ Thank you for your help.
 
 Queue: `https://projects.rt.iu.edu/help/?queue=red`
 
-**Subject:** Documentation questions: RED parallelism limit and support
-queue
+**Subject:** Documentation questions: RED parallelism, CPU-time limit, and
+support queue
 
 Hello RED team,
 
 We maintain open documentation that helps IU researchers use Research
-Desktop. Two KB points conflict, and we would like to cite your answer.
+Desktop. The KB does not answer the questions below, or its articles
+disagree. We would like to cite your answer.
 
 1. What parallelism limit applies on RED nodes? From
    `using-research-desktop/SKILL.md` and `iu-research-computing-map/SKILL.md`.
@@ -234,6 +119,30 @@ Desktop. Two KB points conflict, and we would like to cite your answer.
    and `getting-help-from-research-technologies/SKILL.md`. Most RED articles
    link to `?queue=red`. KB0023170, KB0023231, and KB0023162 link specific
    problems to `?queue=radl`, labeled as the RED development team.
+3. Does the 20-minute CPU-time limit for login nodes apply on RED nodes? From
+   `using-research-desktop/SKILL.md`. KB0023170 says "RED nodes are login
+   nodes." KB0022436 says login-node processes "that run longer than 20
+   minutes are terminated automatically." On a Quartz login node,
+   `ulimit -t` reports `unlimited`, so we cannot tell from the shell.
+
+Thank you for your help.
+
+### Research Applications and Deep Learning (RADL)
+
+Queue: `https://projects.rt.iu.edu/help/?queue=radl`
+
+**Subject:** Documentation question: Anaconda channels on IU clusters
+
+Hello RADL team,
+
+We maintain open documentation that helps IU researchers set up Python
+environments on Quartz and Big Red 200.
+
+1. May IU research use Anaconda's `defaults` channel without a commercial
+   license, or should researchers keep to `conda-forge`? From
+   `managing-python-environments/SKILL.md`, "Anaconda licensing." KB0023231
+   recommends the conda module over installing Anaconda or Miniconda. The
+   module's own configuration uses only `conda-forge`.
 
 Thank you for your help.
 
@@ -261,7 +170,8 @@ answers will be cited with this ticket number.
 2. Which resources need the system account before a member is added to the
    allocation? Does this include Quartz and Big Red 200? From
    `managing-rt-projects/SKILL.md` and
-   `requesting-accounts-and-allocations/SKILL.md`. KB0024132 says users
+   `requesting-accounts-and-allocations/SKILL.md`, which asks for the order
+   of steps for compute allocations. KB0024132 says users
    "will not be able to be added to the allocation without an account on the
    system." KB0026672 lets Slate-Project members be added first, shown as
    "Eligible."
@@ -314,18 +224,23 @@ Thank you for your help.
 
 Queue: `https://projects.rt.iu.edu/help/?queue=hpfs`
 
-**Subject:** Documentation question: Slate-Project free limit units
+**Subject:** Documentation questions: Slate-Project free limit units and
+Slate sponsorship
 
 Hello HPFS team,
 
-We maintain open documentation that helps IU researchers plan storage. Two
-KB articles state the free Slate-Project limit in different units.
+We maintain open documentation that helps IU researchers plan storage. The
+KB articles below disagree, and we would like to cite your answer.
 
 1. Is the free Slate-Project limit 120 TB or 120 TiB? From
    `requesting-accounts-and-allocations/SKILL.md` and
    `storing-and-moving-research-data/SKILL.md`. KB0022439 says "Requests for
    up to 120 TB may be granted without fee." KB0022586 says "Slate-Project
    allows up to 120 TiB." KB0022423 defines it as "120 tebibytes (TiB)."
+2. Do part-time employees need faculty sponsorship for a Slate account? From
+   `requesting-accounts-and-allocations/SKILL.md`. KB0025016 marks Slate for
+   part-time employees "Faculty sponsorship required." KB0022656 says all
+   IU staff can request Slate directly.
 
 Thank you for your help.
 
@@ -333,8 +248,8 @@ Thank you for your help.
 
 Email: `store-admin@iu.edu`
 
-**Subject:** Documentation questions: SDA file limits, Geode-Project fees,
-and HSI clients
+**Subject:** Documentation questions: SDA file limits and eligibility,
+Geode-Project fees and Globus collections, and HSI clients
 
 Hello Research Storage team,
 
@@ -357,6 +272,33 @@ data. These KB articles disagree, and we would like to cite your answer.
 4. Is HSI and HTAR traffic to the SDA encrypted in transit? From
    `storing-and-moving-research-data/SKILL.md`. KB0022463 calls HSI a way of
    "securely transferring files." It still sends PHI to SFTP, SCP, or Globus.
+5. Do part-time employees need faculty sponsorship for an SDA account? From
+   `requesting-accounts-and-allocations/SKILL.md`. KB0025016 marks the SDA
+   for part-time employees "Faculty sponsorship required." KB0022656 says
+   staff can request the SDA directly.
+6. Which Geode-Project spaces belong in the `IURT - Geode Projects Legacy`
+   Globus collection, and when will they migrate? From
+   `storing-and-moving-research-data/SKILL.md`. In the Globus web app,
+   `IURT - Geode Projects` says it is "for all Geode Projects created since
+   January 1st, or migrated," without a year. No KB article names the
+   Legacy collection.
+
+Thank you for your help.
+
+### Research Databases (ResDB)
+
+Email: `resdb@iu.edu`
+
+**Subject:** Documentation question: ResDB account eligibility for staff
+
+Hello ResDB team,
+
+We maintain open documentation that helps IU researchers request accounts.
+
+1. Do staff need faculty sponsorship for a ResDB account? From
+   `requesting-accounts-and-allocations/SKILL.md`. KB0025016 marks ResDB for
+   staff "Faculty sponsorship required." KB0022656 says graduate students,
+   faculty, and staff can request ResDB directly.
 
 Thank you for your help.
 
