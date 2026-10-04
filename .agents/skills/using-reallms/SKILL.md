@@ -160,9 +160,9 @@ reachable only inside its own job (KB0027470). Submit work with a Slurm
 Account Name from RT Projects (KB0027473). See the `submitting-hpc-jobs`
 skill.
 
-**Open item:** KB0027473 writes the module as `hpc_llm/gpu/` and as
-`hpc-llm/gpu`. KB0026530 writes `hpc_llm/gpu`. Run `module spider hpc` on a
-cluster; the system settles it.
+**Observed 2026-10-03** on Quartz with `module spider hpc_llm`: the modules
+are `hpc_llm/<version>` and `hpc_llm/gpu/<version>`, versions 1.0 to 1.5.
+`module spider hpc-llm` finds nothing, so KB0027473's `hpc-llm/gpu` is a typo.
 
 ## Support
 
@@ -201,7 +201,7 @@ The REALLMS articles use the `racs` queue. Use `racs` for REALLMS itself.
 - The KB states no rate-limit numbers or key lifetime.
 - The KB does not say whether students may request the allocation. KB0024132
   requires a faculty or staff PI for the project.
-- Data classification, module name, and support queue: see items above.
+- Data classification and support queue: see items above.
 
 ## Keep this file current
 
