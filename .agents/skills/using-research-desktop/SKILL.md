@@ -62,7 +62,9 @@ Using 4 or 5 processors satisfies both articles.
 
 **Open item:** KB0023170 calls RED nodes login nodes. KB0022436 kills login
 node processes after 20 minutes of CPU time. The KB does not say whether
-that rule applies on RED.
+that rule applies on RED. **Observed 2026-10-03** on a Quartz login node:
+`ulimit -t` is `unlimited` and `limits.conf` sets no CPU limit, so the rule is
+enforced elsewhere. Comparing `ulimit` output cannot settle it.
 
 Check the node you are on with these commands. They are generic Linux, not
 from the KB:
@@ -89,8 +91,14 @@ KB0025672 also names `debug` and `h100-debug`. Check limits with
 `sinfo -p interactive` and `sacctmgr show qos allocated` (KB0023298). See
 `submitting-hpc-jobs` for partitions and `salloc`.
 
-**Open item:** the KB does not say which Slurm account the Interactive Job icon
-charges. It also does not say whether the icon works without an allocation.
+**Observed 2026-10-03** on Quartz, reading
+`/N/soft/rhel8/red/bin/slurm_job_submit_interactive.sh`: the Interactive Job
+icon picks an account from `sacctmgr show association user=$USER`. It prefers
+`staff`, then an `r` account, then a `c` account, then `student` or
+`workshop`. It runs `srun -p interactive -A <account> --cpus-per-task=8
+--mem=32G --time=4:00:00 --x11 --pty bash`. With no such account it stops and
+points to RT Projects. To charge a different account, run the `srun` line
+yourself with that account.
 
 ## Applications
 
