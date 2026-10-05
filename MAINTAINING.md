@@ -27,13 +27,15 @@ and note the KB's figure as lagging. Do not open an item for it.
 | Every quarter (January, April, July, October) | The full review below |
 | Each May, before RT Projects renewal opens on June 1 | `managing-rt-projects` and `requesting-accounts-and-allocations` |
 | A system or service is announced, renamed, or retired | Every skill that names it, plus `references/retired-and-renamed.md` |
-| An open issue labeled `kb-stale` | Step 2, for the articles it lists |
+| An open issue labeled `freshness` | Step 1's reading list: steps 2 and 3 for the lines it lists |
 
 GitHub Actions runs two checks for you. On every pull request and push to
 `main`, `check-skills.yml` runs `tools/check-skills.py` and fails on any
-`ERROR`. Every Monday, `kb-freshness.yml` runs `tools/check-skills.py --kb`.
-When it finds `STALE` lines, it opens an issue labeled `kb-stale`, or comments
-on the one already open. Close that issue once step 2 is done.
+`ERROR`. Every Monday, `freshness.yml` runs `tools/check-skills.py
+--freshness`, which here means `--kb` and `--links`. When it finds `STALE`,
+`BROKEN`, or `ERROR` lines, it opens an issue labeled `freshness`, or
+comments on the one already open. Close that issue once the lines are
+worked.
 
 ## Full review
 
@@ -42,16 +44,20 @@ Work on a branch. Make one commit per skill, as `CONTRIBUTING.md` asks.
 ### 1. Lint and find stale sources
 
 ```bash
-tools/check-skills.py --kb
+tools/check-skills.py --freshness
 ```
 
 It checks each skill against the Agent Skills specification and the house
 rules. It then lists every cited KB article published after the skill's
-Verified date. It also lists any article that KB search no longer finds.
-The network check takes under a minute.
+Verified date, and any article that KB search no longer finds. Last, it
+fetches every cited URL. The KB check takes about a minute.
 
 - `ERROR` lines must be fixed before merging.
-- `STALE` lines are the reading list for step 2.
+- `STALE` lines are the reading list for step 2. A skill whose Verified
+  date is over 120 days old also prints `STALE`.
+- `BROKEN` lines usually mean a page moved. Find the new page. A URL that
+  cannot load from a script on purpose, such as an API endpoint, goes in
+  `skip_urls` in `tools/check-skills.toml`.
 - `WARN` lines usually mean a KB number appears in the text but not in
   Sources.
 
@@ -164,7 +170,8 @@ the systems observed, and the open items closed or opened.
    directory name.
 2. Follow `CONTRIBUTING.md` for sources, markers, and style.
 3. Add a row to the skills table in `README.md`.
-4. Add trigger prompts to `tests/trigger-prompts.md`.
+4. Add trigger prompts to `tests/trigger-prompts.md`. The checker fails a
+   skill with no README row or trigger prompt.
 5. Run `tools/check-skills.py --kb`.
 
 ## Retiring a skill

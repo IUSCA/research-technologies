@@ -1,0 +1,45 @@
+# Settings for tools/check-skills.py in research-technologies.
+# The checker is identical in every repository of this family; only this
+# file differs. See the checker's docstring for what each setting drives.
+
+# Markers this repository defines in README.md. Claims here come from the
+# live system (Observed) or the IU KB (cited by number), so there is no
+# Required or Recommended.
+markers = ["Observed", "External", "Practice", "Open item"]
+
+# Ids that must also appear in a skill's Sources list when cited in its text.
+cited_ids = ['KB\d{7}']
+
+# A skill whose oldest Verified date is older than this prints STALE.
+# The full review is quarterly; 120 days is a quarter plus a month of slack.
+stale_after_days = 120
+
+# Shared office and service addresses that may appear. Add one only after
+# checking it is a role address on an official IU page, not a person's.
+allowed_emails = [
+  "bhrs@iu.edu", "datard@iu.edu", "hts@iu.edu", "iursdtn@iu.edu",
+  "kb@iu.edu", "redcap@iu.edu", "resdb@iu.edu", "researchtechnologies@iu.edu",
+  "securemyresearch@iu.edu", "store-admin@iu.edu", "vishelp@iu.edu",
+]
+
+# Internal hostnames never appear. Public skills name the service.
+internal_hosts = '[\w.-]*bioloop[\w.-]*\.iu\.edu|[\w.-]+\.sca\.iu\.edu'
+
+[links]
+user_agent = "research-technologies-skills"
+skip_403_hosts = []
+# Cited on purpose but not loadable by a script: API endpoints that need a
+# key or a POST, a Slack workspace that needs a login, and RED, which does
+# not answer off-campus scripted requests.
+skip_urls = [
+  "https://iu-hpc-ai-users.slack.com",
+  "https://reallms.rescloud.iu.edu/direct/v1",
+  "https://reallms.rescloud.iu.edu/direct/v1/chat/completions",
+  "https://reallms.rescloud.iu.edu/direct/v1/models",
+  "https://red.uits.iu.edu",
+]
+
+[freshness]
+# Run each Monday by .github/workflows/freshness.yml.
+checks = ["kb", "links"]
+commands = []

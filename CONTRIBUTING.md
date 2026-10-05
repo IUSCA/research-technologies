@@ -122,8 +122,18 @@ Observed values carry their own dates.
   keys, or internal hostnames. A person's own
   resources go in their private resources file; see
   `checking-iu-research-access`.
+- Name office and service addresses, not people. Add a new one to
+  `allowed_emails` in `tools/check-skills.toml` after checking it on a KB
+  article. The checker fails any other address.
+- Date every **Observed** statement. The checker fails one without a date.
 
 Run `tools/check-skills.py` before committing. It must exit cleanly.
+
+`tools/check-skills.py` is the same file in every repository of this
+family. Do not edit it here. Change this repository's settings in
+`tools/check-skills.toml`: allowed emails, the Required-source pattern,
+the STALE age, link skip lists, and the weekly checks. The first line it
+prints carries its version and hash, so copies can be compared.
 
 ## Commits
 

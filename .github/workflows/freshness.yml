@@ -1,0 +1,65 @@
+# Check that the skills still match their sources, once a week and on demand.
+#
+# tools/check-skills.py --freshness runs the network checks and commands that
+# tools/check-skills.toml lists under [freshness]: KB articles (--kb), cited
+# URLs (--links), and any repository script such as a directory or catalog
+# snapshot check. It prints STALE for a skill or KB article past its Verified
+# date, BROKEN for a URL that no longer loads, and CHANGED for a snapshot
+# script that found a difference.
+#
+# When the report has any such line, or an ERROR, the run opens one issue
+# labeled freshness with the full output. If an open freshness issue exists,
+# the run comments on it instead. Work the issue with MAINTAINING.md.
+# This file is identical in every repository of the research skills family.
+name: freshness
+
+on:
+  schedule:
+    - cron: "0 13 * * 1" # Mondays at 13:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run the freshness checks
+        shell: bash
+        # Keep going on a non-zero exit so the issue step still runs.
+        run: python tools/check-skills.py --freshness 2>&1 | tee report.txt || true
+      - name: Open or update the freshness issue
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if ! grep -qE "^(ERROR|STALE|BROKEN|CHANGED)" report.txt; then
+            echo "Nothing to report."
+            exit 0
+          fi
+          {
+            echo "\`tools/check-skills.py --freshness\` found work on $(date -u +%F)."
+            echo "Work each line with MAINTAINING.md. Run: $RUN_URL"
+            echo
+            echo '```text'
+            cat report.txt
+            echo '```'
+          } > body.md
+          gh label create freshness --color D93F0B \
+            --description "A skill's sources changed, moved, or went stale" 2>/dev/null || true
+          issue=$(gh issue list --label freshness --state open --limit 1 \
+            --json number --jq '.[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --body-file body.md
+          else
+            gh issue create --title "Skills need a freshness review" \
+              --label freshness --body-file body.md
+          fi

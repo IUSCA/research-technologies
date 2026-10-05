@@ -5,6 +5,22 @@ They help a coding agent check a person's access, pick the right IU system,
 request access, submit Slurm jobs, store and move data, and reach the right
 support team.
 
+## Companion repositories
+
+Four repositories cover research at IU. Skills name a companion's skill by
+its repository and skill name, as in "`sharing-research-data` in
+research-data."
+
+- research-technologies covers clusters, storage, data transfer, and
+  allocations.
+- research-data covers finding, classifying, managing, and sharing research
+  data.
+- research-funding covers planning and preparing grant proposals.
+- research-cores covers core facilities, their instruments, and the data
+  they deliver.
+
+This repository covers the computing and storage systems themselves.
+
 ## Quickstart
 
 1. Clone this repository.
@@ -48,6 +64,10 @@ as their Slurm accounts, project directories, and quotas, belongs in that
 person's private resources file. It lives at `$IU_RESEARCH_NOTES`, or at
 `~/.config/iu-research/resources.md` by default.
 `checking-iu-research-access` explains how an agent fills and uses it.
+
+No skill names a person, a ticket, or an internal hostname. Contacts are
+office and service addresses. `tools/check-skills.py` fails any address not
+listed in `tools/check-skills.toml`.
 
 The KB now lives at `servicenow.iu.edu/kb`. Old `kb.iu.edu/d/<id>` links
 redirect to the KB home page and lose the article. The
@@ -137,8 +157,10 @@ works the same in a fork.
   single claim.
 - [MAINTAINING.md](MAINTAINING.md) is the runbook for reviewing and updating
   the whole set.
-- `tools/check-skills.py` checks format, and with `--kb` flags stale or
-  missing KB sources.
+- `tools/check-skills.py` runs the offline checks: format, markers, sources,
+  age, and what stays out. `--kb` and `--links` add the network checks, and
+  `--freshness` runs every check this repository's weekly workflow runs.
+  `tools/check-skills.toml` holds this repository's settings.
 - [tests/trigger-prompts.md](tests/trigger-prompts.md) checks that agents
   load the right skill.
 
