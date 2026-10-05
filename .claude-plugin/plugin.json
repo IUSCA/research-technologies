@@ -1,0 +1,14 @@
+{
+  "name": "research-technologies",
+  "description": "Agent skills for Indiana University research computing: check access, pick an IU system, request accounts and allocations, submit Slurm jobs, store and move data, and reach the right support team.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Indiana University Research Technologies",
+    "url": "https://github.com/IUSCA"
+  },
+  "homepage": "https://github.com/IUSCA/research-technologies",
+  "repository": "https://github.com/IUSCA/research-technologies",
+  "license": "ECL-2.0",
+  "keywords": ["indiana-university", "research-computing", "hpc", "slurm", "jetstream2", "globus"],
+  "skills": "./.agents/skills"
+}
