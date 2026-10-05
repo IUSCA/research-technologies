@@ -1,0 +1,21 @@
+{
+  "name": "iusca-research-technologies",
+  "owner": {
+    "name": "Indiana University Research Technologies",
+    "url": "https://github.com/IUSCA"
+  },
+  "metadata": {
+    "description": "Agent skills for Indiana University research computing infrastructure."
+  },
+  "plugins": [
+    {
+      "name": "research-technologies",
+      "source": "./",
+      "description": "Skills for IU research computing: access checks, system selection, allocations, Slurm jobs, data storage and transfer, Jetstream2, and getting help.",
+      "version": "0.1.0",
+      "category": "research",
+      "homepage": "https://github.com/IUSCA/research-technologies",
+      "license": "ECL-2.0"
+    }
+  ]
+}
