@@ -53,7 +53,7 @@ This is the serial-job example from KB0023298, with the account added.
 #SBATCH -o filename_%j.txt
 #SBATCH -e filename_%j.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=username@iu.edu
+#SBATCH --mail-user=<user>@iu.edu
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=02:00:00

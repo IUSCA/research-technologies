@@ -1,6 +1,6 @@
 ---
 name: checking-iu-research-access
-description: Bootstrap and verify a person's access to IU research computing before doing real work - network reach and SSH login to Quartz and Big Red 200, Duo and the one-time human login an agent needs, Slurm accounts from RT Projects, Slate, Slate-Scratch, Slate-Project, and SDA access, REALLMS API keys, and Jetstream2 credentials. Runs read-only check scripts, says where to go for each missing piece, and surveys the person's Slurm accounts into a private resources file outside the repository. Use at the start of any IU research computing session, when a job, login, or transfer fails for an unclear reason, or when onboarding a new lab member, or to decide which of a person's Slurm accounts or project directories fits the work.
+description: Bootstrap and verify a person's access to IU research computing before doing real work - network reach and SSH login to Quartz and Big Red 200, Duo and the one-time human login an agent needs, Slurm accounts from RT Projects, Slate, Slate-Scratch, Slate-Project, and SDA access, REALLMS API keys, and Jetstream2 credentials. Runs read-only check scripts, says where to go for each missing piece, and surveys the person's Slurm accounts into a private resources file outside the repository. Use when starting any IU research computing session, when a job, login, or transfer fails for an unclear reason, or when onboarding a new lab member, or to decide which of a person's Slurm accounts or project directories fits the work.
 ---
 
 # Checking IU research access
