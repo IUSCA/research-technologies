@@ -32,7 +32,9 @@ The agent will ask you to log in to a cluster once yourself, with your
 passphrase and Duo. It then records your own Slurm accounts and storage in a
 private file, `~/.config/iu-research/resources.md` or `$IU_RESEARCH_NOTES`.
 That file stays outside the repository. To use the skills in another
-project, see [Use the skills](#use-the-skills).
+project, see [Use the skills](#use-the-skills). To have the skills in every
+Claude project without a clone, install the
+[Claude plugin](#as-a-claude-plugin).
 
 ## What the skills trust
 
@@ -107,11 +109,37 @@ Start your agent in a clone of this repository. No install step is needed.
 | Codex | `.agents/skills/` |
 | pi | `.agents/skills/` |
 | OpenCode | `.agents/skills/` and `.claude/skills/` |
-| Claude Code | `.claude/skills/` only |
+| Claude Code | `.claude/skills/` only, or install the [plugin](#as-a-claude-plugin) |
 
 The skills live in `.agents/skills/`, the shared project location. Claude Code
 does not read that directory, so `.claude/skills` is a single committed
 symbolic link to it. Nothing outside the repository changes.
+
+### As a Claude plugin
+
+This repository is also a Claude plugin marketplace. Installing the plugin
+makes every skill available in all your projects, with no clone and no
+copying.
+
+In Claude Code:
+
+```text
+/plugin marketplace add IUSCA/research-technologies
+/plugin install research-technologies@iusca-research-technologies
+```
+
+Claude desktop can add the same marketplace, `IUSCA/research-technologies`,
+from its plugin settings.
+
+Plugin skills are namespaced, so `submitting-hpc-jobs` appears as
+`research-technologies:submitting-hpc-jobs`. The agent still picks a skill
+from its description, so you rarely type the name.
+
+To update, run `/plugin marketplace update iusca-research-technologies`.
+
+The plugin reads the skills from `.agents/skills/`, the directory the other
+harnesses use, so no skill is duplicated. The manifests are
+`.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`.
 
 ### In another project
 
@@ -132,12 +160,16 @@ Pick one of these. None needs a hand-written link per skill.
 
   `--copy` writes plain files. Without it, the CLI links each harness to one
   shared copy. Add `-g` to install for your user instead of the project.
-- **Claude Code only:** `claude --add-dir ~/repos/research-technologies`
-  loads this repository's `.claude/skills/` for one session.
+- **Claude Code or Claude desktop:** install the
+  [plugin](#as-a-claude-plugin). For one session only,
+  `claude --add-dir ~/repos/research-technologies` loads this repository's
+  `.claude/skills/`.
 
 Sources for these locations, checked 2026-10-01:
 [Agent Skills specification](https://agentskills.io/specification),
 [Claude Code skills](https://code.claude.com/docs/en/skills),
+[Claude Code plugins](https://code.claude.com/docs/en/plugins),
+[plugin marketplaces](https://code.claude.com/docs/en/plugin-marketplaces),
 [Codex skills](https://learn.chatgpt.com/docs/build-skills),
 [OpenCode skills](https://opencode.ai/docs/skills),
 [pi skills](https://pi.dev/docs/latest/skills),
