@@ -128,9 +128,6 @@ In Claude Code:
 /plugin install research-technologies@iusca-research-technologies
 ```
 
-Claude desktop can add the same marketplace, `IUSCA/research-technologies`,
-from its plugin settings.
-
 Plugin skills are namespaced, so `submitting-hpc-jobs` appears as
 `research-technologies:submitting-hpc-jobs`. The agent still picks a skill
 from its description, so you rarely type the name.
@@ -160,7 +157,7 @@ Pick one of these. None needs a hand-written link per skill.
 
   `--copy` writes plain files. Without it, the CLI links each harness to one
   shared copy. Add `-g` to install for your user instead of the project.
-- **Claude Code or Claude desktop:** install the
+- **Claude Code:** install the
   [plugin](#as-a-claude-plugin). For one session only,
   `claude --add-dir ~/repos/research-technologies` loads this repository's
   `.claude/skills/`.
