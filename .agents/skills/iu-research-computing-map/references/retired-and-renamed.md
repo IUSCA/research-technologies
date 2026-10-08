@@ -1,6 +1,7 @@
 # Retired and renamed IU research systems
 
-Verified 2026-10-01. Do not plan work on any system marked retired.
+Verified 2026-10-07 (KB0024420 only). Other sources were verified
+2026-10-01. Do not plan work on any system marked retired.
 
 The current KB names exactly two research supercomputers: Quartz and Big Red
 200 (KB0025040, KB0023647). Any other cluster name in old documentation,

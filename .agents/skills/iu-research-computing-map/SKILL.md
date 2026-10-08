@@ -5,8 +5,8 @@ description: Orientation to Indiana University research computing systems (Quart
 
 # IU research computing map
 
-Verified 2026-10-03 (KB0023515, KB0025574, and KB0025747 only) against the IU
-Knowledge Base (KB). Other sources were verified 2026-10-01. Each claim
+Verified 2026-10-07 (KB0023515, KB0024420, KB0025574, and KB0025747 only)
+against the IU Knowledge Base (KB). Other sources were verified 2026-10-01. Each claim
 names its KB article; links are in Sources at the end.
 
 Check data classification before anything else. A system that is fast and
@@ -24,7 +24,7 @@ these two. Any other cluster name is retired; see
 | Quartz | High-throughput cluster, `quartz.uits.iu.edu` | Most CPU and GPU batch work, including PHI work |
 | Big Red 200 | HPE Cray EX supercomputer, `bigred200.uits.iu.edu` | Large parallel and A100 GPU work without PHI |
 | Research Desktop (RED) | Graphical desktop on Quartz-dedicated VMs | GUI applications, Jupyter, light interactive work |
-| Jetstream2 | ACCESS-allocated OpenStack cloud | Gateways, always-on services, prototyping |
+| Jetstream2 | OpenStack cloud allocated through ACCESS or NAIRR Pilot | Gateways, always-on services, prototyping |
 | Home directory (Geode) | 100 GB per user, shared across systems | Scripts, configuration, small files |
 | Slate | Lustre, persistent, per user | Working data for one person |
 | Slate-Project | Lustre, persistent, per project | Shared working data for a group |
@@ -151,8 +151,8 @@ Jetstream2 is an OpenStack research cloud whose primary system is at IU
 interactive and smaller-scale work, and for science gateways. A gateway may
 compute on Jetstream2 or route jobs to HPC systems (KB0024420).
 
-Access comes through ACCESS allocations (KB0024420). See the `jetstream2`
-skill.
+Access comes through ACCESS or NAIRR Pilot allocations (KB0024420). See the
+`jetstream2` skill.
 
 ## Storage
 
@@ -241,8 +241,8 @@ team answers it, and cite that answer.
 
 ## Sources
 
-All IU KB articles, read 2026-10-01. KB0023515, KB0025574, and KB0025747 re-read
-2026-10-03. URL form:
+All IU KB articles, read 2026-10-01. KB0023515, KB0024420, KB0025574, and
+KB0025747 re-read 2026-10-07. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022391](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022391) Slate high performance storage system: Terms of service
