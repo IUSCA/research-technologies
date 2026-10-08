@@ -5,8 +5,9 @@ description: Turn a researcher's described workflow into a concrete plan across 
 
 # Planning research computing work at IU
 
-Verified 2026-10-03 against the IU Knowledge Base (KB). Each claim names its
-KB article or the skill that holds the citation; links are in Sources.
+Verified 2026-10-07 (KB0024420 only) against the IU Knowledge Base (KB).
+Other sources were verified 2026-10-03. Each claim names its KB article or
+the skill that holds the citation; links are in Sources.
 
 This skill ties the other IU skills together. It decides which system holds
 each stage of a workflow. The other skills say how to use each system.
@@ -180,7 +181,8 @@ example when a common workflow does not fit the three given.
 
 ## Sources
 
-All IU KB articles. Read 2026-10-03 unless noted. URL form:
+All IU KB articles. Read 2026-10-03 unless noted. KB0024420 re-read
+2026-10-07. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022436](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022436) Run GPU-accelerated jobs on Quartz or Big Red 200 at IU
