@@ -5,8 +5,8 @@ description: Decide when to self-serve and when to contact IU Research Technolog
 
 # Getting help from Research Technologies
 
-Verified 2026-10-03 (KB0023515, KB0025574, and KB0025747 only) against the IU
-Knowledge Base (KB). Other sources were verified 2026-10-01. Each claim
+Verified 2026-10-07 (KB0023515, KB0024420, KB0025574, and KB0025747 only)
+against the IU Knowledge Base (KB). Other sources were verified 2026-10-01. Each claim
 names its KB article; links are in Sources at the end.
 
 Search the KB first, then ask the team that owns the system. Most questions
@@ -135,8 +135,8 @@ only with a citation.
 
 ## Sources
 
-All IU KB articles, read 2026-10-01. KB0023515, KB0025574, and KB0025747 re-read
-2026-10-03. URL form:
+All IU KB articles, read 2026-10-01. KB0023515, KB0024420, KB0025574, and
+KB0025747 re-read 2026-10-07. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022478](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022478) Secure research data containing HIPAA-regulated PHI on high performance file systems at IU
