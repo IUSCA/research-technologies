@@ -1,7 +1,7 @@
 # Scholarly Data Archive (SDA) in detail
 
-Verified 2026-10-01 against the IU Knowledge Base (KB). Read the main
-`SKILL.md` first. This file holds the command-level detail.
+Verified 2026-10-07 (KB0024053 only) against the IU Knowledge Base (KB).
+Other sources were verified 2026-10-01. Read the main `SKILL.md` first. This file holds the command-level detail.
 
 The SDA is a tape archive. Write a few large files, read them rarely, and
 never treat a deletion as reversible (KB0024366, KB0024406).

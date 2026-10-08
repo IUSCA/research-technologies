@@ -5,8 +5,9 @@ description: Store, move, archive, and share research data on IU systems - home 
 
 # Storing and moving research data at IU
 
-Verified 2026-10-01 against the IU Knowledge Base (KB). Each claim names its
-KB article; links are in Sources at the end.
+Verified 2026-10-07 (KB0024053 only) against the IU Knowledge Base (KB).
+Other sources were verified 2026-10-01. Each claim names its KB article;
+links are in Sources at the end.
 
 Check data classification first. The `iu-research-computing-map` skill has
 the approval table and the one-line summary of each system. This skill is the
@@ -347,7 +348,8 @@ table. Close an open item only with a citation that settles it.
 
 ## Sources
 
-All IU KB articles, read 2026-10-01. URL form:
+All IU KB articles, read 2026-10-01. KB0024053 re-read 2026-10-07. URL
+form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022391](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022391) Slate high performance storage system: Terms of service
