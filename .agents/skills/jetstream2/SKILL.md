@@ -1,12 +1,12 @@
 ---
 name: jetstream2
-description: Use Jetstream2, the IU-hosted OpenStack research cloud allocated through ACCESS - what it is for and not for, how allocations work, what happens when one expires, flavor and GPU rules, protected-data restrictions, and how it fits as a gateway that sends heavy work to HPC. Use when considering Jetstream2 for a science gateway, an always-on service, interactive analysis, or a prototype, or when checking whether data may go there.
+description: Use Jetstream2, the IU-hosted OpenStack research cloud allocated through ACCESS or the NAIRR Pilot - what it is for and not for, how allocations work, what happens when one expires, flavor and GPU rules, protected-data restrictions, and how it fits as a gateway that sends heavy work to HPC. Use when considering Jetstream2 for a science gateway, an always-on service, interactive analysis, or a prototype, or when checking whether data may go there.
 ---
 
 # Jetstream2
 
-Verified 2026-10-03 (KB0023515 and KB0025747 only). Other sources were verified
-2026-10-01. IU KB claims cite their KB number. Claims from the
+Verified 2026-10-07 (KB0023515, KB0024420, and KB0025747 only). Other sources
+were verified 2026-10-01. IU KB claims cite their KB number. Claims from the
 Jetstream2 documentation are marked **External**. Links are in Sources.
 
 Jetstream2 is a cloud, not a cluster. Use it for services and interactive
@@ -17,8 +17,8 @@ work. Send large or high-throughput computation to an HPC system
 
 Jetstream2 is an OpenStack research cloud. Its primary system is at IU, with
 regional systems at Arizona State, Cornell, Hawai'i, and TACC (KB0024420). It
-offers GPUs, large-memory nodes, virtual clusters, Heat and Terraform, and the
-Exosphere web interface (KB0024420).
+offers GPUs, large-memory nodes, virtual clusters, and the Exosphere web
+interface (KB0024420).
 
 The KB names these uses (KB0024420):
 
@@ -48,12 +48,12 @@ SecureMyResearch (securemyresearch@iu.edu) before planning otherwise
 
 ## Allocations
 
-The KB says access comes only through ACCESS allocations (KB0024420). You must
-be on a valid allocation, or be its PI (KB0024420).
+Access comes through ACCESS allocations or National Artificial Intelligence
+Research Resource (NAIRR) Pilot allocations (KB0024420).
 
 **External:** the Jetstream2 documentation says access is "primarily" through
-ACCESS. It also lists NAIRR Pilot allocations for AI research. ACCESS accounts
-are free. ACCESS has four project types:
+ACCESS. It lists NAIRR Pilot allocations for AI research. ACCESS accounts are
+free. ACCESS has four project types:
 
 | ACCESS project type | Credit threshold |
 | --- | --- |
@@ -64,9 +64,6 @@ are free. ACCESS has four project types:
 
 After an award, exchange credits for Jetstream2 resources. Then add users to
 the ACCESS allocation and to the Jetstream2 allocation (External).
-
-**Open item:** the KB and the Jetstream2 documentation differ on whether
-ACCESS is the only route. Check with IU Jetstream2 support if NAIRR matters.
 
 IU researchers can get help preparing an allocation request from IU
 Jetstream2 support (KB0024420). Research Technologies also offers limited
@@ -121,8 +118,8 @@ change. Record a resolved open item with its source.
 
 ## Sources
 
-IU KB articles, read 2026-10-01. KB0023515 and KB0025747 re-read
-2026-10-03. URL form:
+IU KB articles, read 2026-10-01. KB0023515, KB0024420, and KB0025747 re-read
+2026-10-07. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022739](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022739) Acknowledge use of Jetstream or Jetstream2 in your published work
