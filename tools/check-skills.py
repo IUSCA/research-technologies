@@ -7,6 +7,7 @@ Usage:
     tools/check-skills.py --links      # also fetch every cited URL
     tools/check-skills.py --freshness  # the network checks tools/check-skills.toml lists
     tools/check-skills.py --version    # print the version and this file's hash
+    tools/check-skills.py --kb-snapshot [KB...]  # record cited KB articles' text
 
 This file is identical in every repository of the IU research skills family
 (research-technologies, research-data, research-funding, research-cores).
@@ -23,13 +24,27 @@ Offline checks, per skill:
   - An id cited in the text (KB article, NIH notice) is also in Sources.
   - What stays out: emails not on allowed_emails, internal hostnames.
 Offline checks, per repository: every skill has a README row and a trigger
-prompt, and the top-level and docs/ files pass the what-stays-out checks.
+prompt, the top-level and docs/ files pass the what-stays-out checks, and
+any Claude plugin manifests in .claude-plugin/ parse, agree on the plugin
+name and version, and point at a skills directory that exists.
 
 Network checks:
   --kb      Each KB article cited as [KBnnnnnnn](https://servicenow.iu.edu/kb...)
-            is found by KB search and was not published after the skill's
-            Verified date (STALE otherwise).
-  --links   Each cited URL loads (BROKEN otherwise), with one retry.
+            is found by KB search and has not changed since it was last read.
+            When tools/kb-snapshot.json holds the article, the snapshot is the
+            record of that reading: a newer updated date fetches the text, and
+            changed text prints STALE (unchanged text prints INFO). Without a
+            snapshot entry, a published or updated date after the skill's
+            Verified date prints STALE. ServiceNow reports both dates; an edit
+            in place changes only the updated date.
+  --kb-snapshot [KB...]  Record the version, updated date, and text hash of
+            the named KB articles in tools/kb-snapshot.json, or of every
+            linked article when none is named. Run it right after re-reading
+            those articles, and commit the file with the skill changes. This
+            is the per-article record, so a Verified line needs no list of
+            partial re-reads for snapshotted articles.
+  --links   Each cited URL loads (BROKEN otherwise), with two retries
+            10 and 20 seconds apart.
   --freshness runs the [freshness] checks and commands from the config. A
             command that exits non-zero prints CHANGED.
 
@@ -50,11 +65,13 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKILLS = ROOT / ".agents" / "skills"
 CONFIG = ROOT / "tools" / "check-skills.toml"
+KB_SNAPSHOT = ROOT / "tools" / "kb-snapshot.json"
+PLUGIN = ROOT / ".claude-plugin"
 
 ALL_MARKERS = ("Required", "Recommended", "Observed", "External", "Practice", "Open item")
 SPEC_FIELDS = {"name", "description", "license", "compatibility", "metadata", "allowed-tools"}
@@ -278,48 +295,148 @@ def check_repo(names, cfg):
     return problems
 
 
-def kb_lookup(number):
-    """Return (number, published date, title) from KB search, or None."""
-    params = urllib.parse.urlencode({"query": number, "limit": 5, "fields": "published"})
+def kb_get(url):
+    """GET a KB API URL as JSON, backing off on 429 and 503."""
     for attempt in range(5):
         try:
-            with urllib.request.urlopen(f"{KB_API}?{params}", timeout=60) as resp:
-                data = json.load(resp)
-            break
+            with urllib.request.urlopen(url, timeout=60) as resp:
+                return json.load(resp)
         except urllib.error.HTTPError as err:
             if err.code not in (429, 503) or attempt == 4:
                 raise
             wait = err.headers.get("Retry-After", "")
             time.sleep(min(int(wait) if wait.isdigit() else 5 * 2 ** attempt, 120))
+
+
+def kb_lookup(number):
+    """Return a dict for a KB article from KB search, or None if not found."""
+    params = urllib.parse.urlencode(
+        {"query": number, "limit": 5, "fields": "published,sys_updated_on,version"})
+    data = kb_get(f"{KB_API}?{params}")
     for art in data["result"]["articles"]:
         if art["number"] == number:
-            published = art.get("fields", {}).get("published", {}).get("value", "")
-            return number, published, art["title"]
+            fields = art.get("fields", {})
+            return {
+                "number": number,
+                "title": art["title"],
+                "sys_id": art["id"].split(":")[-1],
+                "published": fields.get("published", {}).get("value", ""),
+                "updated": fields.get("sys_updated_on", {}).get("value", "")[:10],
+                "version": fields.get("version", {}).get("display_value", ""),
+            }
     return None
 
 
-def check_kb(skill_dir, cache):
-    """STALE when a cited KB article is gone or was published after Verified."""
+def kb_text_hash(sys_id):
+    """sha256 of an article's text, with tags and whitespace runs removed."""
+    data = kb_get(f"{KB_API}/{sys_id}")["result"]
+    body = "".join(part.get("content", "") for part in data.get("content", []))
+    text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", body)).strip()
+    return hashlib.sha256(text.encode()).hexdigest()
+
+
+def load_kb_snapshot():
+    try:
+        return json.loads(KB_SNAPSHOT.read_text())
+    except FileNotFoundError:
+        return {}
+
+
+def linked_kb(skill_dir):
+    """KB numbers a skill links to. An article KB search cannot find is named
+    without a link, with the date it went missing, so it is not checked."""
+    cited = set()
+    for md in skill_dir.rglob("*.md"):
+        cited |= set(re.findall(r"\[(KB\d{7})\]\(https://servicenow\.iu\.edu/kb", md.read_text()))
+    return cited
+
+
+def check_kb(skill_dir, cache, snapshot):
+    """STALE when a cited KB article is gone, or changed after Verified."""
     path = skill_dir / "SKILL.md"
     if not path.is_file():
         return []
     dates = verified_dates(frontmatter(path.read_text())[1])
-    # Only linked articles count. An article KB search cannot find is named
-    # without a link, with the date it went missing.
-    cited = set()
-    for md in skill_dir.rglob("*.md"):
-        cited |= set(re.findall(r"\[(KB\d{7})\]\(https://servicenow\.iu\.edu/kb", md.read_text()))
     problems = []
-    for number in sorted(cited):
+    for number in sorted(linked_kb(skill_dir)):
         if number not in cache:
             cache[number] = kb_lookup(number)
         row = cache[number]
         if row is None:
             problems.append(("STALE", f"{number} not found by KB search; retired or renumbered?"))
-        elif dates:
-            date = dates[0] if number in dates[1] else dates[2]
-            if row[1] > date:
-                problems.append(("STALE", f"{number} published {row[1]}, after Verified {date}: {row[2]}"))
+            continue
+        if not dates:
+            continue
+        snap = snapshot.get(number)
+        what = f"published {row['published']}, updated {row['updated']}, version {row['version']}"
+        if snap:
+            if max(row["published"], row["updated"]) <= max(snap.get("published", ""), snap.get("updated", "")):
+                continue
+            if "hash" not in row:
+                row["hash"] = kb_text_hash(row["sys_id"])
+            if row["hash"] == snap.get("sha256"):
+                problems.append(("INFO", f"{number} {what}; text unchanged since snapshot {snap.get('taken')}"))
+            else:
+                problems.append(("STALE", f"{number} {what}; text changed since snapshot {snap.get('taken')}: {row['title']}"))
+            continue
+        verified = dates[0] if number in dates[1] else dates[2]
+        if max(row["published"], row["updated"]) > verified:
+            problems.append(("STALE", f"{number} {what}, after Verified {verified}: {row['title']}"))
+    return problems
+
+
+def write_kb_snapshot(names, today, only):
+    """Record version, updated date, and text hash for linked articles; with
+    `only`, refresh just those and keep the other entries."""
+    snapshot = load_kb_snapshot() if only else {}
+    linked = set().union(*(linked_kb(SKILLS / name) for name in names))
+    for number in sorted(linked):
+        if only and number not in only:
+            continue
+        row = kb_lookup(number)
+        if row is None:
+            print(f"STALE  {number}: not found by KB search; not recorded")
+            continue
+        snapshot[number] = {
+            "title": row["title"], "version": row["version"],
+            "published": row["published"], "updated": row["updated"],
+            "sha256": kb_text_hash(row["sys_id"]), "taken": today.isoformat(),
+        }
+    for number in only - linked:
+        print(f"WARN   {number}: no skill links to it; not recorded")
+    snapshot = {k: v for k, v in snapshot.items() if k in linked}
+    KB_SNAPSHOT.write_text(json.dumps(dict(sorted(snapshot.items())), indent=2) + "\n")
+    print(f"Wrote {len(snapshot)} KB articles to {KB_SNAPSHOT.relative_to(ROOT)}")
+
+
+def check_plugin(names):
+    """Claude plugin manifests, when present, parse and agree with each other."""
+    problems = []
+    if not PLUGIN.is_dir():
+        return problems
+    manifests = {}
+    for fname in ("plugin.json", "marketplace.json"):
+        f = PLUGIN / fname
+        if not f.is_file():
+            problems.append(("ERROR", f".claude-plugin/{fname} is missing"))
+            continue
+        try:
+            manifests[fname] = json.loads(f.read_text())
+        except json.JSONDecodeError as err:
+            problems.append(("ERROR", f".claude-plugin/{fname} is not valid JSON: {err}"))
+    plugin, market = manifests.get("plugin.json"), manifests.get("marketplace.json")
+    if plugin:
+        skills = plugin.get("skills")
+        for rel in [skills] if isinstance(skills, str) else (skills or []):
+            if not (ROOT / rel).is_dir():
+                problems.append(("ERROR", f"plugin.json skills path {rel} does not exist"))
+    if plugin and market:
+        entries = {e.get("name"): e for e in market.get("plugins", [])}
+        entry = entries.get(plugin.get("name"))
+        if entry is None:
+            problems.append(("ERROR", f"marketplace.json lists no plugin named {plugin.get('name')}"))
+        elif entry.get("version") and entry.get("version") != plugin.get("version"):
+            problems.append(("WARN", f"plugin version {plugin.get('version')} in plugin.json, {entry.get('version')} in marketplace.json"))
     return problems
 
 
@@ -340,9 +457,9 @@ def check_links(cfg):
             print(f"SKIP    {url}  (skip_urls)")
             continue
         req = urllib.request.Request(url, headers={"User-Agent": f"Mozilla/5.0 {lc['user_agent']}"})
-        for attempt in range(2):  # one retry, for transient errors
+        for attempt in range(3):  # two retries, for transient errors
             try:
-                with urllib.request.urlopen(req, timeout=30) as resp:
+                with urllib.request.urlopen(req, timeout=45) as resp:
                     status = resp.status
             except urllib.error.HTTPError as e:
                 status = e.code
@@ -350,7 +467,8 @@ def check_links(cfg):
                 status = type(e).__name__
             if status == 200 or (isinstance(status, int) and status < 429):
                 break
-            time.sleep(3)
+            if attempt < 2:
+                time.sleep(10 * (attempt + 1))
         if status == 200:
             continue
         host = urllib.parse.urlparse(url).hostname or ""
@@ -382,21 +500,26 @@ def main(argv):
         return 0
     cfg = load_config()
     print(version_line())
+    today = datetime.date.today()
+    if "--kb-snapshot" in argv:
+        only = {a.upper() for a in argv if re.fullmatch(r"(?i)KB\d{7}", a)}
+        write_kb_snapshot(sorted(p.name for p in SKILLS.iterdir() if p.is_dir()), today, only)
+        return 0
     checks = set(a.lstrip("-") for a in argv if a in ("--kb", "--links"))
     if "--freshness" in argv:
         checks |= set(cfg["freshness"]["checks"])
-    today = datetime.date.today()
     failed = False
     cache = {}
+    snapshot = load_kb_snapshot() if "kb" in checks else {}
     names = sorted(p.name for p in SKILLS.iterdir() if p.is_dir())
     for name in names:
         problems = check_skill(SKILLS / name, cfg, today)
         if "kb" in checks:
-            problems += check_kb(SKILLS / name, cache)
+            problems += check_kb(SKILLS / name, cache, snapshot)
         for level, msg in problems:
             print(f"{level:5}  {name}: {msg}")
             failed |= level == "ERROR"
-    for level, msg in check_repo(names, cfg):
+    for level, msg in check_repo(names, cfg) + check_plugin(names):
         print(f"{level:5}  repository: {msg}")
         failed |= level == "ERROR"
     if "kb" in checks:

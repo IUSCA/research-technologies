@@ -1,0 +1,834 @@
+{
+  "KB0022379": {
+    "title": "Install packages in a conda environment on IU's high performance computers",
+    "version": "11.0",
+    "published": "2026-08-21",
+    "updated": "2026-08-21",
+    "sha256": "1d489891bf59af7e5c19f820b8ca3f5e001eea53d750bfa217ec528123d0ebea",
+    "taken": "2026-10-08"
+  },
+  "KB0022391": {
+    "title": "Slate high performance storage system: Terms of service",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "9f256d5f5cd95c1b121061b7eb47050af116a4016ad768a5e188d1f3d7f83f09",
+    "taken": "2026-10-08"
+  },
+  "KB0022423": {
+    "title": "Slate-Project high performance storage system: Terms of service",
+    "version": "6.0",
+    "published": "2026-02-03",
+    "updated": "2026-02-03",
+    "sha256": "c1758f676c705f0142905cb65c79776d539e908cf2e499fbbac415d60041d833",
+    "taken": "2026-10-08"
+  },
+  "KB0022436": {
+    "title": "Run GPU-accelerated jobs on Quartz or Big Red 200 at IU",
+    "version": "10.0",
+    "published": "2026-08-10",
+    "updated": "2026-08-10",
+    "sha256": "f59e2189e738621689b80d2831b5375563ee26848bd890df28d0bc118cd85934",
+    "taken": "2026-10-08"
+  },
+  "KB0022439": {
+    "title": "Available access to allocated and short-term storage capacity on IU's research systems",
+    "version": "10.0",
+    "published": "2026-07-16",
+    "updated": "2026-07-16",
+    "sha256": "3b69eb8b97dcd1d027514792166605ddc22cec2dff35084adad656cc2e0a3845",
+    "taken": "2026-10-08"
+  },
+  "KB0022463": {
+    "title": "Use HSI to access your SDA account at IU",
+    "version": "3.0",
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "sha256": "cbbe54cc60daee7b195cef70968557724ee1a1ec33ae17e7577c9c1cfcc989ae",
+    "taken": "2026-10-08"
+  },
+  "KB0022478": {
+    "title": "Secure research data containing HIPAA-regulated PHI on high performance file systems at IU",
+    "version": "3.0",
+    "published": "2025-07-10",
+    "updated": "2025-11-14",
+    "sha256": "4df3197dae33d38b6a43163023c6f3cad1d14f275ad485eda3e0b712e47b4af5",
+    "taken": "2026-10-08"
+  },
+  "KB0022483": {
+    "title": "Stage your SDA files to be available when you want them",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "601a49b103ef5a96ccd722dfc81ecfc88b954821c20c05050750f4a27da171b2",
+    "taken": "2026-10-08"
+  },
+  "KB0022486": {
+    "title": "Policies regarding UITS research systems",
+    "version": "6.0",
+    "published": "2026-08-07",
+    "updated": "2026-08-07",
+    "sha256": "60cb01e75a24ad3df2d2e2dbc1c5ae9e7b575fbd502184274d3994c314af9cbd",
+    "taken": "2026-10-08"
+  },
+  "KB0022499": {
+    "title": "Use SFTP or SCP to access your SDA account at IU",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "917a02eb190a76b4183b0be390d0e3eea3dec8c63fd7bd35238765a4f4ba0bab",
+    "taken": "2026-10-08"
+  },
+  "KB0022586": {
+    "title": "About Slate-Project high performance project space at IU",
+    "version": "8.0",
+    "published": "2025-07-10",
+    "updated": "2025-11-14",
+    "sha256": "8a7e2c952b76d9689993979cd3c0359fb68b313dd81d2b9b750aab36b436c6ae",
+    "taken": "2026-10-08"
+  },
+  "KB0022605": {
+    "title": "About Slate high performance storage for research computation at IU",
+    "version": "2.0",
+    "published": "2025-07-10",
+    "updated": "2025-11-14",
+    "sha256": "5edfe4b1a6aad3f84df2c67e42a27597f28915f9c99cc6ebe6ca59237ec90c8b",
+    "taken": "2026-10-08"
+  },
+  "KB0022620": {
+    "title": "Create your first IU computing accounts (admitted students, faculty, staff, affiliates, and those returning to IU)",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "fba70730733dcc777451c5834b2091f2ebed9c396b90b463b40a59383abd8685",
+    "taken": "2026-10-08"
+  },
+  "KB0022631": {
+    "title": "Install Python packages on the research supercomputers at IU",
+    "version": "6.0",
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "sha256": "7fe43d060978606a2a1012ca6059b894936e06b04bfdf97ee80f32f33ee8253a",
+    "taken": "2026-10-08"
+  },
+  "KB0022645": {
+    "title": "About group and departmental accounts",
+    "version": "7.0",
+    "published": "2026-07-13",
+    "updated": "2026-07-13",
+    "sha256": "ac8abb404d537bc54add131ab807a8085ed9d2cc7290765c16fa896f447411c7",
+    "taken": "2026-10-08"
+  },
+  "KB0022647": {
+    "title": "Get additional IU computing accounts",
+    "version": "2.0",
+    "published": "2026-06-08",
+    "updated": "2026-06-08",
+    "sha256": "0f0d683f90d09640a68c0be1035312d6366fb216aec7ed0312575ce8ea5155bd",
+    "taken": "2026-10-08"
+  },
+  "KB0022656": {
+    "title": "Computing accounts at IU",
+    "version": "6.0",
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "sha256": "3ff28c5fcf8d3dcfda79cae0f8050be0b0c58a1ea2b68341b543386474573d52",
+    "taken": "2026-10-08"
+  },
+  "KB0022668": {
+    "title": "About Geode at Indiana University",
+    "version": "4.0",
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "sha256": "612bb51647b7bd4b47a147e91ebb2d0d55c163cf6dee91a39e517e0d70a9bcf0",
+    "taken": "2026-10-08"
+  },
+  "KB0022739": {
+    "title": "Acknowledge use of Jetstream or Jetstream2 in your published work",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "e13f83d4290f8af2f08270e2088d982336af2d90531446731a4e41563a3d415a",
+    "taken": "2026-10-08"
+  },
+  "KB0023162": {
+    "title": "Download, install, and configure ThinLinc Client to use Research Desktop (RED) at IU",
+    "version": "4.0",
+    "published": "2026-08-28",
+    "updated": "2026-08-28",
+    "sha256": "489954ffe19469553ce05632bdcca4e59e645231261e0bced15afb48c52ada83",
+    "taken": "2026-10-08"
+  },
+  "KB0023167": {
+    "title": "About Research Desktop (RED) at IU",
+    "version": "5.0",
+    "published": "2025-09-17",
+    "updated": "2025-11-14",
+    "sha256": "b37baaf60301caa8d98e9013b0ff69a9380adb43af9d0bbb4c439e0caeed5ea0",
+    "taken": "2026-10-08"
+  },
+  "KB0023170": {
+    "title": "Research Desktop (RED) usage policies and interface features",
+    "version": "5.0",
+    "published": "2026-08-17",
+    "updated": "2026-08-17",
+    "sha256": "578431c9b6a60b9c8f0698a9484bd8ab7d18886f1a6c2c777ce611c35cbcdb03",
+    "taken": "2026-10-08"
+  },
+  "KB0023231": {
+    "title": "Troubleshoot Research Desktop",
+    "version": "9.0",
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "sha256": "c52ad064051db6bb60e6c74f2fb411101d2f05203ac4afe752ef7b70548fc42d",
+    "taken": "2026-10-08"
+  },
+  "KB0023238": {
+    "title": "Research and high performance computing",
+    "version": "4.0",
+    "published": "2026-09-03",
+    "updated": "2026-09-03",
+    "sha256": "71627f068c638914d3530fa9f539fa472ec5250815b084df7a90893a5fbc3745",
+    "taken": "2026-10-08"
+  },
+  "KB0023281": {
+    "title": "Use HTAR with your SDA account",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "b343f438665b8c743728d2634142bc43954214538f10c065a310465a064f8383",
+    "taken": "2026-10-08"
+  },
+  "KB0023296": {
+    "title": "Use GPG to encrypt files on IU's research supercomputers",
+    "version": "2.0",
+    "published": "2025-07-10",
+    "updated": "2025-11-14",
+    "sha256": "7cf9fd9b12f9aeecfe60ad6fb6d9840a5ec4fa6e577b437435ab18c083b50848",
+    "taken": "2026-10-08"
+  },
+  "KB0023298": {
+    "title": "Use Slurm to submit and manage jobs on IU's research computing systems",
+    "version": "3.0",
+    "published": "2024-12-20",
+    "updated": "2025-11-14",
+    "sha256": "27a8771f1ba7d4d9dbc3b7b4f492b5cb52a23be40654b124d38378e6b5a7938a",
+    "taken": "2026-10-08"
+  },
+  "KB0023364": {
+    "title": "Enable HSI/HTAR transfers from IU's Scholarly Data Archive when your system is protected by a firewall",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "927dfdb1d86ffc84d2f6d2340404ad15921d4c8ab8f4e7ff1f97001b33d58c3f",
+    "taken": "2026-10-08"
+  },
+  "KB0023373": {
+    "title": "Geode-Project: Terms of service",
+    "version": "4.0",
+    "published": "2026-06-15",
+    "updated": "2026-06-15",
+    "sha256": "6bf0467f29cd04d0195565b4383f222d59a4c861bb3851aaf53cc03a700dce50",
+    "taken": "2026-10-08"
+  },
+  "KB0023379": {
+    "title": "Geode home directory file system: Terms of service",
+    "version": "2.0",
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "sha256": "6e110fbefb3c8cae3df55a3080fe354b9a9834320bd004251e6a3672546b3256",
+    "taken": "2026-10-08"
+  },
+  "KB0023407": {
+    "title": "Your legal responsibilities for protecting data containing protected health information (PHI) when using UITS Research Technologies systems and services",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "272099b2978fa827cb1eb48e8dbdb4248bd4428f3b36bd2a2bd5197bf4638d27",
+    "taken": "2026-10-08"
+  },
+  "KB0023420": {
+    "title": "Get computing help for biomedical research",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "fedb3c3bc6eb0d198618d800885c4f935f137c80614a11cd4f5ab788b9b9958b",
+    "taken": "2026-10-08"
+  },
+  "KB0023425": {
+    "title": "Lustre file systems at IU",
+    "version": "3.0",
+    "published": "2025-01-08",
+    "updated": "2025-11-14",
+    "sha256": "b4df8a5bd03d95c5ef2a799e0c4b5ded56d760a24c55a2be5978319fdd998435",
+    "taken": "2026-10-08"
+  },
+  "KB0023434": {
+    "title": "Recommended tools for encrypting data containing HIPAA-regulated PHI",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "51e8d278b7552eda4b8a15abd116c1cfdfe5bc41758fddb8b8b03cf042242cf1",
+    "taken": "2026-10-08"
+  },
+  "KB0023488": {
+    "title": "Sponsor a computing account for an IU affiliate",
+    "version": "2.0",
+    "published": "2025-03-18",
+    "updated": "2025-11-14",
+    "sha256": "36010c1452eac9c45dabfd102c713288cff83aa6f8cf172cc2f45d2b1166ff32",
+    "taken": "2026-10-08"
+  },
+  "KB0023513": {
+    "title": "Use PCP to bundle multiple serial jobs to run in parallel on IU research supercomputers",
+    "version": "4.0",
+    "published": "2025-02-27",
+    "updated": "2025-11-14",
+    "sha256": "da9a9c520f2534a7701ac948b64c86c19cc5424fd4a2b9f9d4e4ca50c7ff064f",
+    "taken": "2026-10-08"
+  },
+  "KB0023515": {
+    "title": "UITS Research Technologies systems and services for researchers working with data containing HIPAA-regulated PHI",
+    "version": "4.0",
+    "published": "2026-10-02",
+    "updated": "2026-10-02",
+    "sha256": "7830b8751a1faed544e45c242fb8a8423dd1e498120992721516acdc5a12e7d2",
+    "taken": "2026-10-08"
+  },
+  "KB0023604": {
+    "title": "About dedicated file storage services and IT services with storage components appropriate for sensitive institutional data, including research data containing protected health information",
+    "version": "13.0",
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "sha256": "e2559e18cbd360a1de4f574484cc4104f608e6166eb464c046e416f9b7f0efe8",
+    "taken": "2026-10-08"
+  },
+  "KB0023647": {
+    "title": "Supercomputers for academic research at IU",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "359df91139342e49d57947c69bbafd25433a2f6e6b3e47cc9946582a45b087cc",
+    "taken": "2026-10-08"
+  },
+  "KB0023697": {
+    "title": "Research computing support at IU",
+    "version": "5.0",
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "sha256": "cd89a3b174964ec4ab57d3a3580726e82a138cd5f107a225727f0ba936c717a1",
+    "taken": "2026-10-08"
+  },
+  "KB0023774": {
+    "title": "Use HSI to create and manage checksums",
+    "version": "2.0",
+    "published": "2024-09-26",
+    "updated": "2025-11-14",
+    "sha256": "68d472038f5d352319830780536f35523267165cfadaa51e31da23dd4e65b79e",
+    "taken": "2026-10-08"
+  },
+  "KB0023802": {
+    "title": "Use modules to manage your software environment on IU research supercomputers",
+    "version": "6.0",
+    "published": "2026-08-07",
+    "updated": "2026-08-07",
+    "sha256": "12d65413cc3c40dd64980ea48160016ba3a2fdb5f1cd3f009501c83a37b2677a",
+    "taken": "2026-10-08"
+  },
+  "KB0023965": {
+    "title": "Research Technologies services",
+    "version": "5.0",
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "sha256": "47e2f0a457f8b28abd15f9f684b71067c3f336a87f381ec3eb2f99abe90c737a",
+    "taken": "2026-10-08"
+  },
+  "KB0023985": {
+    "title": "About Quartz at IU",
+    "version": "3.0",
+    "published": "2026-08-14",
+    "updated": "2026-08-14",
+    "sha256": "e2113bb01a967eeab0773f33cf02f36eead46abd14c2ddab38e62234dfc58e5d",
+    "taken": "2026-10-08"
+  },
+  "KB0024053": {
+    "title": "Check your home directory quota on the IU research supercomputers",
+    "version": "4.0",
+    "published": "2026-10-05",
+    "updated": "2026-10-05",
+    "sha256": "49596aa9f4c858347f524bba05bfbdcd48bb2271022b58876dda1d2ec97499f1",
+    "taken": "2026-10-08"
+  },
+  "KB0024086": {
+    "title": "About the IU HPC and AI User Community Slack",
+    "version": "4.0",
+    "published": "2026-08-06",
+    "updated": "2026-08-06",
+    "sha256": "7ba88c6bab81f74a10352145ed69ff2d80793611d3e0d81e32e5be54a3edee13",
+    "taken": "2026-10-08"
+  },
+  "KB0024132": {
+    "title": "Use RT Projects to request and manage access to specialized Research Technologies resources",
+    "version": "19.0",
+    "published": "2026-06-25",
+    "updated": "2026-06-25",
+    "sha256": "cf019d436ed2121c4fddd0c75038cf8e2c2e858ddfe1f83d25f1c34132f39bde",
+    "taken": "2026-10-08"
+  },
+  "KB0024193": {
+    "title": "About Secure Share",
+    "version": "2.0",
+    "published": "2026-09-08",
+    "updated": "2026-09-08",
+    "sha256": "ea4d5209d04652084d1ca87e24918708b295e70d912a28f400957a361948f60c",
+    "taken": "2026-10-08"
+  },
+  "KB0024359": {
+    "title": "Share access to your Geode-Project space with other IU research supercomputer users",
+    "version": "2.0",
+    "published": "2026-06-15",
+    "updated": "2026-06-15",
+    "sha256": "4496a85fc05550ff5a7d8e9face8aba6548c63e3398b1edd31427818c7939514",
+    "taken": "2026-10-08"
+  },
+  "KB0024366": {
+    "title": "About accidentally deleted SDA files",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "86c9d1a657e0fddc46c5dbb7f77f8d7038b3c73384623582fae4397d6a739e77",
+    "taken": "2026-10-08"
+  },
+  "KB0024368": {
+    "title": "Access the SDA at IU",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "dd20e8219a2d6f3bdb2c18fd6b25a20ce1ee9a52b31135cb41e8da688b2a216d",
+    "taken": "2026-10-08"
+  },
+  "KB0024387": {
+    "title": "Use keytabs to automate authentication of scripts accessing the IU SDA",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "bab516315c273432fbc94053222c0120f63cf1681f2ff0a4e577f3891d17e76e",
+    "taken": "2026-10-08"
+  },
+  "KB0024406": {
+    "title": "About the Scholarly Data Archive (SDA) at Indiana University",
+    "version": "4.0",
+    "published": "2026-07-21",
+    "updated": "2026-07-21",
+    "sha256": "a35a9479c57a57297bbc818abf116600a9edeaf355203b16d66b81b23dd16335",
+    "taken": "2026-10-08"
+  },
+  "KB0024420": {
+    "title": "About Jetstream2",
+    "version": "2.0",
+    "published": "2026-10-06",
+    "updated": "2026-10-06",
+    "sha256": "7f456f3cfa7a6112b01b0bbcd59f7b0847080b0755cdb8c8741df6f4792868c4",
+    "taken": "2026-10-08"
+  },
+  "KB0024479": {
+    "title": "Install R packages in your home directory on the IU research supercomputers",
+    "version": "4.0",
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "sha256": "3d197527091e50dae443d230ffc5e9122b457544b1c28d720e9cb87fd8888026",
+    "taken": "2026-10-08"
+  },
+  "KB0024539": {
+    "title": "Use Python on IU research supercomputers",
+    "version": "6.0",
+    "published": "2026-08-06",
+    "updated": "2026-08-06",
+    "sha256": "a934dcc127140fa6b35e3caa561d0035ebfdaeb29acb3aebce298ebd2f0fa409",
+    "taken": "2026-10-08"
+  },
+  "KB0024565": {
+    "title": "Get started with Two-Step Login (Duo) at IU",
+    "version": "2.0",
+    "published": "2026-06-17",
+    "updated": "2026-06-17",
+    "sha256": "73789b603da8e9328b9144bc859f6f3737f493126a5d7d315ee3256c3ee7db5a",
+    "taken": "2026-10-08"
+  },
+  "KB0024639": {
+    "title": "Eligibility for IU computing accounts at the School of Medicine",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "a4d16ed8a60c61d6659b65a40f41153cdca85acf05b2a75d15d619341aa40965",
+    "taken": "2026-10-08"
+  },
+  "KB0024661": {
+    "title": "Research computing services at IU",
+    "version": "3.0",
+    "published": "2025-02-20",
+    "updated": "2025-11-14",
+    "sha256": "9b536bcbe2eb9c6f379a8bc76b91d3dba186eab7881cfa14c29c5a840b9147da",
+    "taken": "2026-10-08"
+  },
+  "KB0024668": {
+    "title": "Sources of funding to acknowledge in published work if you use IU's research cyberinfrastructure",
+    "version": "3.0",
+    "published": "2026-10-02",
+    "updated": "2026-10-02",
+    "sha256": "3e02408dcb4f0039707a67cac1bd401ec90c8a86a193c7dbb007c2596f17fa06",
+    "taken": "2026-10-08"
+  },
+  "KB0024722": {
+    "title": "About archived content in the IU Knowledge Base",
+    "version": "3.0",
+    "published": "2025-09-10",
+    "updated": "2025-11-14",
+    "sha256": "f8a86968b22c5c45f82df8371d08a51dced7781df0968b02b0fcdd1929c85582",
+    "taken": "2026-10-08"
+  },
+  "KB0024956": {
+    "title": "Use a keytab",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "0455489b2fa9b1598a0e032b1f0acba8cf3d1b047c40328b4bcc82d65656c26b",
+    "taken": "2026-10-08"
+  },
+  "KB0024967": {
+    "title": "Request a project space allocation on Geode-Project",
+    "version": "4.0",
+    "published": "2026-07-27",
+    "updated": "2026-07-27",
+    "sha256": "0c724ff04eb3fed1dd1c290288c0522ec735777a4f419ae2f109a815c900d294",
+    "taken": "2026-10-08"
+  },
+  "KB0024976": {
+    "title": "Use classes of service on the Scholarly Data Archive at IU",
+    "version": "3.0",
+    "published": "2024-11-06",
+    "updated": "2025-11-14",
+    "sha256": "eb75d813b9bcc0cb8a44f6c497253af7c801a67d71156061650b6c6a70c34fa9",
+    "taken": "2026-10-08"
+  },
+  "KB0024997": {
+    "title": "If you can't connect to the SDA at IU",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "3643024ea2de9887b5e18d6b6a07d7c3774ccccb1ff1d230e5cd773f03484b86",
+    "taken": "2026-10-08"
+  },
+  "KB0025016": {
+    "title": "IU account types and eligibility",
+    "version": "15.0",
+    "published": "2026-10-02",
+    "updated": "2026-10-02",
+    "sha256": "c8973429700385cbefddd8c5d59efff21d7e34eb1ffed32caa0d807dbb4f2f7a",
+    "taken": "2026-10-08"
+  },
+  "KB0025028": {
+    "title": "About home directory space on IU research supercomputers",
+    "version": "4.0",
+    "published": "2026-06-15",
+    "updated": "2026-06-15",
+    "sha256": "a1fca686bd924b3397688d5716204df5c54ea15d8d0261188ba6488a40e9cf7f",
+    "taken": "2026-10-08"
+  },
+  "KB0025030": {
+    "title": "If you're unable to move a file to the SDA using HSI",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "5b52836114c646fe62cf09a4972d4aed20ffd88e3ff1f80877a3294d9bfd2ae9",
+    "taken": "2026-10-08"
+  },
+  "KB0025040": {
+    "title": "Hostnames of IU research supercomputers",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "d68f8d0894a829629031b1f70f7130442193f2d17a52cb733b3235ab7e2110e8",
+    "taken": "2026-10-08"
+  },
+  "KB0025090": {
+    "title": "Map or mount a drive to your Geode-Project space",
+    "version": "3.0",
+    "published": "2026-06-15",
+    "updated": "2026-06-15",
+    "sha256": "c3a8362f832d15104ad9cedbfe6bcec9750d58ea2e461771a0075d9be4f91f85",
+    "taken": "2026-10-08"
+  },
+  "KB0025214": {
+    "title": "Use Apptainer on Quartz or Big Red 200 at IU",
+    "version": "5.0",
+    "published": "2025-07-07",
+    "updated": "2025-11-14",
+    "sha256": "d128abd7673fdcbaf16be7f47261ec8e7aa6d9f07c36091b5df412e9dadef05b",
+    "taken": "2026-10-08"
+  },
+  "KB0025217": {
+    "title": "Use virtualenv to customize Python",
+    "version": "5.0",
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "sha256": "986a77c1d6b0ddb0669b085fbb25527936f2a7dcc8663297e187728b9adc22db",
+    "taken": "2026-10-08"
+  },
+  "KB0025237": {
+    "title": "Best uses for an IU SDA account",
+    "version": "3.0",
+    "published": "2026-08-19",
+    "updated": "2026-08-19",
+    "sha256": "453218292a46207519576e4989704ad8a6ffcf635e21d6edeb7e9bc342ea5b67",
+    "taken": "2026-10-08"
+  },
+  "KB0025317": {
+    "title": "Slate-Scratch high performance file system: Terms of service",
+    "version": "2.0",
+    "published": "2025-07-10",
+    "updated": "2025-11-14",
+    "sha256": "0c33a17e004f34bc35c880e5a7b59e37c14a0c0b008c9938ac0d133072745a9a",
+    "taken": "2026-10-08"
+  },
+  "KB0025362": {
+    "title": "About SecureMyResearch",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "3bdb8dc56409c654af29b34791fdd0e0299ae9ec55a4c5606bbcc459b33cd31a",
+    "taken": "2026-10-08"
+  },
+  "KB0025370": {
+    "title": "About Posit Connect at IU",
+    "version": "3.0",
+    "published": "2026-05-26",
+    "updated": "2026-05-26",
+    "sha256": "a76f5f65809e5542ddb93b8d9d62428587be6d344513cf94a3ca8afe343bdebb",
+    "taken": "2026-10-08"
+  },
+  "KB0025397": {
+    "title": "Access Google at IU My Drive from Research Desktop (RED)",
+    "version": "2.0",
+    "published": "2025-02-14",
+    "updated": "2025-11-14",
+    "sha256": "e2419ce04be3263d2a8e3ec41d76de9bfff0c6956926f4b89be4888da5cd481a",
+    "taken": "2026-10-08"
+  },
+  "KB0025500": {
+    "title": "About the Slate-Scratch high performance file system for research computation at IU",
+    "version": "3.0",
+    "published": "2025-07-10",
+    "updated": "2025-11-14",
+    "sha256": "956d9a8232d364e1f28333cc176bcbdbf9931a2774fa6e3166789cc508a7dcc1",
+    "taken": "2026-10-08"
+  },
+  "KB0025535": {
+    "title": "Use the IU Globus Web App to transfer data to and from your accounts on IU's research computing and storage systems",
+    "version": "15.0",
+    "published": "2026-08-20",
+    "updated": "2026-08-20",
+    "sha256": "1ee036d51092fe16cb2119708b9090f464db866cdd5862501ee7c5501ae7aa3a",
+    "taken": "2026-10-08"
+  },
+  "KB0025574": {
+    "title": "Questions you'll need to answer when requesting research computing accounts",
+    "version": "3.0",
+    "published": "2026-10-02",
+    "updated": "2026-10-02",
+    "sha256": "2a2c9534113711aac227cb29bbef4c92ef39042d0d352104a29506b3eb6849da",
+    "taken": "2026-10-08"
+  },
+  "KB0025604": {
+    "title": "About RT Projects at IU",
+    "version": "9.0",
+    "published": "2026-03-11",
+    "updated": "2026-03-11",
+    "sha256": "be14f328a03977bd605a27f87a8266ac21cdfdcfa40dc2203e454f0b5dba5ad0",
+    "taken": "2026-10-08"
+  },
+  "KB0025672": {
+    "title": "Use Jupyter Notebook on Quartz",
+    "version": "8.0",
+    "published": "2026-08-17",
+    "updated": "2026-08-17",
+    "sha256": "73b4785b8c520402016ed7aa46b8197a8d5fab1a6ba02fabbc9f10a8cfd2eb06",
+    "taken": "2026-10-08"
+  },
+  "KB0025689": {
+    "title": "Map or mount a Slate file system on your personal workstation",
+    "version": "3.0",
+    "published": "2026-04-17",
+    "updated": "2026-04-17",
+    "sha256": "09224d5fbee31a14c9ccbe11e1618b67050cc8870401839cdfe203cedba4a13c",
+    "taken": "2026-10-08"
+  },
+  "KB0025747": {
+    "title": "Types of sensitive institutional data appropriate for UITS Research Technologies services",
+    "version": "6.0",
+    "published": "2026-10-02",
+    "updated": "2026-10-02",
+    "sha256": "aae2691195de8d6f2d7609b9cbedff3ac66184d30f7d3b2361d91299c1351f99",
+    "taken": "2026-10-08"
+  },
+  "KB0025838": {
+    "title": "Archive directories of many small files to the SDA",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "a0d0c7413d74e8b682db30a65ddf0e90b6f39c2008f5e1c19471cb82b4d44dec",
+    "taken": "2026-10-08"
+  },
+  "KB0025948": {
+    "title": "Get started on IU research HPC and storage systems",
+    "version": "2.0",
+    "published": "2025-02-14",
+    "updated": "2025-11-14",
+    "sha256": "997432e711cf3f6f396a192abd3b249f3efe7a733cca4417754c746800e0fd5c",
+    "taken": "2026-10-08"
+  },
+  "KB0025963": {
+    "title": "Use ACLs to provide additional access to Slate-Project files and directories",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "2f4b018ba23541889f516c6781725b53faec5edf10c50c4c76a25d791c27b1f0",
+    "taken": "2026-10-08"
+  },
+  "KB0026076": {
+    "title": "Check storage space on your SDA account",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2025-11-14",
+    "sha256": "dcf36d5ee1737131ae0da813c05f00338bd18a9a1a92b6dd3c077daf55f47602",
+    "taken": "2026-10-08"
+  },
+  "KB0026290": {
+    "title": "Recover deleted or corrupt files from your home directory or Geode-Project space on the IU research supercomputers",
+    "version": "2.0",
+    "published": "2025-07-11",
+    "updated": "2025-11-14",
+    "sha256": "5b9da59adebe1b63af4d7c20096bc160196ca1efdc356e235eb919abfd147869",
+    "taken": "2026-10-08"
+  },
+  "KB0026317": {
+    "title": "About Big Red 200 at IU",
+    "version": "2.0",
+    "published": "2025-01-08",
+    "updated": "2025-11-14",
+    "sha256": "11b04909800020c4153485fc398d32eb8804b9c308fd905aef366ea9a1fc759f",
+    "taken": "2026-10-08"
+  },
+  "KB0026422": {
+    "title": "Use Linaro Forge to profile resource utilization and debug  your programs on IU research computers",
+    "version": "8.0",
+    "published": "2025-02-14",
+    "updated": "2025-11-14",
+    "sha256": "75c7efb1aa41b9de67eab17505d50a2eb1999c97a8823027d631412001f3ae0c",
+    "taken": "2026-10-08"
+  },
+  "KB0026500": {
+    "title": "Share Geode-Project or Slate-Project data with non-IU collaborators",
+    "version": "14.0",
+    "published": "2026-08-19",
+    "updated": "2026-08-19",
+    "sha256": "353e8ae0bad4be435d9f2395daa95ff6186164cd5be6e07eed16019e31415cc8",
+    "taken": "2026-10-08"
+  },
+  "KB0026504": {
+    "title": "Deal with external dependencies when receiving errors installing R packages on IU's research supercomputers",
+    "version": "6.0",
+    "published": "2026-08-21",
+    "updated": "2026-08-21",
+    "sha256": "5938cce1fac5844c6b8e0c0339192cf938a58c0f93cda9fc3c0107f464225365",
+    "taken": "2026-10-08"
+  },
+  "KB0026507": {
+    "title": "Generative AI tools at IU",
+    "version": "30.0",
+    "published": "2026-09-23",
+    "updated": "2026-09-23",
+    "sha256": "fb5ff514357214877272a6fd80b4d1761a3c3fb6d5883ed6c02ceddd2cf37cfc",
+    "taken": "2026-10-08"
+  },
+  "KB0026530": {
+    "title": "Access large language models with the HPC LLM platform on IU's research supercomputers",
+    "version": "12.0",
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "sha256": "8ef715f46873691ea8d640af366bbec497386289749bebf8afb1fefd2562618b",
+    "taken": "2026-10-08"
+  },
+  "KB0026671": {
+    "title": "About Research and Academic LLM Services (REALLMS) at IU",
+    "version": "18.0",
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "sha256": "a2c9d9730da49a1da8b7f4ae7fd317c40e59b02d9903e472181955fbdd03ef80",
+    "taken": "2026-10-08"
+  },
+  "KB0026672": {
+    "title": "Manage your Slate-Project allocations within your RT Project",
+    "version": "5.0",
+    "published": "2025-05-23",
+    "updated": "2025-11-14",
+    "sha256": "9dbaa56cbdbeb48edc6e357b65ac5a74ca7fa9a08e445a53a8f656a17f45e248",
+    "taken": "2026-10-08"
+  },
+  "KB0026680": {
+    "title": "Manage your Geode-Project allocation within your RT Project",
+    "version": "4.0",
+    "published": "2025-05-28",
+    "updated": "2025-11-14",
+    "sha256": "9aedda26d5d463fd2aa97ed29afca4a3cb30f78ead7494247da4e687984a1460",
+    "taken": "2026-10-08"
+  },
+  "KB0026817": {
+    "title": "Acceptable use of AI tools with IU research data",
+    "version": "11.0",
+    "published": "2026-09-23",
+    "updated": "2026-09-23",
+    "sha256": "41f2cd5864cc3babfd538ec9a39d35ce5a4a24a4ae49824aabfc2bfbc6fe50f8",
+    "taken": "2026-10-08"
+  },
+  "KB0027272": {
+    "title": "About the Research and Academic LLM Services (REALLMS) API at IU",
+    "version": "12.0",
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "sha256": "f6955220457ea5c57bce46f38faa46bebbf7f7c1fe63936c1ecd13c47e99e387",
+    "taken": "2026-10-08"
+  },
+  "KB0027284": {
+    "title": "About the Research and Academic LLM Services (REALLMS) Chat at IU",
+    "version": "7.0",
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "sha256": "81d20b5b34477e8e2f82b23f3a7a285c96339c5f64e526ded91c184678948ac0",
+    "taken": "2026-10-08"
+  },
+  "KB0027412": {
+    "title": "Research and Academic LLM Services (REALLMS): Terms of service",
+    "version": "2.0",
+    "published": "2026-05-28",
+    "updated": "2026-05-28",
+    "sha256": "ccf8166b41fb914d514c11337bceeec8f0206d7a4ab535361eb241286f5795ba",
+    "taken": "2026-10-08"
+  },
+  "KB0027470": {
+    "title": "Use HPC LLM utilities to run large language models on IU's research supercomputers",
+    "version": "4.0",
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "sha256": "fc92ee17eb4a45429f3c3349dd98ba1c4055679d4d299484cf45bd72bd461bce",
+    "taken": "2026-10-08"
+  },
+  "KB0027473": {
+    "title": "Common LLM workflows on IU's research supercomputers",
+    "version": "2.0",
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "sha256": "141ff6075d5babbaf13552d932b9eb91f2ac861ecb4f548a728d066d31118cfc",
+    "taken": "2026-10-08"
+  }
+}
