@@ -26,6 +26,17 @@ Every KB article named here was re-read on 2026-10-03. That includes
 KB0023515 and KB0025747, which were republished on 2026-10-02. Neither
 change settles an item below.
 
+KB0024420 was republished on 2026-10-06 and re-read on 2026-10-07. It now
+names NAIRR Pilot allocations as a route to Jetstream2. That settles the
+Jetstream2 support question. It still describes Jetstream2 as a gateway
+back end, so the HPS question on authentication stands.
+
+### Settled on 2026-10-07
+
+| Item | Settled by | Skill |
+| --- | --- | --- |
+| Whether ACCESS is the only route to a Jetstream2 allocation | KB0024420, version 2.0: ACCESS or NAIRR Pilot allocations | `jetstream2` |
+
 ### Settled on 2026-10-03
 
 These are recorded in their skills and dropped from this file.
@@ -43,7 +54,7 @@ These are recorded in their skills and dropped from this file.
 
 ## Summary
 
-The skills carry 43 open-item mentions. They reduce to 36 distinct questions,
+The skills carry 42 open-item mentions. They reduce to 35 distinct questions,
 because several skills repeat the same question.
 
 | Category | Questions |
@@ -57,7 +68,6 @@ because several skills repeat the same question.
 | Research Storage | 6 |
 | Research Databases (ResDB) | 1 |
 | SecureMyResearch | 5 |
-| IU Jetstream2 support | 1 |
 | KB team | 2 |
 
 ## Questions for the owning teams
@@ -333,24 +343,6 @@ disagree. Your answers will be cited with this ticket number.
 5. Does a 1024-bit GPG key still meet IU standards? From
    `storing-and-moving-research-data/SKILL.md`. KB0023296 says "Enter 1024"
    at the keysize prompt, using GnuPG 2.0.14.
-
-Thank you for your help.
-
-### IU Jetstream2 support
-
-Contact: `https://jetstream-cloud.org/contact/index.html`
-
-**Subject:** Documentation question: routes to a Jetstream2 allocation
-
-Hello Jetstream2 support,
-
-We maintain open documentation that helps IU researchers plan Jetstream2
-use.
-
-1. Is ACCESS the only route to a Jetstream2 allocation for IU researchers?
-   From `jetstream2/SKILL.md`. KB0024420 says "Access to Jetstream2 is
-   available only through" ACCESS allocations. The Jetstream2 documentation
-   also describes allocations through NAIRR.
 
 Thank you for your help.
 
