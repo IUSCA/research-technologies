@@ -1,12 +1,12 @@
 ---
 name: requesting-accounts-and-allocations
-description: Get access to IU research computing - personal accounts on Quartz, Big Red 200, Slate, and the Scholarly Data Archive; RT Projects projects and their compute allocations and Slurm Account Names; Slate-Project and Geode-Project storage; group accounts; and Jetstream2 through ACCESS. Covers eligibility, PI and sponsor rules, what the forms ask (including PHI), renewal deadlines, and stated turnaround. Use when someone needs access to an IU research system, is adding lab members, or is planning storage for a project.
+description: Get access to IU research computing - personal accounts on Quartz, Big Red 200, Slate, and the Scholarly Data Archive; RT Projects projects and their compute allocations and Slurm Account Names; Slate-Project and Geode-Project storage; group accounts; and Jetstream2 through ACCESS or the NAIRR Pilot. Covers eligibility, PI and sponsor rules, what the forms ask (including PHI), renewal deadlines, and stated turnaround. Use when someone needs access to an IU research system, is adding lab members, or is planning storage for a project.
 ---
 
 # Requesting accounts and allocations at IU
 
-Verified 2026-10-03 (KB0025574 and KB0025016 only) against the IU Knowledge
-Base (KB). Other sources were verified 2026-10-01. Each claim names its KB
+Verified 2026-10-07 (KB0024420, KB0025016, and KB0025574 only) against the IU
+Knowledge Base (KB). Other sources were verified 2026-10-01. Each claim names its KB
 article; links are in Sources at the end.
 
 Access has two layers. A personal account lets you log in. An RT Projects
@@ -192,8 +192,8 @@ Start early, keep the number of group accounts small, and follow this order:
 
 ## Jetstream2
 
-Jetstream2 is not in RT Projects. It needs an ACCESS allocation
-(KB0024420). See the `jetstream2` skill.
+Jetstream2 is not in RT Projects. It needs an ACCESS or NAIRR Pilot
+allocation (KB0024420). See the `jetstream2` skill.
 
 ## PHI prerequisites
 
@@ -211,8 +211,8 @@ with a citation that settles it.
 
 ## Sources
 
-All IU KB articles, read 2026-10-01. KB0025016 and KB0025574 re-read
-2026-10-03. URL form:
+All IU KB articles, read 2026-10-01. KB0024420, KB0025016, and KB0025574
+re-read 2026-10-07. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022423](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022423) Slate-Project high performance storage system: Terms of service
