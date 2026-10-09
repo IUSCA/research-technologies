@@ -65,7 +65,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKILLS = ROOT / ".agents" / "skills"
@@ -343,7 +343,8 @@ def load_kb_snapshot():
 
 
 def linked_kb(skill_dir):
-    """KB numbers a skill links to. An article KB search cannot find is named
+    """KB numbers a skill links to. KB search runs without logging in, so a
+    hit means the article is public. An article it cannot find is named
     without a link, with the date it went missing, so it is not checked."""
     cited = set()
     for md in skill_dir.rglob("*.md"):
@@ -363,7 +364,7 @@ def check_kb(skill_dir, cache, snapshot):
             cache[number] = kb_lookup(number)
         row = cache[number]
         if row is None:
-            problems.append(("STALE", f"{number} not found by KB search; retired or renumbered?"))
+            problems.append(("STALE", f"{number} not found by KB search without logging in; retired, renumbered, or login-only?"))
             continue
         if not dates:
             continue

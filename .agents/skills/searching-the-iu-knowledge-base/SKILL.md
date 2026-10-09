@@ -19,6 +19,10 @@ of an article page returns an empty shell. **Observed 2026-10-01:** old
 [scripts/iukb.py](scripts/iukb.py) uses the ServiceNow Knowledge API instead.
 That API answers anonymous requests. The script needs only Python 3.
 
+Because the script does not log in, any article it returns is public. If
+it cannot find an article that a logged-in browser shows, the article is
+login-only. Do not quote or summarize it in anything shared.
+
 ```bash
 scripts/iukb.py search Quartz GPU    # KB number, published date, title
 scripts/iukb.py read KB0024722       # article text, links in brackets
