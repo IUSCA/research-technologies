@@ -33,11 +33,11 @@
   },
   "KB0022439": {
     "title": "Available access to allocated and short-term storage capacity on IU's research systems",
-    "version": "10.0",
-    "published": "2026-07-16",
-    "updated": "2026-07-16",
-    "sha256": "3b69eb8b97dcd1d027514792166605ddc22cec2dff35084adad656cc2e0a3845",
-    "taken": "2026-10-08"
+    "version": "11.0",
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "sha256": "9b2ee840f99b5a2f0e29b203dd1becb5f427f0b97e7f72ddd41bfc92dc12405c",
+    "taken": "2026-10-22"
   },
   "KB0022463": {
     "title": "Use HSI to access your SDA account at IU",
@@ -225,11 +225,11 @@
   },
   "KB0023373": {
     "title": "Geode-Project: Terms of service",
-    "version": "4.0",
-    "published": "2026-06-15",
-    "updated": "2026-06-15",
-    "sha256": "6bf0467f29cd04d0195565b4383f222d59a4c861bb3851aaf53cc03a700dce50",
-    "taken": "2026-10-08"
+    "version": "5.0",
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "sha256": "c3036bd90512ffc339b3a21fdd23281d0b41519eb78bdd13432e40b7aa06b661",
+    "taken": "2026-10-22"
   },
   "KB0023379": {
     "title": "Geode home directory file system: Terms of service",
@@ -345,11 +345,11 @@
   },
   "KB0023985": {
     "title": "About Quartz at IU",
-    "version": "3.0",
-    "published": "2026-08-14",
-    "updated": "2026-08-14",
-    "sha256": "e2113bb01a967eeab0773f33cf02f36eead46abd14c2ddab38e62234dfc58e5d",
-    "taken": "2026-10-08"
+    "version": "4.0",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "sha256": "5c178fb4d3d9f17be520ef474bb187d6d4966fb90cc64814575b49a895ab1c97",
+    "taken": "2026-10-22"
   },
   "KB0024053": {
     "title": "Check your home directory quota on the IU research supercomputers",
@@ -417,11 +417,11 @@
   },
   "KB0024406": {
     "title": "About the Scholarly Data Archive (SDA) at Indiana University",
-    "version": "4.0",
-    "published": "2026-07-21",
-    "updated": "2026-07-21",
-    "sha256": "a35a9479c57a57297bbc818abf116600a9edeaf355203b16d66b81b23dd16335",
-    "taken": "2026-10-08"
+    "version": "5.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "sha256": "6018a0b1db51f1aaa7878b6c211f83fd64f523887c1d2af8dd757a21dc649b90",
+    "taken": "2026-10-22"
   },
   "KB0024420": {
     "title": "About Jetstream2",
@@ -497,11 +497,11 @@
   },
   "KB0024967": {
     "title": "Request a project space allocation on Geode-Project",
-    "version": "4.0",
-    "published": "2026-07-27",
-    "updated": "2026-07-27",
-    "sha256": "0c724ff04eb3fed1dd1c290288c0522ec735777a4f419ae2f109a815c900d294",
-    "taken": "2026-10-08"
+    "version": "5.0",
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "sha256": "03fdbf50690f0d4aed13ab5fe4eba6a8dac7b9e80cea067ba9b8c7a96b9388f6",
+    "taken": "2026-10-22"
   },
   "KB0024976": {
     "title": "Use classes of service on the Scholarly Data Archive at IU",
@@ -529,11 +529,11 @@
   },
   "KB0025028": {
     "title": "About home directory space on IU research supercomputers",
-    "version": "4.0",
-    "published": "2026-06-15",
-    "updated": "2026-06-15",
-    "sha256": "a1fca686bd924b3397688d5716204df5c54ea15d8d0261188ba6488a40e9cf7f",
-    "taken": "2026-10-08"
+    "version": "5.0",
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "sha256": "096bbdc6cef6b3a97bf9acc2ec5bdc313300f14774db1e56210acfd35aa45178",
+    "taken": "2026-10-22"
   },
   "KB0025030": {
     "title": "If you're unable to move a file to the SDA using HSI",
