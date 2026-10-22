@@ -127,8 +127,11 @@ renamed `gpu` to `v100` and `hopper` to `h100-multi` on 2026-08-09. Jobs that
 use the old names are rejected (KB0022436).
 
 KB0023985 says Quartz has 90 GPU nodes with 256 H100 and 96 V100 GPUs.
-KB0022436's partition table sums to 86 nodes. The system settles counts like
-this. Run `describe-cluster.sh` from the
+KB0022436's partition table sums to 86 nodes. **Observed 2026-10-22** on
+Quartz with `describe-cluster.sh`: 90 GPU nodes, 66 with 264 H100 GPUs and 24
+with 96 V100 GPUs. The extra nodes are in `h100-debug` and
+`h100-interactive`. KB0023985's H100 count lags. The system settles counts
+like this. Run `describe-cluster.sh` from the
 `submitting-hpc-jobs` skill, and trust its output over either article.
 
 ### Research Desktop (RED)
