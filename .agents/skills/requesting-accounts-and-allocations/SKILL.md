@@ -70,8 +70,11 @@ unused for six months are disabled (KB0022486).
 ## RT Projects
 
 RT Projects is the portal for allocations on Quartz, Big Red 200,
-Slate-Project, Posit Connect, Geode-Project, and the REALLMS API
+Slate-Project, Posit Connect, Geode-Project, the REALLMS API, and ResDB
 (KB0024132, KB0025604). It runs on ColdFront (KB0025604).
+
+A ResDB database account is requested as a ResDB allocation in an RT
+Project (KB0022767). Its owner must be a group account (KB0022767).
 
 ### Who can be PI
 
@@ -134,8 +137,7 @@ KB0022423 state it as "120 TiB".
 
 ### Geode-Project
 
-Geode-Project needs a memo of understanding (MOU) with Research Technologies
-(KB0024967, KB0022439). The steps are (KB0024967):
+The steps are (KB0024967):
 
 1. Request a Geode-Project allocation in RT Projects.
 2. Consult a Research Storage administrator about use, quota, access, and
@@ -143,8 +145,7 @@ Geode-Project needs a memo of understanding (MOU) with Research Technologies
 3. Create ADS security groups that your department manages.
 4. Assign roles and set up subdirectories and permissions.
 
-Capacity depends on the MOU (KB0022439). The KB lists Geode-Project under
-fee-based storage.
+The default is up to 10 TB (KB0022439), with no fee (KB0023604).
 
 ### SDA
 
@@ -222,8 +223,10 @@ re-read 2026-10-07. URL form:
 - [KB0022645](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022645) About group and departmental accounts
 - [KB0022647](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022647) Get additional IU computing accounts
 - [KB0022656](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022656) Computing accounts at IU
+- [KB0022767](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022767) About the Research Databases (ResDB) service at Indiana University
 - [KB0023298](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023298) Use Slurm to submit and manage jobs on IU's research computing systems
 - [KB0023407](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023407) Your legal responsibilities for protecting data containing PHI when using UITS Research Technologies systems and services
+- [KB0023604](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023604) About dedicated file storage services and IT services with storage components appropriate for sensitive institutional data, including research data containing protected health information
 - [KB0024132](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024132) Use RT Projects to request and manage access to specialized Research Technologies resources
 - [KB0024406](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024406) About the Scholarly Data Archive (SDA) at Indiana University
 - [KB0024420](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024420) About Jetstream2

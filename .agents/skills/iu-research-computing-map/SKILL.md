@@ -126,8 +126,9 @@ A job in `h100-single` gets at most one quarter of a node (KB0022436). Quartz
 renamed `gpu` to `v100` and `hopper` to `h100-multi` on 2026-08-09. Jobs that
 use the old names are rejected (KB0022436).
 
-KB0023985 says Quartz has 88 GPU nodes, but KB0022436's partition table sums
-to 86. The system settles counts like this. Run `describe-cluster.sh` from the
+KB0023985 says Quartz has 90 GPU nodes with 256 H100 and 96 V100 GPUs.
+KB0022436's partition table sums to 86 nodes. The system settles counts like
+this. Run `describe-cluster.sh` from the
 `submitting-hpc-jobs` skill, and trust its output over either article.
 
 ### Research Desktop (RED)
@@ -167,7 +168,7 @@ quotas with `quota` on a login node rather than trusting a size here.
 | Slate-Project | `/N/project/<project>` | Up to 120 TiB without fee (KB0022586) | None (KB0022439) | 180 days after an incomplete annual review; class allocations 30 days after expiry (KB0022423) |
 | Slate-Scratch | `/N/scratch/<user>` | Up to 100 TiB (KB0025317) | None (KB0022439) | Files unaccessed for 30 days; oldest first when the system passes 80% full (KB0025317) |
 | Quartz local scratch | `/tmp` on a node | 1.7 TB (KB0022439) | None | Files older than 10 days (KB0022439) |
-| Geode-Project | Mounted on clusters and campus | Set by agreement (KB0022439) | Not backed up; replicated to two data centers, with daily snapshots (KB0023373) | 180 days after the account is disabled (KB0023373) |
+| Geode-Project | Mounted on clusters and campus | Up to 10 TB (KB0022439) | Not backed up; daily snapshots kept 30 days (KB0023373, KB0024967) | 180 days after the account is disabled (KB0023373) |
 | SDA | HSI, HTAR, SFTP, Globus | 50 TB (KB0024406) | Two tape copies at two sites (KB0024406) | Never while the owner's account is valid (KB0024406). Deletions are permanent (KB0024366). |
 
 Points that change a design:

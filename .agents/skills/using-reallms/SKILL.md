@@ -102,13 +102,14 @@ documented default models were withdrawn in September 2026. The KB promises
 30 days' notice before a model is removed (KB0027412). It promises three
 months for the one model labeled long-term supported (KB0027412).
 
-KB0027272 listed these chat and completion models on 2026-10-01:
-`gemma-4-31B-it`, `glm-5.2`, `gpt-oss-120b`, `granite-docling-258m`, and
-`Qwen3-Coder-Next`. Treat that as a hint only.
+KB0027272 listed these chat and completion models on 2026-10-22:
+`gemma-4-31B-it`, `gpt-oss-120b`, `granite-docling-258m`, and `qwen3.8-27b`.
+Treat that as a hint only.
 
-**Observed 2026-10-01 with `scripts/reallms_models.py`:** `/models` listed
-those five plus `Qwen3-ASR-1.7B`, `Qwen3-Embedding-8B`, `Qwen3-Reranker-8B`,
-`embeddinggemma-300m`, `whisper`, and `z-image-turbo`. `gpt-oss-120b`
+**Observed 2026-10-22 with `scripts/reallms_models.py`:** `/models` listed
+those four plus `Qwen3-ASR-1.7B`, `Qwen3-Embedding-8B`, `Qwen3-Reranker-8B`,
+`embeddinggemma-300m`, `whisper`, and `z-image-turbo`. `glm-5.2` and
+`Qwen3-Coder-Next`, listed on 2026-10-01, were gone. `gpt-oss-120b`
 answered a real completion.
 
 Before pinning a model in code or a config:
