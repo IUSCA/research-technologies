@@ -281,8 +281,8 @@ data. These KB articles disagree, and we would like to cite your answer.
    `storing-and-moving-research-data/SKILL.md`. KB0022439 says "A maximum
    file limit of 25,000 files is enforced for new accounts." KB0024406,
    KB0025237, and KB0023604 say it "begins at 5,000 files but may be
-   increased to 25,000 files upon request." Can a user see their own file
-   limit from HSI?
+   increased to 25,000 files upon request." Observed 2026-10-22 on Quartz:
+   `quota` shows each account's own SDA file limit.
 2. Which HSI and HTAR clients are offered for workstations? From
    `storing-and-moving-research-data/SKILL.md`. KB0022463 offers version 10.3
    for "64-bit Linux distributions only." KB0023281 offers bundles "for Red

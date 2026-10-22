@@ -322,8 +322,10 @@ More PHI rules for storage and transfer:
 
 - **SDA file count.** KB0022439 says "A maximum file limit of 25,000 files
   is enforced for new accounts." KB0024406, KB0025237, and KB0023604 say new
-  accounts "begin at 5,000 files but may be increased to 25,000." Check with
-  `du -ka` in HSI.
+  accounts "begin at 5,000 files but may be increased to 25,000." **Observed
+  2026-10-22** on Quartz: `quota` prints the account's own SDA file limit on
+  its `sda files` line. Check yours there, and the count with `du -ka` in
+  HSI.
 - **Slate-Project free limit units.** KB0022439 says "Up to 120 TB."
   KB0022586 and KB0022423 say "120 TiB."
 - **Slate-Project owner.** KB0022586 says faculty or staff. KB0022423 also
