@@ -793,19 +793,19 @@
   },
   "KB0027272": {
     "title": "About the Research and Academic LLM Services (REALLMS) API at IU",
-    "version": "12.0",
-    "published": "2026-09-29",
-    "updated": "2026-09-29",
-    "sha256": "f6955220457ea5c57bce46f38faa46bebbf7f7c1fe63936c1ecd13c47e99e387",
-    "taken": "2026-10-08"
+    "version": "13.0",
+    "published": "2026-10-21",
+    "updated": "2026-10-21",
+    "sha256": "41648dc3db70816321ed12b21334921366e3f110d457577553eed0b0356942b6",
+    "taken": "2026-10-22"
   },
   "KB0027284": {
     "title": "About the Research and Academic LLM Services (REALLMS) Chat at IU",
-    "version": "7.0",
-    "published": "2026-09-29",
-    "updated": "2026-09-29",
-    "sha256": "81d20b5b34477e8e2f82b23f3a7a285c96339c5f64e526ded91c184678948ac0",
-    "taken": "2026-10-08"
+    "version": "8.0",
+    "published": "2026-10-21",
+    "updated": "2026-10-21",
+    "sha256": "774178f8768647387843395aaeee4d7c5d17fb008a5dd0bb71a10852ff68eeef",
+    "taken": "2026-10-22"
   },
   "KB0027412": {
     "title": "Research and Academic LLM Services (REALLMS): Terms of service",
