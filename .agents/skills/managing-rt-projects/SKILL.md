@@ -33,7 +33,7 @@ Record command output here only as observed, with the date.
 
 ## Resources RT Projects allocates
 
-RT Projects lists six resources, and more will be phased in (KB0024132,
+RT Projects lists seven resources, and more will be phased in (KB0024132,
 KB0025604, KB0025948):
 
 | Resource | Kind | Detail |
@@ -41,9 +41,10 @@ KB0025604, KB0025948):
 | Quartz | Compute | Members need a Quartz account (KB0024132, KB0025948) |
 | Big Red 200 | Compute | Members need a Big Red 200 account (KB0024132, KB0025948) |
 | Slate-Project | Storage | Several per project allowed (KB0026672) |
-| Geode-Project | Storage | One per PI per project; needs an MOU (KB0026680, KB0024967) |
+| Geode-Project | Storage | One per PI per project; a Research Storage consultation follows (KB0026680, KB0024967) |
 | Posit Connect | Service | Requested as a project allocation (KB0025370) |
 | REALLMS API | Service | Each member makes a personal API key (KB0027272) |
+| ResDB | Service | MySQL or PostgreSQL database owned by a group account (KB0022767) |
 
 Check the "Request New Allocation" page for the current list.
 
@@ -98,8 +99,8 @@ The project owner owns the allocation (KB0026672). It mounts at
 Request it under "Storages" too. The form asks for a secondary contact and
 two Active Directory security groups, Admins and Users (KB0026680). The
 groups are fixed at creation; only their membership changes (KB0026680).
-Your department manages them (KB0024967). An MOU and a Research Storage
-consultation follow (KB0024967).
+Your department manages them (KB0024967). A Research Storage consultation
+follows (KB0024967).
 
 ### Posit Connect
 
@@ -254,7 +255,6 @@ limit (KB0024132).
 | Member leaves IU | Slate-Project data purged 180 days after separation | KB0022423 |
 | Member account disabled | Geode-Project data removed after 180 days | KB0023373 |
 | Geode PI leaves, no successor | Access stops until an owner is named | KB0023373 |
-| Wrong group on Geode files | Group changed by admins; owner notified | KB0023373 |
 | Affiliate not renewed | Account ends within one year | KB0023488 |
 | REALLMS key shared | Keys are personal; each member makes one | KB0027272 |
 
@@ -289,6 +289,7 @@ All IU KB articles, read 2026-10-01. KB0024668, KB0025016, and KB0025574 re-read
 - [KB0022423](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022423) Slate-Project high performance storage system: Terms of service
 - [KB0022586](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022586) About Slate-Project high performance project space at IU
 - [KB0022656](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022656) Computing accounts at IU
+- [KB0022767](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022767) About the Research Databases (ResDB) service at Indiana University
 - [KB0023298](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023298) Use Slurm to submit and manage jobs on IU's research computing systems
 - [KB0023373](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023373) Geode-Project: Terms of service
 - [KB0023488](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023488) Sponsor a computing account for an IU affiliate

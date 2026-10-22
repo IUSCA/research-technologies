@@ -151,6 +151,14 @@
     "sha256": "e13f83d4290f8af2f08270e2088d982336af2d90531446731a4e41563a3d415a",
     "taken": "2026-10-08"
   },
+  "KB0022767": {
+    "title": "About the Research Databases (ResDB) service at Indiana University",
+    "version": "2.0",
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "sha256": "30a646c89c4752adefa8ca092d037e00dd2970c14a3d78414bc9b3ff4c1a2a7b",
+    "taken": "2026-10-22"
+  },
   "KB0023162": {
     "title": "Download, install, and configure ThinLinc Client to use Research Desktop (RED) at IU",
     "version": "4.0",
@@ -641,11 +649,11 @@
   },
   "KB0025604": {
     "title": "About RT Projects at IU",
-    "version": "9.0",
-    "published": "2026-03-11",
-    "updated": "2026-03-11",
-    "sha256": "be14f328a03977bd605a27f87a8266ac21cdfdcfa40dc2203e454f0b5dba5ad0",
-    "taken": "2026-10-08"
+    "version": "10.0",
+    "published": "2026-10-09",
+    "updated": "2026-10-09",
+    "sha256": "9e713c4ced9e46ecc57e668fb1dbcdfe2015a146e9e28d0a7c5a3fa00027293c",
+    "taken": "2026-10-22"
   },
   "KB0025672": {
     "title": "Use Jupyter Notebook on Quartz",
