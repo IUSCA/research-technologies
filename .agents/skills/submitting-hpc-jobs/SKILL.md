@@ -143,6 +143,24 @@ The KB does not name Big Red 200's CPU partitions. Use the script's output.
   user.
 - `MaxArraySize` is 1000, so the largest array index is 999.
 
+**Observed 2026-10-22** on Big Red 200 with `describe-cluster.sh`:
+
+| Partition | Time limit | Nodes | Per node |
+| --- | --- | --- | --- |
+| `general` | 4 days | 638 | 128 CPUs, 256 GB |
+| `debug` | 1 hour | 2 | 128 CPUs, 256 GB |
+| `gpu` | 2 days | 62 | 64 CPUs, 512 GB, 4 GPUs |
+| `gpu-debug` | 1 hour | 2 | 64 CPUs, 512 GB, 4 GPUs |
+| `gpu-interactive` | 4 hours | 2 | 64 CPUs, 512 GB, 4 GPUs |
+
+- The cluster has 64 GPU nodes with 256 GPUs, matching KB0026317. The `gpu`
+  partition holds 62 of them, not the 64 in KB0022436.
+- Slurm names the GPUs only `gpu`, with no type. Request them by count, as in
+  `--gpus-per-node 1`.
+- `gpu-debug` and `gpu-interactive` are in no KB article. The
+  `gpu-interactive` QOS allows one node and one job per user.
+- `MaxArraySize` is 1000, as on Quartz.
+
 The Quartz partitions `gpu` and `hopper` were renamed on 2026-08-09. Jobs
 naming the old partitions are rejected (KB0022436).
 
