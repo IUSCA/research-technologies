@@ -57,11 +57,11 @@
   },
   "KB0022483": {
     "title": "Stage your SDA files to be available when you want them",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "601a49b103ef5a96ccd722dfc81ecfc88b954821c20c05050750f4a27da171b2",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "sha256": "ae6b8f8878f5631a65b2b3c81eb51d138e0665b9f6f8fb94a8f0f9d807544020",
+    "taken": "2026-10-22"
   },
   "KB0022486": {
     "title": "Policies regarding UITS research systems",
@@ -401,11 +401,11 @@
   },
   "KB0024366": {
     "title": "About accidentally deleted SDA files",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "86c9d1a657e0fddc46c5dbb7f77f8d7038b3c73384623582fae4397d6a739e77",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "sha256": "3e57f956a44e9a4dfb9cdbc018444b73ff0bb95d36f61b4a621f3aa749c9dd7c",
+    "taken": "2026-10-22"
   },
   "KB0024368": {
     "title": "Access the SDA at IU",
@@ -417,11 +417,11 @@
   },
   "KB0024387": {
     "title": "Use keytabs to automate authentication of scripts accessing the IU SDA",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "bab516315c273432fbc94053222c0120f63cf1681f2ff0a4e577f3891d17e76e",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "sha256": "241a2c813eb615eca744b1632f6516254a5b22561d9ea06741d226830d4f8343",
+    "taken": "2026-10-22"
   },
   "KB0024406": {
     "title": "About the Scholarly Data Archive (SDA) at Indiana University",
@@ -545,11 +545,11 @@
   },
   "KB0025030": {
     "title": "If you're unable to move a file to the SDA using HSI",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "5b52836114c646fe62cf09a4972d4aed20ffd88e3ff1f80877a3294d9bfd2ae9",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "sha256": "39dcb1441d0faec82e99dc0fa5710f399ffd55264e90abc5ad5725693e9dc20f",
+    "taken": "2026-10-22"
   },
   "KB0025040": {
     "title": "Hostnames of IU research supercomputers",
@@ -585,11 +585,11 @@
   },
   "KB0025237": {
     "title": "Best uses for an IU SDA account",
-    "version": "3.0",
-    "published": "2026-08-19",
-    "updated": "2026-08-19",
-    "sha256": "453218292a46207519576e4989704ad8a6ffcf635e21d6edeb7e9bc342ea5b67",
-    "taken": "2026-10-08"
+    "version": "4.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "sha256": "96a00e43eeccd800f777c2509873b148e539f23d3e56df6d32d0acc92bc84ce1",
+    "taken": "2026-10-22"
   },
   "KB0025317": {
     "title": "Slate-Scratch high performance file system: Terms of service",
@@ -705,11 +705,11 @@
   },
   "KB0026076": {
     "title": "Check storage space on your SDA account",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "dcf36d5ee1737131ae0da813c05f00338bd18a9a1a92b6dd3c077daf55f47602",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "sha256": "a67e5431d2a12a4a98d0801891b1f19f8cc14426c2e2498fd9d110a954c3fa30",
+    "taken": "2026-10-22"
   },
   "KB0026290": {
     "title": "Recover deleted or corrupt files from your home directory or Geode-Project space on the IU research supercomputers",
@@ -822,6 +822,14 @@
     "updated": "2026-05-28",
     "sha256": "ccf8166b41fb914d514c11337bceeec8f0206d7a4ab535361eb241286f5795ba",
     "taken": "2026-10-08"
+  },
+  "KB0027460": {
+    "title": "Best practices for creating filenames and pathnames for use on IU research computing and storage resources",
+    "version": "4.0",
+    "published": "2026-07-23",
+    "updated": "2026-07-23",
+    "sha256": "b537b59614ea1ba9a01299703cf4fdaef733539ff480c32b0abf28903db371d5",
+    "taken": "2026-10-22"
   },
   "KB0027470": {
     "title": "Use HPC LLM utilities to run large language models on IU's research supercomputers",
