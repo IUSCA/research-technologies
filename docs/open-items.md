@@ -31,6 +31,17 @@ names NAIRR Pilot allocations as a route to Jetstream2. That settles the
 Jetstream2 support question. It still describes Jetstream2 as a gateway
 back end, so the HPS question on authentication stands.
 
+Twelve cited KB articles changed between 2026-10-08 and 2026-10-22 and were
+re-read on 2026-10-22. KB0022439 now lists Geode-Project as allocated
+storage of up to 10 TB, which settles the Geode-Project fee question. The
+SDA file limit and Slate-Project unit questions still stand.
+
+### Settled on 2026-10-22
+
+| Item | Settled by | Skill |
+| --- | --- | --- |
+| Whether Geode-Project carries a fee | KB0022439, version 11.0: up to 10 TB of allocated storage; KB0023604: no fee up to 10 TB | `storing-and-moving-research-data` |
+
 ### Settled on 2026-10-07
 
 | Item | Settled by | Skill |
@@ -54,7 +65,7 @@ These are recorded in their skills and dropped from this file.
 
 ## Summary
 
-The skills carry 42 open-item mentions. They reduce to 35 distinct questions,
+The skills carry 42 open-item mentions. They reduce to 34 distinct questions,
 because several skills repeat the same question.
 
 | Category | Questions |
@@ -65,7 +76,7 @@ because several skills repeat the same question.
 | RT Projects | 6 |
 | REALLMS team | 5 |
 | High Performance File Systems (HPFS) | 2 |
-| Research Storage | 6 |
+| Research Storage | 5 |
 | Research Databases (ResDB) | 1 |
 | SecureMyResearch | 5 |
 | KB team | 2 |
@@ -259,7 +270,7 @@ Thank you for your help.
 Email: `store-admin@iu.edu`
 
 **Subject:** Documentation questions: SDA file limits and eligibility,
-Geode-Project fees and Globus collections, and HSI clients
+Geode-Project Globus collections, and HSI clients
 
 Hello Research Storage team,
 
@@ -272,21 +283,18 @@ data. These KB articles disagree, and we would like to cite your answer.
    KB0025237, and KB0023604 say it "begins at 5,000 files but may be
    increased to 25,000 files upon request." Can a user see their own file
    limit from HSI?
-2. Does Geode-Project carry a fee? From
-   `storing-and-moving-research-data/SKILL.md`. KB0022439 sends Geode-Project
-   to "Fee-based research storage." KB0023604 says "No fee (up to 10 TB)."
-3. Which HSI and HTAR clients are offered for workstations? From
+2. Which HSI and HTAR clients are offered for workstations? From
    `storing-and-moving-research-data/SKILL.md`. KB0022463 offers version 10.3
    for "64-bit Linux distributions only." KB0023281 offers bundles "for Red
    Hat Enterprise Linux 5 and 6, Ubuntu Linux, macOS, and Windows."
-4. Is HSI and HTAR traffic to the SDA encrypted in transit? From
+3. Is HSI and HTAR traffic to the SDA encrypted in transit? From
    `storing-and-moving-research-data/SKILL.md`. KB0022463 calls HSI a way of
    "securely transferring files." It still sends PHI to SFTP, SCP, or Globus.
-5. Do part-time employees need faculty sponsorship for an SDA account? From
+4. Do part-time employees need faculty sponsorship for an SDA account? From
    `requesting-accounts-and-allocations/SKILL.md`. KB0025016 marks the SDA
    for part-time employees "Faculty sponsorship required." KB0022656 says
    staff can request the SDA directly.
-6. Which Geode-Project spaces belong in the `IURT - Geode Projects Legacy`
+5. Which Geode-Project spaces belong in the `IURT - Geode Projects Legacy`
    Globus collection, and when will they migrate? From
    `storing-and-moving-research-data/SKILL.md`. In the Globus web app,
    `IURT - Geode Projects` says it is "for all Geode Projects created since

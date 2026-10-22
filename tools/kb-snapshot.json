@@ -305,11 +305,11 @@
   },
   "KB0023604": {
     "title": "About dedicated file storage services and IT services with storage components appropriate for sensitive institutional data, including research data containing protected health information",
-    "version": "13.0",
-    "published": "2026-10-01",
-    "updated": "2026-10-01",
-    "sha256": "e2559e18cbd360a1de4f574484cc4104f608e6166eb464c046e416f9b7f0efe8",
-    "taken": "2026-10-08"
+    "version": "14.0",
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "sha256": "f724da23a3cd291d8e0f02c394f0204502dc90300d298d45a1e785479f98ea01",
+    "taken": "2026-10-22"
   },
   "KB0023647": {
     "title": "Supercomputers for academic research at IU",
@@ -409,11 +409,11 @@
   },
   "KB0024368": {
     "title": "Access the SDA at IU",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "dd20e8219a2d6f3bdb2c18fd6b25a20ce1ee9a52b31135cb41e8da688b2a216d",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "sha256": "ae6178bb176a22bad7b73c81a7da5825ace38defd5af6391e484dec1949dc478",
+    "taken": "2026-10-22"
   },
   "KB0024387": {
     "title": "Use keytabs to automate authentication of scripts accessing the IU SDA",
@@ -681,11 +681,11 @@
   },
   "KB0025838": {
     "title": "Archive directories of many small files to the SDA",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "a0d0c7413d74e8b682db30a65ddf0e90b6f39c2008f5e1c19471cb82b4d44dec",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-22",
+    "sha256": "1c5975e812f717079a81ea34130ceb6cee34d78819050bf1843b449520099be3",
+    "taken": "2026-10-22"
   },
   "KB0025948": {
     "title": "Get started on IU research HPC and storage systems",

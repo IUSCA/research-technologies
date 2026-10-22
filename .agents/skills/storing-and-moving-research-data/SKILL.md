@@ -151,8 +151,9 @@ Slate, Slate-Project, and Slate-Scratch have no backup of any kind
 
 ### Geode-Project
 
-- Disk storage replicated at Bloomington and Indianapolis, with daily
-  snapshots kept 30 days. It is not backed up (KB0023373).
+- Disk storage with daily snapshots kept 30 days. It is not backed up
+  (KB0023373, KB0024967).
+- Up to 10 TB, with no fee (KB0022439, KB0023604).
 - Recover files from `.snap` the same way as home (KB0026290).
 - Access is through two ADS groups, Admins and Users, plus NFSv4 ACLs
   (KB0026680).
@@ -168,8 +169,6 @@ Slate, Slate-Project, and Slate-Scratch have no backup of any kind
 - **Practice:** do not `chmod` in Geode-Project. It rewrites the NFSv4 ACL
   and can drop the entries that grant group access. Change access with
   `nfs4_setfacl` instead.
-- Every file must carry the project's group ID. Geode-Project quotas are
-  per group (KB0023373).
 - No automated purge. A user's data is removed 180 days after their account
   is disabled (KB0023373).
 - Geode is down Sundays 7am to 10am and during monthly maintenance
@@ -329,8 +328,6 @@ More PHI rules for storage and transfer:
   KB0022586 and KB0022423 say "120 TiB."
 - **Slate-Project owner.** KB0022586 says faculty or staff. KB0022423 also
   allows Academic Non-Paid (ACNP).
-- **Geode-Project fee.** KB0022439 lists it under fee-based storage.
-  KB0023604 says "No fee (up to 10 TB)."
 - **HSI and HTAR workstation clients.** KB0022463 offers version 10.3 for
   64-bit Linux only. KB0023281 offers bundles for RHEL 5 and 6, Ubuntu,
   macOS, and Windows by email.
