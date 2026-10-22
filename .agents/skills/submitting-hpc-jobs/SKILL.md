@@ -124,6 +124,25 @@ The KB names these partitions:
 
 The KB does not name Big Red 200's CPU partitions. Use the script's output.
 
+**Observed 2026-10-22** on Quartz with `describe-cluster.sh`:
+
+| Partition | Time limit | Nodes | Per node |
+| --- | --- | --- | --- |
+| `general` | 4 days | 88 | 128 CPUs, 512 GB |
+| `debug` | 1 hour | 2 | 128 CPUs, 512 GB |
+| `interactive` | 8 hours | 2 | 128 CPUs, 512 GB |
+| `v100` | 2 days | 24 | 40 CPUs, 4 V100 |
+| `h100-single` | 2 days | 50 | 96 CPUs, 4 H100 |
+| `h100-multi` | 2 days | 12 | 96 CPUs, 4 H100 |
+| `h100-debug` | 1 hour | 2 | 96 CPUs, 4 H100 |
+| `h100-interactive` | 4 hours | 2 | 192 CPUs, 4 H100 |
+
+- `debug` allows 1 hour, not the 4 hours in KB0023298's sample output. Its
+  QOS allows one running job per user.
+- `h100-interactive` is in no KB article. Its QOS allows one running job per
+  user.
+- `MaxArraySize` is 1000, so the largest array index is 999.
+
 The Quartz partitions `gpu` and `hopper` were renamed on 2026-08-09. Jobs
 naming the old partitions are rejected (KB0022436).
 
