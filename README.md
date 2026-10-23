@@ -23,6 +23,9 @@ This repository covers the computing and storage systems themselves.
 
 ## Quickstart
 
+New to agents? [START-HERE.md](START-HERE.md) sets up the pi agent on
+Quartz with IU's REALLMS models in three steps.
+
 1. Clone this repository.
 2. Start your agent in the clone. Claude Code, Codex, OpenCode, and pi all
    find the skills there with no install step.
