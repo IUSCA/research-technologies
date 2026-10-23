@@ -105,6 +105,34 @@ no key, so send any placeholder. Run the client inside the same job.
   without `--jinja`. The chat template engine that tool calls need is on
   by default (External: llama.cpp).
 
+**Observed 2026-10-23** on `h100-single`, `gemma-4-31B-it` (`Q4_K_M`),
+submitted with `--export=ALL,LLM_CTX=131072,LLM_SERVER_ARGS='-np 1'`:
+
+- The job waited about 2 minutes in the queue, with 247 jobs pending on
+  the partition. The server was ready 15 to 17 seconds after starting.
+- `-np 1` gave one slot holding the whole 131072-token context; the
+  server log read `n_slots = 1, n_ctx_slot = 131072`.
+- 59 recorded agent requests, replayed one at a time, had prompts of
+  about 10,800 tokens at the median and none over 30,000. Generation ran at
+  67 tokens per second, and prompt reading at about 1,650.
+- Every tool call's arguments parsed as JSON.
+
+## Faster than REALLMS only for throughput
+
+The in-job server is not faster per request. **Observed 2026-10-23:** the
+same 59 requests took a median of 6.4 seconds on REALLMS's
+`gemma-4-31B-it` and 9.5 seconds in the job. In total they took 754 seconds
+and 985 seconds. The REALLMS run was on a Friday afternoon.
+
+- The gain is throughput: no shared rate limit, and several requests at
+  once with more `-np` slots. Measure your own concurrency before counting
+  on it.
+- The models differ. The platform serves 4-bit `.gguf` files through
+  llama.cpp, and REALLMS serves through vLLM. A result measured in a job
+  does not predict what the same model ID does on REALLMS.
+- Not every REALLMS model is in `list-models`. Check before planning a
+  comparison.
+
 ## Run a coding agent against it
 
 A coding agent can run inside the job, pointed at `LLM_BASE_URL` as a
@@ -156,8 +184,9 @@ Ask the Research Applications and Deep Learning team at
 Re-run `module spider hpc_llm` and `list-models` each quarter, and after
 monthly maintenance. Update the observed versions, model names, and sizes.
 Re-run `scripts/llm-server.sbatch` with a small model and update the
-measured rates. Re-read KB0026530, KB0027470, and KB0027473 for module
-names and recommended uses.
+measured rates. Re-time the REALLMS comparison when either side changes.
+Re-read KB0026530, KB0027470, and KB0027473 for module names and
+recommended uses.
 
 ## Sources
 
