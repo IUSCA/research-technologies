@@ -70,6 +70,11 @@ Slate, Slate-Project, and Slate-Scratch have no backup of any kind
 (KB0022391, KB0022423). The IU Data Storage Finder at
 `https://datastoragefinder.iu.edu` compares options (KB0022439).
 
+Name files and directories with English letters, digits, hyphens, and
+underscores only, plus a dot before the extension. Avoid spaces, accents,
+and emoji (KB0027460). The KB suggests `project_documenttype_YYYY-MM-DD_v##.ext`
+(KB0027460).
+
 ## Each space in practice
 
 ### Home directory
@@ -322,8 +327,10 @@ More PHI rules for storage and transfer:
 
 - **SDA file count.** KB0022439 says "A maximum file limit of 25,000 files
   is enforced for new accounts." KB0024406, KB0025237, and KB0023604 say new
-  accounts "begin at 5,000 files but may be increased to 25,000." Check with
-  `du -ka` in HSI.
+  accounts "begin at 5,000 files but may be increased to 25,000." **Observed
+  2026-10-22** on Quartz: `quota` prints the account's own SDA file limit on
+  its `sda files` line. Check yours there, and the count with `du -ka` in
+  HSI.
 - **Slate-Project free limit units.** KB0022439 says "Up to 120 TB."
   KB0022586 and KB0022423 say "120 TiB."
 - **Slate-Project owner.** KB0022586 says faculty or staff. KB0022423 also
@@ -391,3 +398,4 @@ form:
 - [KB0026500](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0026500) Share Geode-Project or Slate-Project data with non-IU collaborators
 - [KB0026672](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0026672) Manage your Slate-Project allocations within your RT Project
 - [KB0026680](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0026680) Manage your Geode-Project allocation within your RT Project
+- [KB0027460](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0027460) Best practices for creating filenames and pathnames for use on IU research computing and storage resources

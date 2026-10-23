@@ -118,6 +118,27 @@ Before pinning a model in code or a config:
 2. Send one real completion: `scripts/reallms_models.py --check <model-id>`.
 3. Pin the ID in one configurable place, not scattered through code.
 
+`/model/info` describes each model: context length, output limit, and a
+metadata line naming modalities and thinking support. **Observed
+2026-10-22:** it answered with an ordinary API key.
+
+### Keep an agent's model list current
+
+A coding agent's model config goes stale as models change. Regenerate it
+from the live service instead of editing it by hand. For the pi coding
+agent, `scripts/reallms_models.py --pi <path-to-models.json>` replaces only
+the `reallms` provider in that file. It keeps models of at least 32K context
+that answer a real completion, and lists first the one to use as default.
+The file names the key as `$REALLMS_API_KEY`, never its value. With
+`--pi-api-key '!cat <key-file>'`, pi reads the key from a file instead. Then
+the key never enters the environment of the commands the agent runs.
+Re-run it when a model disappears. **Observed 2026-10-22:** it kept `qwen3.8-27b`,
+`gemma-4-31B-it`, and `gpt-oss-120b`, and each returned a tool call.
+
+Model IDs copied from another service's config may not exist here. A
+LiteLLM proxy elsewhere may prefix or rename them. Check every ID against
+`/models` at this base URL.
+
 A model can appear in `/models` and still fail on a request. Step 2 catches
 that. Request a new model with the REALLMS Model Suggestion Form
 (KB0026671): `https://uitsradl-fireform.eas.iu.edu/online/form/index/reallms`.
@@ -155,7 +176,9 @@ Use the supercomputers for batch inference, fine-tuning, and RAG experiments
 (KB0027473, KB0026530). They are not for hosting chatbots or web workflows;
 use the REALLMS API for those (KB0027473).
 
-On the supercomputers, load `hpc_llm` or `hpc_llm/gpu` (KB0026530). Run
+The `running-llms-on-hpc` skill has a tested job script and measured
+rates. In brief: on the supercomputers, load `hpc_llm` or `hpc_llm/gpu`
+(KB0026530). Run
 `list-models` to see local models (KB0027470). `llama-server` gives a REST API
 reachable only inside its own job (KB0027470). Submit work with a Slurm
 Account Name from RT Projects (KB0027473). See the `submitting-hpc-jobs`
@@ -206,8 +229,9 @@ The REALLMS articles use the `racs` queue. Use `racs` for REALLMS itself.
 
 ## Keep this file current
 
-Re-run `scripts/reallms_models.py` and update the observed lines when they
-change. Re-read KB0027272 for the base URL and endpoint list each time. Date
+Re-run `scripts/reallms_models.py`, and its `--pi` mode, and update the
+observed lines when they change. Re-read KB0027272 for the base URL and
+endpoint list each time. Date
 every observation, and keep it marked **Observed**. Close an open item only
 with a citation. When the KB and an observation disagree, record both.
 

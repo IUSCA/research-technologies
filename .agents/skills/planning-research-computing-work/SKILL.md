@@ -75,7 +75,7 @@ These consequences shape most plans:
 | Notebooks on real data | Jupyter inside an interactive job | KB0025672 |
 | Gateway, always-on service, prototype | Jetstream2, sending heavy jobs to HPC | KB0024420; `jetstream2` |
 | LLM calls from code, modest volume | REALLMS API | KB0027272; `using-reallms` |
-| Batch inference, fine-tuning, or high LLM volume | HPC LLM platform on Quartz or Big Red 200 | KB0027473 |
+| Batch inference, fine-tuning, or high LLM volume | HPC LLM platform on Quartz or Big Red 200 | KB0027473; `running-llms-on-hpc` |
 
 Run `describe-cluster.sh` before naming a partition or a GPU count. The
 system outranks any table, as `submitting-hpc-jobs` explains.
