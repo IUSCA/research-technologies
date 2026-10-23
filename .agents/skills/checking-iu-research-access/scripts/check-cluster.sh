@@ -56,6 +56,8 @@ quota_out=$(command -v quota >/dev/null 2>&1 && quota 2>&1 | sed 's/\x1b\[[0-9;]
 command -v hsi >/dev/null 2>&1 || module load hpss >/dev/null 2>&1
 if command -v hsi >/dev/null 2>&1 && timeout 60 hsi -q 'pwd' </dev/null >/dev/null 2>&1; then
   say OK "SDA reachable with hsi"
+elif printf '%s\n' "$quota_out" | grep -q '^ *sda ' && command -v klist >/dev/null 2>&1 && ! klist -s 2>/dev/null; then
+  say INFO "SDA account exists (quota lists sda), but this login session has no Kerberos ticket, so hsi cannot log in non-interactively. Run kinit once in your own terminal on this host, or set up a keytab (KB0022463)."
 elif printf '%s\n' "$quota_out" | grep -q '^ *sda '; then
   say INFO "SDA account exists (quota lists sda), but hsi cannot log in non-interactively. Set up HSI authentication, such as a keytab (KB0022463)."
 elif command -v hsi >/dev/null 2>&1; then

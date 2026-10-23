@@ -60,6 +60,9 @@ SSH keys are another option. They need the signed "SSH public key
 authentication to HPS systems" agreement and a passphrase on the key
 (KB0023985). An agent still cannot type that key passphrase.
 
+When the agent itself runs on a cluster login node, skip Step 1 and the
+shared connection. Run Step 2's script directly with `bash`.
+
 ## Step 1: check from the person's computer
 
 Run [scripts/check-local.sh](scripts/check-local.sh) with the IU username:
@@ -100,9 +103,22 @@ shell then printed a `setlocale` warning.
 An SDA account can exist while the HSI check fails. **Observed 2026-10-02**,
 Quartz: `quota` listed `sda` with a 48.8T quota. A non-interactive `hsi`
 failed with `No credentials cache found` and `Not running interactively &
-username not set - PAM authentication failed`. The script now reports this
-case separately. HSI needs a keytab or other set-up authentication before an
-agent can use it (KB0022463).
+username not set - PAM authentication failed`. The script reports this case
+separately.
+
+The difference is a Kerberos ticket, not the account. **Observed
+2026-10-22**, same person, both clusters, no keytab and no `~/.hsirc`: on Big
+Red 200 the interactive login left a ticket, and `klist` showed
+`krbtgt/ADS.IU.EDU`. A non-interactive `hsi -q pwd` over the shared
+connection then worked. On Quartz, `klist` reported `No credentials cache
+found`, and `hsi` failed as above. Run `klist` on the login node to tell
+which case applies.
+
+Without a ticket, the person has two options. They can run `kinit` once in
+their own terminal on that login node. Or they can set up a keytab for
+unattended work (KB0022463). The `kinit` option is untested here. It should
+work when the agent's sessions use the same default ticket cache. A ticket
+lasts hours, not days: **observed** 10 hours, renewable for 24.
 
 A Slurm account is how an RT Projects allocation appears on the cluster.
 Every job must name one with `-A` (KB0024132). An empty list means the person
@@ -129,7 +145,7 @@ allocation for the system.
 | Account disabled | Unused for six months, or not used within 30 days of creation | KB0022486 |
 | No Slate-Project directory | The PI requests Slate-Project space in RT Projects | KB0022586 |
 | SDA not confirmed | Create an SDA account, or set up HSI authentication | KB0022647, KB0022463 |
-| SDA account exists, but `hsi` cannot log in non-interactively | The person sets up a keytab; see `references/sda.md` in `storing-and-moving-research-data` | KB0022463 |
+| SDA account exists, but `hsi` cannot log in non-interactively | `klist` on the login node. No ticket: the person runs `kinit` there, or sets up a keytab; see `references/sda.md` in `storing-and-moving-research-data` | KB0022463 |
 
 The `requesting-accounts-and-allocations` skill covers eligibility and forms.
 The `managing-rt-projects` skill covers allocations and members. The

@@ -101,7 +101,7 @@ $ hsi -A keytab -k <username>.keytab -l <username> pwd
 
 | Error | Likely cause | Fix |
 | --- | --- | --- |
-| `No credentials cache found` with `Not running interactively` | No keytab or Kerberos credentials, so non-interactive login fails | Set up a keytab, above. **Observed 2026-10-02** on Quartz |
+| `No credentials cache found` with `Not running interactively` | No keytab, and no Kerberos ticket in the login session (`klist` shows none) | Run `kinit` on that host, or set up a keytab, above. **Observed 2026-10-22**: a Big Red 200 login that left a ticket ran `hsi` non-interactively with no keytab; a Quartz session with no ticket failed |
 | `Ticket expired on krb5_mk_req` | Keytab made with a wrong or old passphrase | Recreate the keytab (**Practice**) |
 | Error `-50` on a host with several addresses or behind NAT | HSI advertises the wrong local address | `export HPSS_HOSTNAME=<host's reachable IP>` in the shell profile; setting it in `~/.hsirc` did not work (**Practice**) |
 | Transfers hang behind a firewall | Data connections blocked | `HPSS_PFTPC_PORT_RANGE`, or open inbound traffic (KB0023364) |
