@@ -23,5 +23,7 @@ Step 7 of `MAINTAINING.md` explains the test.
 | Share a Slate-Project folder with a collaborator outside IU. | `storing-and-moving-research-data` |
 | How do I get a GUI desktop on Quartz? | `using-research-desktop` |
 | Call IU's LLM API from Python. | `using-reallms` |
+| Run gpt-oss-120b on an H100 for a batch of 10,000 prompts. | `running-llms-on-hpc` |
+| Benchmark a local model on Quartz without REALLMS rate limits. | `running-llms-on-hpc` |
 | This kb.iu.edu link goes to the KB home page. Find the article. | `searching-the-iu-knowledge-base` |
 | My Quartz home directory is full of .conda files. Where should my conda environments go? | `managing-python-environments` |

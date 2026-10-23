@@ -176,7 +176,9 @@ Use the supercomputers for batch inference, fine-tuning, and RAG experiments
 (KB0027473, KB0026530). They are not for hosting chatbots or web workflows;
 use the REALLMS API for those (KB0027473).
 
-On the supercomputers, load `hpc_llm` or `hpc_llm/gpu` (KB0026530). Run
+The `running-llms-on-hpc` skill has a tested job script and measured
+rates. In brief: on the supercomputers, load `hpc_llm` or `hpc_llm/gpu`
+(KB0026530). Run
 `list-models` to see local models (KB0027470). `llama-server` gives a REST API
 reachable only inside its own job (KB0027470). Submit work with a Slurm
 Account Name from RT Projects (KB0027473). See the `submitting-hpc-jobs`
