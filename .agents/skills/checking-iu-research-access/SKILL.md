@@ -211,6 +211,10 @@ misreports, and note what the system actually showed. Re-read KB0023985 and
 KB0025948 when login or onboarding steps change. Record any KB statement on
 connection sharing if one appears.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-01. URL form:

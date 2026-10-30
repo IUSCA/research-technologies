@@ -210,6 +210,10 @@ adds resources over time, so check its resource list. Record actual
 turnaround you observe, dated and marked as observed. Remove an open item only
 with a citation that settles it.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-01. KB0024420, KB0025016, and KB0025574

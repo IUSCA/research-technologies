@@ -210,6 +210,10 @@ troubleshooting table. On RED, compare the Applications menu, `df -h`, and
 mark it as observed. Close an open item only with a KB citation or a written
 answer from the owning team.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-01. KB0023515 and KB0025747 re-read

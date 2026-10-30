@@ -179,6 +179,10 @@ changes, fix it in the skill that owns it first, then here. Re-read the
 articles in Sources when the map's approval table changes. Add a worked
 example when a common workflow does not fit the three given.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles. Read 2026-10-03 unless noted. KB0024420 re-read

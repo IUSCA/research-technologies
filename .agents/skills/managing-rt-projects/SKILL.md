@@ -280,6 +280,10 @@ Re-read KB0024132 every May, before the June renewal window. Compare the
 resource table with the "Request New Allocation" page. Close an open item
 only with a citation that settles it.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-01. KB0024668, KB0025016, and KB0025574 re-read

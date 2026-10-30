@@ -95,6 +95,8 @@ redirect to the KB home page and lose the article. The
 | [running-llms-on-hpc](.agents/skills/running-llms-on-hpc/SKILL.md) | Serving an open-weight model inside a Quartz GPU job for batch inference, benchmarks, or evaluations. |
 | [using-reallms](.agents/skills/using-reallms/SKILL.md) | Calling IU's LLM service from research code, or choosing an IU LLM service for research data. |
 | [jetstream2](.agents/skills/jetstream2/SKILL.md) | Considering Jetstream2 cloud for a gateway, a service, or interactive work. |
+| [capturing-a-workflow-as-a-skill](.agents/skills/capturing-a-workflow-as-a-skill/SKILL.md) | Turning a session that worked into a reusable skill, or reporting what a session showed was wrong or missing in these skills. |
+| [reporting-a-skill-problem](.agents/skills/reporting-a-skill-problem/SKILL.md) | A skill was wrong, out of date, or missing something, and you want to report it or send a fix. |
 | [getting-help-from-research-technologies](.agents/skills/getting-help-from-research-technologies/SKILL.md) | Deciding whether to ask for help, which queue to use, and what to send. |
 | [searching-the-iu-knowledge-base](.agents/skills/searching-the-iu-knowledge-base/SKILL.md) | Finding, reading, and citing an IU KB article, or settling a KB-versus-system conflict. |
 
@@ -187,6 +189,10 @@ works the same in a fork.
 
 ## Maintaining
 
+- **Found something wrong or missing?** Open an issue with the
+  [skill feedback form](https://github.com/IUSCA/research-technologies/issues/new/choose).
+  A pull request with the fix is welcome but not needed. Your agent can
+  draft both; see `reporting-a-skill-problem`.
 - [CONTRIBUTING.md](CONTRIBUTING.md) explains how to verify and write a
   single claim.
 - [MAINTAINING.md](MAINTAINING.md) is the runbook for reviewing and updating

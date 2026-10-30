@@ -252,6 +252,10 @@ endpoint list each time. Date
 every observation, and keep it marked **Observed**. Close an open item only
 with a citation. When the KB and an observation disagree, record both.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-01. URL form:

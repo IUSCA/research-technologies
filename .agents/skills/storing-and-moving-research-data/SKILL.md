@@ -350,6 +350,10 @@ any limit that differs from this file, with the date and "observed." Re-read
 KB0022439 and KB0025535 before changing the choice list or the Globus
 table. Close an open item only with a citation that settles it.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-01. KB0024053 re-read 2026-10-07. URL

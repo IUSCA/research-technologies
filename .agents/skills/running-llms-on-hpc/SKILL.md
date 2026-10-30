@@ -188,6 +188,10 @@ measured rates. Re-time the REALLMS comparison when either side changes.
 Re-read KB0026530, KB0027470, and KB0027473 for module names and
 recommended uses.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-22. URL form:

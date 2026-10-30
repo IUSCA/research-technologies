@@ -25,6 +25,10 @@ Step 7 of `MAINTAINING.md` explains the test.
 | Call IU's LLM API from Python. | `using-reallms` |
 | Run gpt-oss-120b on an H100 for a batch of 10,000 prompts. | `running-llms-on-hpc` |
 | Benchmark a local model on Quartz without REALLMS rate limits. | `running-llms-on-hpc` |
+| That worked. Make this a skill so I can run it again next month. | `capturing-a-workflow-as-a-skill` |
+| Remember how we did this so the agent can do it again. | `capturing-a-workflow-as-a-skill` |
+| The REALLMS skill didn't mention this error. Can we report it? | `reporting-a-skill-problem` |
+| The skill said this partition exists, but sbatch says it doesn't. How do I tell the maintainers? | `reporting-a-skill-problem` |
 | This kb.iu.edu link goes to the KB home page. Find the article. | `searching-the-iu-knowledge-base` |
 | How do I keep track of which version of my analysis code produced these results? | `versioning-research-code` |
 | Put my analysis scripts on GitHub so my co-author can see them. | `versioning-research-code` |

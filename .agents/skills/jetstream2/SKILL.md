@@ -116,6 +116,10 @@ External claim. The Jetstream2 documentation changes faster than the KB.
 Update the ACCESS thresholds from the Jetstream2 allocation overview when they
 change. Record a resolved open item with its source.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 IU KB articles, read 2026-10-01. KB0023515, KB0024420, and KB0025747 re-read
