@@ -312,6 +312,10 @@ Run `scripts/check-env-locations.sh` on a cluster and record what it showed.
 Re-read KB0022379 and KB0025217 before changing the location advice. Close
 the open items only with a KB number, a command and date, or a ticket.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-03. URL form:

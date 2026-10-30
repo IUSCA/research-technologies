@@ -243,6 +243,10 @@ the article, and update the Verified line. Record a newly retired system in
 when the KB is silent. Remove an open item only when the KB or the owning
 team answers it, and cite that answer.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-01. KB0023515, KB0024420, KB0025574, and

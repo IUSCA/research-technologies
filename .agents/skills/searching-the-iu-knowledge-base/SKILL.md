@@ -79,6 +79,10 @@ Run `scripts/iukb.py search Quartz` after any KB platform change. If it fails,
 fix the script before relying on any IU skill. Re-read KB0024722 if retired
 articles start to behave differently.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 IU KB article, read 2026-10-01:

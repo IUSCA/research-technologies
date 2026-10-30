@@ -319,6 +319,10 @@ KB0023298 and KB0022436 before changing the skeleton or the GPU section. Add
 real Slurm error text to the failure table once you have seen it, and say it
 was observed rather than read in the KB.
 
+If a session finds this file wrong or missing something, offer to report it
+at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
+`reporting-a-skill-problem`.
+
 ## Sources
 
 All IU KB articles, read 2026-10-01. URL form:
