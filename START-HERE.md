@@ -35,7 +35,7 @@ Next time, just run `pi`, in any directory.
 ## Good to know
 
 - **Use only the REALLMS models with IU data.** REALLMS is approved for Restricted and Critical data, including PHI (KB0026817, KB0027272). Personal AI accounts are not approved for any institutional data (KB0026507), so skip pi's `/login`.
-- **pi acts without asking.** It runs commands and edits files without asking first (External: pi quickstart). Keep important work in git or backed up.
+- **pi acts without asking.** It runs commands and edits files without asking first (External: pi quickstart). Keep important work in git; ask pi to "keep this code in git" and the `versioning-research-code` skill does the rest.
 - **Heavy work belongs in jobs.** Login-node processes are killed after 20 minutes of CPU time (KB0022436). Ask pi to submit a Slurm job instead.
 - **Models change often.** When one disappears, run the setup script again. It refreshes the model list, updates pi, and keeps your key. `/model` switches models inside pi.
 - **To update the skills,** run `git -C research-technologies pull`.

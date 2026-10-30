@@ -89,6 +89,7 @@ redirect to the KB home page and lose the article. The
 | [managing-rt-projects](.agents/skills/managing-rt-projects/SKILL.md) | Running an RT Project: allocations, members, collaborators, renewal, and archiving. |
 | [storing-and-moving-research-data](.agents/skills/storing-and-moving-research-data/SKILL.md) | Using Slate, Slate-Project, Slate-Scratch, Geode-Project, or the SDA, or moving data with Globus. |
 | [planning-research-computing-work](.agents/skills/planning-research-computing-work/SKILL.md) | Turning a described workflow into a plan: which IU system, storage, transfers, and allocations each stage needs. |
+| [versioning-research-code](.agents/skills/versioning-research-code/SKILL.md) | Keeping analysis code in git so each result traces to its code, tagging the version behind a paper, or pushing to GitHub:IU or GitHub.com. |
 | [managing-python-environments](.agents/skills/managing-python-environments/SKILL.md) | Installing Python or R packages, creating conda or virtual environments, moving caches out of home, or adding a Jupyter kernel on Quartz or Big Red 200. |
 | [using-research-desktop](.agents/skills/using-research-desktop/SKILL.md) | Needing a graphical desktop, RStudio, MATLAB, or Jupyter on Quartz. |
 | [running-llms-on-hpc](.agents/skills/running-llms-on-hpc/SKILL.md) | Serving an open-weight model inside a Quartz GPU job for batch inference, benchmarks, or evaluations. |

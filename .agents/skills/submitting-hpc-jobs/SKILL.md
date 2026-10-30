@@ -76,6 +76,7 @@ before `sbatch`. Relative `-o` and `-e` paths then land there too.
 A minimal runnable script is in
 [scripts/quartz-minimal.sbatch](scripts/quartz-minimal.sbatch). Its directives
 match KB0023298. It has not been run as written.
+To record which code version a job ran, see `versioning-research-code`.
 Run it once and record the result as Observed.
 
 Submit it and note the job ID:
