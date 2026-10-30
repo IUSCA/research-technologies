@@ -139,6 +139,22 @@ Model IDs copied from another service's config may not exist here. A
 LiteLLM proxy elsewhere may prefix or rename them. Check every ID against
 `/models` at this base URL.
 
+### At most four images in a conversation
+
+**Observed 2026-10-30:** `qwen3.8-27b` and `gemma-4-31B-it` accepted four
+images in one request and refused five with HTTP 400 `At most 4 image(s) may
+be provided in one prompt.` The limit counts the whole `messages` list.
+Three images in one turn and two in a later turn were refused.
+
+An agent that reads images into its own conversation hits this after four,
+and every later request fails. For a batch of images, write a script that
+sends each image, or up to four, in its own request and saves the answers.
+Do this from the start when a task names more than four images.
+
+When the error appears anyway, tell the person in one sentence what
+happened. Offer the two fixes: a script that sends the images in their own
+requests, or a new session with the answers so far carried over.
+
 A model can appear in `/models` and still fail on a request. Step 2 catches
 that. Request a new model with the REALLMS Model Suggestion Form
 (KB0026671): `https://uitsradl-fireform.eas.iu.edu/online/form/index/reallms`.
@@ -213,6 +229,7 @@ The REALLMS articles use the `racs` queue. Use `racs` for REALLMS itself.
 | 401 `No api key passed in.` | No `Authorization` header was sent (Observed 2026-10-01). |
 | 401 ``Malformed API Key passed in. Ensure Key has `Bearer ` prefix.`` | The key variable is empty or unset, so only `Bearer ` was sent (Observed 2026-09-21, 2026-10-01). |
 | 401 `LiteLLM Virtual Key expected ... expected to start with 'sk-'` | The value is not shaped like a REALLMS key (Observed 2026-10-01). Check which variable you loaded. |
+| 400 `At most 4 image(s) may be provided in one prompt.` | More than four images in the conversation, counting earlier turns (Observed 2026-10-30). See "At most four images in a conversation". |
 | Model not found, or a model that worked now fails | The model was withdrawn or renamed. List `/models` again. |
 | Slow or refused responses under heavy use | Rate limiting (KB0027412). Back off, or move to the HPC LLM platform. Record the actual status code here once seen. |
 | Errors on a second Sunday | Scheduled maintenance (KB0027412). |
