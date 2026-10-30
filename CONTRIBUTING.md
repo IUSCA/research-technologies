@@ -1,5 +1,9 @@
 # Verifying and updating a skill
 
+Anyone can report a problem. Open an issue with the skill feedback form, and
+attach a pull request if you have a fix. Leave data, identifiers, keys, and
+usernames out; issues are public.
+
 A skill is only as good as its last check. Update a skill whenever an agent
 finds a claim that no longer matches the live system or the IU Knowledge Base
 (KB). [MAINTAINING.md](MAINTAINING.md) is the runbook for reviewing the whole

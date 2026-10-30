@@ -1,0 +1,38 @@
+name: Skill feedback
+description: A skill was wrong, out of date, or missing something you needed.
+title: "<skill-name>: <what was wrong or missing>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. This issue is public. Leave out data, file contents, participant or sample identifiers, keys, usernames, and project names. Use placeholders such as `<user>` and `<project>`.
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: The skill's name, such as `using-reallms`.
+    validations:
+      required: true
+  - type: textarea
+    id: said
+    attributes:
+      label: What the skill said or left out
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened
+      description: Include the exact error text.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: What fixed it, and how you checked
+      description: The command, the host, and the date, such as "Observed 2026-10-30 on quartz with sinfo". Name a KB article number if one backs the fix.
+  - type: input
+    id: pr
+    attributes:
+      label: Pull request
+      description: Optional. Link a pull request with the fix.
