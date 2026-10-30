@@ -136,7 +136,7 @@ Run `tools/check-skills.py` before committing. It must exit cleanly.
 `tools/check-skills.py` is the same file in every repository of this
 family. Do not edit it here. Change this repository's settings in
 `tools/check-skills.toml`: allowed emails, the Required-source pattern,
-the STALE age, link skip lists, and the weekly checks. The first line it
+the STALE age, link skip lists, and the monthly checks. The first line it
 prints carries its version and hash, so copies can be compared.
 
 ## Commits

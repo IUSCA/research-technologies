@@ -42,6 +42,6 @@ skip_urls = [
 ]
 
 [freshness]
-# Run each Monday by .github/workflows/freshness.yml.
+# Run on the 1st of each month by .github/workflows/freshness.yml.
 checks = ["kb", "links"]
 commands = []

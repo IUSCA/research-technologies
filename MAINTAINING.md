@@ -31,7 +31,7 @@ and note the KB's figure as lagging. Do not open an item for it.
 
 GitHub Actions runs two checks for you. On every pull request and push to
 `main`, `check-skills.yml` runs `tools/check-skills.py` and fails on any
-`ERROR`. Every Monday, `freshness.yml` runs `tools/check-skills.py
+`ERROR`. On the 1st of each month, `freshness.yml` runs `tools/check-skills.py
 --freshness`, which here means `--kb` and `--links`. When it finds `STALE`,
 `BROKEN`, or `ERROR` lines, it opens an issue labeled `freshness`, or
 comments on the one already open. Close that issue once the lines are
