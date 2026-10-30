@@ -17,9 +17,11 @@ stale_after_days = 120
 # Shared office and service addresses that may appear. Add one only after
 # checking it is a role address on an official IU page, not a person's.
 allowed_emails = [
-  "bhrs@iu.edu", "datard@iu.edu", "hts@iu.edu", "iursdtn@iu.edu",
+  "bhrs@iu.edu", "datard@iu.edu", "githelp@iu.edu", "hts@iu.edu", "iursdtn@iu.edu",
   "kb@iu.edu", "redcap@iu.edu", "resdb@iu.edu", "researchtechnologies@iu.edu",
   "securemyresearch@iu.edu", "store-admin@iu.edu", "vishelp@iu.edu",
+  # Not mailboxes: the SSH user in GitHub remote addresses.
+  "git@github.com", "git@github.iu.edu",
 ]
 
 # Internal hostnames never appear. Public skills name the service.

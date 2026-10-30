@@ -26,4 +26,6 @@ Step 7 of `MAINTAINING.md` explains the test.
 | Run gpt-oss-120b on an H100 for a batch of 10,000 prompts. | `running-llms-on-hpc` |
 | Benchmark a local model on Quartz without REALLMS rate limits. | `running-llms-on-hpc` |
 | This kb.iu.edu link goes to the KB home page. Find the article. | `searching-the-iu-knowledge-base` |
+| How do I keep track of which version of my analysis code produced these results? | `versioning-research-code` |
+| Put my analysis scripts on GitHub so my co-author can see them. | `versioning-research-code` |
 | My Quartz home directory is full of .conda files. Where should my conda environments go? | `managing-python-environments` |
