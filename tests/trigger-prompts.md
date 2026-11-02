@@ -21,6 +21,8 @@ Step 7 of `MAINTAINING.md` explains the test.
 | Which of my Slurm accounts should this job use? | `checking-iu-research-access` (read the resources file) |
 | Copy 40 TB from Slate-Project to the SDA. | `storing-and-moving-research-data` |
 | Share a Slate-Project folder with a collaborator outside IU. | `storing-and-moving-research-data` |
+| Here's the NIH solicitation. Where should I store the data for this grant? | `storing-and-moving-research-data` (run `storage_finder.py`) |
+| Use the Data Storage Finder on our DMS plan and tell me our storage options. | `storing-and-moving-research-data` |
 | How do I get a GUI desktop on Quartz? | `using-research-desktop` |
 | Call IU's LLM API from Python. | `using-reallms` |
 | Run gpt-oss-120b on an H100 for a batch of 10,000 prompts. | `running-llms-on-hpc` |
