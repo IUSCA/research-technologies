@@ -13,12 +13,14 @@ Check data classification first. The `iu-research-computing-map` skill has
 the approval table and the one-line summary of each system. This skill is the
 how-to.
 
-Detail lives in two reference files:
+Detail lives in three reference files:
 
 - [references/sda.md](references/sda.md): HSI, HTAR, SFTP, classes of
   service, and archiving many small files.
 - [references/workstation-mounts.md](references/workstation-mounts.md): SMB
   mounts of Slate and Geode-Project.
+- [references/storage-finder.md](references/storage-finder.md): answering
+  the IU Data Storage Finder from a researcher's documents.
 
 ## The live system is the judge
 
@@ -69,6 +71,26 @@ Slate, Slate-Project, and Slate-Scratch have no backup of any kind
 (KB0022605, KB0022586, KB0025500). Users must archive their own data
 (KB0022391, KB0022423). The IU Data Storage Finder at
 `https://datastoragefinder.iu.edu` compares options (KB0022439).
+
+### From a grant, plan, or agreement
+
+Given a solicitation, DMS plan, data use agreement, or project
+description, answer the Data Storage Finder's questions for the
+researcher. `scripts/storage_finder.py` reads the Finder live and lists
+the services a set of answers allows. Follow
+[references/storage-finder.md](references/storage-finder.md):
+
+1. Quote the sentence behind each derived answer, and show the list.
+2. Never guess the classification. Ask, or hand off to
+   [`classifying-research-data`](https://github.com/IUSCA/research-data/tree/main/.agents/skills/classifying-research-data)
+   in research-data.
+3. Run `storage_finder.py match <keys> --classification <level>`.
+4. Give each option with its KB article. The Finder is guidance; the
+   service's KB article governs.
+
+The Finder allows non-PHI Critical data on Research Technologies systems.
+The KB does not (KB0023515, KB0025747). Pass `critical-other` or
+`critical-phi`, and the script applies the KB rule.
 
 Name files and directories with English letters, digits, hyphens, and
 underscores only, plus a dot before the extension. Avoid spaces, accents,
@@ -356,8 +378,9 @@ at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
 
 ## Sources
 
-All IU KB articles, read 2026-10-01. KB0024053 re-read 2026-10-07. URL
-form:
+All IU KB articles, read 2026-10-01 unless marked. KB0024053 re-read
+2026-10-07. KB0023604's storage tables, and the Critical-data notes in KB0022478 and
+KB0024406, re-read 2026-11-02. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022391](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022391) Slate high performance storage system: Terms of service
@@ -369,12 +392,14 @@ form:
 - [KB0022499](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022499) Use SFTP or SCP to access your SDA account at IU
 - [KB0022586](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022586) About Slate-Project high performance project space at IU
 - [KB0022605](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022605) About Slate high performance storage for research computation at IU
+- [KB0022767](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022767) About the Research Databases (ResDB) service at Indiana University (read 2026-11-02)
 - [KB0023281](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023281) Use HTAR with your SDA account
 - [KB0023296](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023296) Use GPG to encrypt files on IU's research supercomputers
 - [KB0023364](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023364) Enable HSI/HTAR transfers from IU's Scholarly Data Archive when your system is protected by a firewall
 - [KB0023373](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023373) Geode-Project: Terms of service
 - [KB0023425](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023425) Lustre file systems at IU
 - [KB0023434](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023434) Recommended tools for encrypting data containing HIPAA-regulated PHI
+- [KB0023515](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023515) UITS Research Technologies systems and services for researchers working with data containing HIPAA-regulated PHI (read 2026-11-02)
 - [KB0023604](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023604) About dedicated file storage services and IT services with storage components appropriate for sensitive institutional data, including research data containing protected health information
 - [KB0023774](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023774) Use HSI to create and manage checksums
 - [KB0024053](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024053) Check your home directory quota on the IU research supercomputers
@@ -394,7 +419,10 @@ form:
 - [KB0025317](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025317) Slate-Scratch high performance file system: Terms of service
 - [KB0025500](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025500) About the Slate-Scratch high performance file system for research computation at IU
 - [KB0025535](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025535) Use the IU Globus Web App to transfer data to and from your accounts on IU's research computing and storage systems
+- [KB0025537](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025537) Protect sensitive data in Microsoft at IU Secure Storage (read 2026-11-02)
 - [KB0025689](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025689) Map or mount a Slate file system on your personal workstation
+- [KB0025720](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025720) About the Scholarly Data Share (SDS) service (read 2026-11-02)
+- [KB0025747](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025747) Types of sensitive institutional data appropriate for UITS Research Technologies services (read 2026-11-02)
 - [KB0025838](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025838) Archive directories of many small files to the SDA
 - [KB0025963](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025963) Use ACLs to provide additional access to Slate-Project files and directories
 - [KB0026076](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0026076) Check storage space on your SDA account

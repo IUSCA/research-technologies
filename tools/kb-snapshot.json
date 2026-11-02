@@ -155,9 +155,9 @@
     "title": "About the Research Databases (ResDB) service at Indiana University",
     "version": "2.0",
     "published": "2026-10-01",
-    "updated": "2026-10-01",
+    "updated": "2026-10-28",
     "sha256": "30a646c89c4752adefa8ca092d037e00dd2970c14a3d78414bc9b3ff4c1a2a7b",
-    "taken": "2026-10-22"
+    "taken": "2026-11-02"
   },
   "KB0023162": {
     "title": "Download, install, and configure ThinLinc Client to use Research Desktop (RED) at IU",
@@ -307,9 +307,9 @@
     "title": "About dedicated file storage services and IT services with storage components appropriate for sensitive institutional data, including research data containing protected health information",
     "version": "14.0",
     "published": "2026-10-08",
-    "updated": "2026-10-08",
+    "updated": "2026-10-29",
     "sha256": "f724da23a3cd291d8e0f02c394f0204502dc90300d298d45a1e785479f98ea01",
-    "taken": "2026-10-22"
+    "taken": "2026-11-02"
   },
   "KB0023647": {
     "title": "Supercomputers for academic research at IU",
@@ -639,6 +639,14 @@
     "sha256": "1ee036d51092fe16cb2119708b9090f464db866cdd5862501ee7c5501ae7aa3a",
     "taken": "2026-10-08"
   },
+  "KB0025537": {
+    "title": "Protect sensitive data in Microsoft at IU Secure Storage",
+    "version": "4.0",
+    "published": "2025-05-09",
+    "updated": "2026-10-28",
+    "sha256": "7680f9d3f463eb2fad93b149c36480097789fe7db0128bb1fb4fa944493a3649",
+    "taken": "2026-11-02"
+  },
   "KB0025574": {
     "title": "Questions you'll need to answer when requesting research computing accounts",
     "version": "3.0",
@@ -671,13 +679,21 @@
     "sha256": "09224d5fbee31a14c9ccbe11e1618b67050cc8870401839cdfe203cedba4a13c",
     "taken": "2026-10-08"
   },
+  "KB0025720": {
+    "title": "About the Scholarly Data Share (SDS) service",
+    "version": "1.0",
+    "published": "2024-09-16",
+    "updated": "2026-10-28",
+    "sha256": "45b92128373a19a8e25a405a2710b43a43efeb7815492c24b9198e51a28df7ed",
+    "taken": "2026-11-02"
+  },
   "KB0025747": {
     "title": "Types of sensitive institutional data appropriate for UITS Research Technologies services",
     "version": "6.0",
     "published": "2026-10-02",
-    "updated": "2026-10-02",
+    "updated": "2026-10-29",
     "sha256": "aae2691195de8d6f2d7609b9cbedff3ac66184d30f7d3b2361d91299c1351f99",
-    "taken": "2026-10-08"
+    "taken": "2026-11-02"
   },
   "KB0025838": {
     "title": "Archive directories of many small files to the SDA",
