@@ -1,7 +1,7 @@
 # Scholarly Data Archive (SDA) in detail
 
-Verified 2026-10-07 (KB0024053 only) against the IU Knowledge Base (KB).
-Other sources were verified 2026-10-01. Read the main `SKILL.md` first. This file holds the command-level detail.
+Verified 2026-11-03 (KB0022463, KB0022499, KB0024976, and KB0024997 only)
+against the IU Knowledge Base (KB). Other sources were verified 2026-10-01. Read the main `SKILL.md` first. This file holds the command-level detail.
 
 The SDA is a tape archive. Write a few large files, read them rarely, and
 never treat a deletion as reversible (KB0024366, KB0024406).
@@ -22,13 +22,13 @@ Check the live account rather than trusting the numbers below.
 
 | Method | Where it runs | Use it for | Source |
 | --- | --- | --- | --- |
-| HSI | Supercomputers after `module load hpss`; Linux workstations on campus | Scripted puts and gets, staging, checksums | KB0022463 |
+| HSI | Supercomputers after `module load hpss`; Linux workstations on campus or on the IU VPN | Scripted puts and gets, staging, checksums | KB0022463 |
 | HTAR | Same as HSI | Writing a directory straight into a `.tar` on the SDA | KB0023281 |
 | SFTP or SCP | Any host, `sftp.sdarchive.iu.edu`, Duo required | Off-campus access, PHI in transit, GUI clients | KB0022499, KB0024368 |
 | Globus | `https://globus.iu.edu`, collection `IURT - Scholarly Data Archive` | Large or scheduled transfers, off-campus, PHI in transit | KB0025535, KB0024368 |
 
-- HSI and HTAR are not allowed from off campus. Use Globus or SFTP instead
-  (KB0022463, KB0024406).
+- HSI and HTAR are not allowed from off campus. Connect through the IU VPN,
+  or use Globus or SFTP instead (KB0022463, KB0024406).
 - A local HSI or HTAR client must be version 10.3 (KB0022463).
 - In RED, the SDA is under Applications > Storage > Scholarly Data Archive
   (KB0024406).

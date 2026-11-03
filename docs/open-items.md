@@ -36,6 +36,13 @@ re-read on 2026-10-22. KB0022439 now lists Geode-Project as allocated
 storage of up to 10 TB, which settles the Geode-Project fee question. The
 SDA file limit and Slate-Project unit questions still stand.
 
+KB0022463 and KB0023515 changed again on 2026-10-28 and 2026-10-29 and were
+re-read on 2026-11-03. KB0022463 now lists its Linux client packages, so the
+HSI client question quotes them; it still conflicts with KB0023281.
+KB0023515 still lists neither RED nor Jetstream2. No item is settled.
+KB0024132 and KB0025948, re-read the same day, still support every RT
+Projects item as quoted.
+
 ### Settled on 2026-10-22
 
 | Item | Settled by | Skill |
@@ -285,7 +292,8 @@ data. These KB articles disagree, and we would like to cite your answer.
    `quota` shows each account's own SDA file limit.
 2. Which HSI and HTAR clients are offered for workstations? From
    `storing-and-moving-research-data/SKILL.md`. KB0022463 offers version 10.3
-   for "64-bit Linux distributions only." KB0023281 offers bundles "for Red
+   for "64-bit Linux distributions only," and lists clients for RHEL 7/8/9,
+   SLES, Ubuntu 18.04, and Ubuntu 22.04. KB0023281 offers bundles "for Red
    Hat Enterprise Linux 5 and 6, Ubuntu Linux, macOS, and Windows."
 3. Is HSI and HTAR traffic to the SDA encrypted in transit? From
    `storing-and-moving-research-data/SKILL.md`. KB0022463 calls HSI a way of

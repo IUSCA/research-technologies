@@ -5,7 +5,7 @@ description: Run an IU RT Projects (projects.rt.iu.edu, ColdFront) project day t
 
 # Managing an RT Project
 
-Verified 2026-10-03 (KB0024668, KB0025016, and KB0025574 only) against the IU
+Verified 2026-11-03 (KB0024132, KB0024639, and KB0025948 only) against the IU
 Knowledge Base (KB). Other sources were verified 2026-10-01. Each claim
 names its KB article; links are in Sources at the end.
 
@@ -33,8 +33,7 @@ Record command output here only as observed, with the date.
 
 ## Resources RT Projects allocates
 
-RT Projects lists seven resources, and more will be phased in (KB0024132,
-KB0025604, KB0025948):
+RT Projects lists seven resources (KB0024132, KB0025604, KB0025948):
 
 | Resource | Kind | Detail |
 | --- | --- | --- |
@@ -181,8 +180,8 @@ gets a reply within two business days (KB0023488).
 - Sign a written affiliation agreement first (KB0023488).
 
 Do not use an affiliate account for someone about to join IU (KB0023488).
-IU Health collaborators of School of Medicine researchers go through HTS at
-hts@iu.edu instead (KB0024639).
+IU Health and other collaborators of School of Medicine researchers are
+eligible too; sponsor them the same way (KB0024639).
 
 Affiliates can then request Quartz and Slate accounts themselves (KB0022656,
 KB0025016). Big Red 200 and the SDA need the sponsor to email the owning
@@ -287,7 +286,7 @@ at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
 ## Sources
 
 All IU KB articles, read 2026-10-01. KB0024668, KB0025016, and KB0025574 re-read
-2026-10-03. URL form:
+2026-10-03. KB0024132, KB0024639, and KB0025948 re-read 2026-11-03. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022423](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022423) Slate-Project high performance storage system: Terms of service

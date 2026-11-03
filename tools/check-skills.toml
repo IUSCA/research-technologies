@@ -32,8 +32,12 @@ user_agent = "research-technologies-skills"
 skip_403_hosts = []
 # Cited on purpose but not loadable by a script: API endpoints that need a
 # key or a POST, a Slack workspace that needs a login, and RED, which does
-# not answer off-campus scripted requests.
+# not answer off-campus scripted requests. Also the llama-server address that
+# running-llms-on-hpc tells you to query inside a GPU job: it exists only on
+# that compute node, and probing it elsewhere hits whatever local service
+# holds port 8080.
 skip_urls = [
+  "http://127.0.0.1:8080/v1/models",
   "https://iu-hpc-ai-users.slack.com",
   "https://reallms.rescloud.iu.edu/direct/v1",
   "https://reallms.rescloud.iu.edu/direct/v1/chat/completions",
