@@ -41,11 +41,11 @@
   },
   "KB0022463": {
     "title": "Use HSI to access your SDA account at IU",
-    "version": "3.0",
-    "published": "2026-01-26",
-    "updated": "2026-01-26",
-    "sha256": "cbbe54cc60daee7b195cef70968557724ee1a1ec33ae17e7577c9c1cfcc989ae",
-    "taken": "2026-10-08"
+    "version": "4.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-29",
+    "sha256": "15e7d77ced08a020ed811e3f0d3e95f83ddd39b75adac481b07c05e2abca77fc",
+    "taken": "2026-11-03"
   },
   "KB0022478": {
     "title": "Secure research data containing HIPAA-regulated PHI on high performance file systems at IU",
@@ -73,11 +73,11 @@
   },
   "KB0022499": {
     "title": "Use SFTP or SCP to access your SDA account at IU",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "917a02eb190a76b4183b0be390d0e3eea3dec8c63fd7bd35238765a4f4ba0bab",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-29",
+    "sha256": "624a2a42ad71af4e4eb8fe2c49a20afcfbd366f67f08eb05738439bd91a9efde",
+    "taken": "2026-11-03"
   },
   "KB0022586": {
     "title": "About Slate-Project high performance project space at IU",
@@ -299,9 +299,9 @@
     "title": "UITS Research Technologies systems and services for researchers working with data containing HIPAA-regulated PHI",
     "version": "4.0",
     "published": "2026-10-02",
-    "updated": "2026-10-02",
-    "sha256": "7830b8751a1faed544e45c242fb8a8423dd1e498120992721516acdc5a12e7d2",
-    "taken": "2026-10-08"
+    "updated": "2026-10-28",
+    "sha256": "a0457374579e424ccb3234edd259673003c5a9696e1d8ac587ca1f1402cccba5",
+    "taken": "2026-11-03"
   },
   "KB0023604": {
     "title": "About dedicated file storage services and IT services with storage components appropriate for sensitive institutional data, including research data containing protected health information",
@@ -513,19 +513,19 @@
   },
   "KB0024976": {
     "title": "Use classes of service on the Scholarly Data Archive at IU",
-    "version": "3.0",
-    "published": "2024-11-06",
-    "updated": "2025-11-14",
-    "sha256": "eb75d813b9bcc0cb8a44f6c497253af7c801a67d71156061650b6c6a70c34fa9",
-    "taken": "2026-10-08"
+    "version": "4.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-28",
+    "sha256": "0c77a468dd362b9b61d5a8582d70bfd85e95be8ba16055be85d12120e2d90936",
+    "taken": "2026-11-03"
   },
   "KB0024997": {
     "title": "If you can't connect to the SDA at IU",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "3643024ea2de9887b5e18d6b6a07d7c3774ccccb1ff1d230e5cd773f03484b86",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-22",
+    "updated": "2026-10-28",
+    "sha256": "a04e976e3ea3664a1437a3f71b9b36fccb583536294b9573978797a23c674c9b",
+    "taken": "2026-11-03"
   },
   "KB0025016": {
     "title": "IU account types and eligibility",

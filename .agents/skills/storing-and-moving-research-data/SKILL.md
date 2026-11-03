@@ -5,7 +5,8 @@ description: Store, move, archive, and share research data on IU systems - home 
 
 # Storing and moving research data at IU
 
-Verified 2026-10-07 (KB0024053 only) against the IU Knowledge Base (KB).
+Verified 2026-11-03 (KB0022463, KB0022499, KB0023515, KB0024976, and
+KB0024997 only) against the IU Knowledge Base (KB).
 Other sources were verified 2026-10-01. Each claim names its KB article;
 links are in Sources at the end.
 
@@ -228,7 +229,7 @@ these rules:
 | Workstation to home directory | SFTP to the cluster hostname, with Duo | KB0025028 |
 | Google at IU or OneDrive to cluster storage | Globus collections for each | KB0025535 |
 | Cluster to SDA, scripted | HSI or HTAR. See [references/sda.md](references/sda.md). | KB0022463, KB0023281 |
-| Off campus to the SDA | Globus or SFTP only | KB0024406 |
+| Off campus to the SDA | Globus or SFTP, or HSI and HTAR through the IU VPN | KB0024406, KB0022463 |
 
 Inside the clusters, Slate spaces are ordinary mounted paths. Use normal
 Linux copy commands (KB0025500).
@@ -358,8 +359,9 @@ More PHI rules for storage and transfer:
 - **Slate-Project owner.** KB0022586 says faculty or staff. KB0022423 also
   allows Academic Non-Paid (ACNP).
 - **HSI and HTAR workstation clients.** KB0022463 offers version 10.3 for
-  64-bit Linux only. KB0023281 offers bundles for RHEL 5 and 6, Ubuntu,
-  macOS, and Windows by email.
+  64-bit Linux only: RHEL 7, 8, and 9, SLES, and Ubuntu 18.04 and 22.04.
+  KB0023281 offers bundles for RHEL 5 and 6, Ubuntu, macOS, and Windows by
+  email.
 - **HSI encryption.** The KB never says whether HSI or HTAR traffic is
   encrypted. It sends PHI to SFTP, SCP, or Globus instead (KB0022463).
 - **GPG key size.** KB0023296 tells you to choose a 1024-bit key with GnuPG
@@ -379,7 +381,8 @@ at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
 ## Sources
 
 All IU KB articles, read 2026-10-01 unless marked. KB0024053 re-read
-2026-10-07. KB0023604's storage tables, and the Critical-data notes in KB0022478 and
+2026-10-07. KB0022463, KB0022499, KB0023515, KB0024976, and KB0024997
+re-read 2026-11-03. KB0023604's storage tables, and the Critical-data notes in KB0022478 and
 KB0024406, re-read 2026-11-02. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
