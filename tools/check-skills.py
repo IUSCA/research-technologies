@@ -9,6 +9,10 @@ Usage:
     tools/check-skills.py --version    # print the version and this file's hash
     tools/check-skills.py --kb-snapshot [KB...]  # record cited KB articles' text
 
+Name skills or KB numbers after any mode to limit it to them, for example
+    tools/check-skills.py --kb classifying-research-data KB0022442
+The repository-wide checks (README rows, trigger prompts, plugin) always run.
+
 This file is identical in every repository of the IU research skills family
 (research-technologies, research-data, research-funding, research-cores).
 Everything that differs between them lives in tools/check-skills.toml. Change
@@ -38,13 +42,19 @@ Network checks:
             Verified date prints STALE. ServiceNow reports both dates; an edit
             in place changes only the updated date.
   --kb-snapshot [KB...]  Record the version, updated date, and text hash of
-            the named KB articles in tools/kb-snapshot.json, or of every
-            linked article when none is named. Run it right after re-reading
-            those articles, and commit the file with the skill changes. This
-            is the per-article record, so a Verified line needs no list of
-            partial re-reads for snapshotted articles.
+            the named KB articles in tools/kb-snapshot.json, or of the
+            articles the named skills link, or of every linked article when
+            nothing is named. Run it right after re-reading those articles,
+            and commit the file with the skill changes. This is the
+            per-article record, so a Verified line needs no list of partial
+            re-reads for snapshotted articles. Each entry also holds a short
+            hash per paragraph, never the text, so a later --kb run can quote
+            the paragraphs that are new since the snapshot.
+            --kb ends with the --kb-snapshot command for every INFO and STALE
+            article, to run once the skills match the articles again.
   --links   Each cited URL loads (BROKEN otherwise), with two retries
-            10 and 20 seconds apart.
+            10 and 20 seconds apart. Loopback and private addresses, such as
+            http://127.0.0.1:8888 in an example, are skipped.
   --freshness runs the [freshness] checks and commands from the config. A
             command that exits non-zero prints CHANGED.
 
@@ -54,6 +64,8 @@ never fail. Standard library only; Python 3.11 or newer.
 
 import datetime
 import hashlib
+import html
+import ipaddress
 import json
 import pathlib
 import re
@@ -65,7 +77,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "1.1.1"
+VERSION = "1.2.0"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKILLS = ROOT / ".agents" / "skills"
@@ -327,12 +339,43 @@ def kb_lookup(number):
     return None
 
 
-def kb_text_hash(sys_id):
-    """sha256 of an article's text, with tags and whitespace runs removed."""
+BLOCK_TAG_RE = re.compile(r"</?(?:p|li|h[1-6]|tr|td|th|div|blockquote|pre|br|hr)\b[^>]*>", re.I)
+QUOTE_PARAGRAPHS, QUOTE_CHARS = 6, 300
+
+
+def kb_text(sys_id):
+    """Return an article's sha256 and its paragraphs as plain text. The hash
+    covers the text with tags and whitespace runs removed, as in 1.1."""
     data = kb_get(f"{KB_API}/{sys_id}")["result"]
     body = "".join(part.get("content", "") for part in data.get("content", []))
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", body)).strip()
-    return hashlib.sha256(text.encode()).hexdigest()
+    paragraphs = []
+    for chunk in BLOCK_TAG_RE.split(body):
+        para = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", chunk))).strip()
+        if para:
+            paragraphs.append(para)
+    return hashlib.sha256(text.encode()).hexdigest(), paragraphs
+
+
+def paragraph_hash(para):
+    return hashlib.sha256(para.encode()).hexdigest()[:10]
+
+
+def changed_paragraphs(paragraphs, snap):
+    """Lines quoting the paragraphs new since a snapshot, for a STALE line."""
+    if "paragraphs" not in snap:
+        return ["         (snapshot predates paragraph hashes; read the whole article)"]
+    old = set(snap["paragraphs"])
+    new = [p for p in paragraphs if paragraph_hash(p) not in old]
+    kept = {paragraph_hash(p) for p in paragraphs}
+    removed = sum(1 for h in snap["paragraphs"] if h not in kept)
+    lines = [f"         {len(new)} paragraphs new or reworded, {removed} gone or reworded since the snapshot"]
+    for para in new[:QUOTE_PARAGRAPHS]:
+        quote = para if len(para) <= QUOTE_CHARS else para[:QUOTE_CHARS] + "…"
+        lines.append(f"         + {quote}")
+    if len(new) > QUOTE_PARAGRAPHS:
+        lines.append(f"         + … and {len(new) - QUOTE_PARAGRAPHS} more; read the article")
+    return lines
 
 
 def load_kb_snapshot():
@@ -352,14 +395,18 @@ def linked_kb(skill_dir):
     return cited
 
 
-def check_kb(skill_dir, cache, snapshot):
-    """STALE when a cited KB article is gone, or changed after Verified."""
+def check_kb(skill_dir, cache, snapshot, only=frozenset(), to_record=None):
+    """STALE when a cited KB article is gone, or changed after Verified.
+    With `only`, check just those articles. Articles to re-snapshot once the
+    skill matches them again are added to `to_record`."""
     path = skill_dir / "SKILL.md"
     if not path.is_file():
         return []
     dates = verified_dates(frontmatter(path.read_text())[1])
     problems = []
     for number in sorted(linked_kb(skill_dir)):
+        if only and number not in only:
+            continue
         if number not in cache:
             cache[number] = kb_lookup(number)
         row = cache[number]
@@ -374,23 +421,29 @@ def check_kb(skill_dir, cache, snapshot):
             if max(row["published"], row["updated"]) <= max(snap.get("published", ""), snap.get("updated", "")):
                 continue
             if "hash" not in row:
-                row["hash"] = kb_text_hash(row["sys_id"])
+                row["hash"], row["paragraphs"] = kb_text(row["sys_id"])
+            if to_record is not None:
+                to_record.add(number)
             if row["hash"] == snap.get("sha256"):
                 problems.append(("INFO", f"{number} {what}; text unchanged since snapshot {snap.get('taken')}"))
             else:
-                problems.append(("STALE", f"{number} {what}; text changed since snapshot {snap.get('taken')}: {row['title']}"))
+                detail = "\n".join(changed_paragraphs(row["paragraphs"], snap))
+                problems.append(("STALE", f"{number} {what}; text changed since snapshot {snap.get('taken')}: {row['title']}\n{detail}"))
             continue
         verified = dates[0] if number in dates[1] else dates[2]
         if max(row["published"], row["updated"]) > verified:
             problems.append(("STALE", f"{number} {what}, after Verified {verified}: {row['title']}"))
+            if to_record is not None:
+                to_record.add(number)
     return problems
 
 
 def write_kb_snapshot(names, today, only):
-    """Record version, updated date, and text hash for linked articles; with
+    """Record version, updated date, and hashes for linked articles; with
     `only`, refresh just those and keep the other entries."""
     snapshot = load_kb_snapshot() if only else {}
     linked = set().union(*(linked_kb(SKILLS / name) for name in names))
+    recorded = []
     for number in sorted(linked):
         if only and number not in only:
             continue
@@ -398,16 +451,23 @@ def write_kb_snapshot(names, today, only):
         if row is None:
             print(f"STALE  {number}: not found by KB search; not recorded")
             continue
+        digest, paragraphs = kb_text(row["sys_id"])
         snapshot[number] = {
             "title": row["title"], "version": row["version"],
             "published": row["published"], "updated": row["updated"],
-            "sha256": kb_text_hash(row["sys_id"]), "taken": today.isoformat(),
+            "sha256": digest, "taken": today.isoformat(),
+            "paragraphs": [paragraph_hash(p) for p in paragraphs],
         }
-    for number in only - linked:
+        recorded.append(number)
+        print(f"RECORDED  {number} version {row['version']}, updated {row['updated']}: {row['title']}")
+    for number in sorted(only - linked):
         print(f"WARN   {number}: no skill links to it; not recorded")
+    dropped = sorted(k for k in snapshot if k not in linked)
+    for number in dropped:
+        print(f"DROPPED   {number}: no skill links to it any more")
     snapshot = {k: v for k, v in snapshot.items() if k in linked}
     KB_SNAPSHOT.write_text(json.dumps(dict(sorted(snapshot.items())), indent=2) + "\n")
-    print(f"Wrote {len(snapshot)} KB articles to {KB_SNAPSHOT.relative_to(ROOT)}")
+    print(f"Recorded {len(recorded)} KB articles; {KB_SNAPSHOT.relative_to(ROOT)} holds {len(snapshot)}.")
 
 
 def check_plugin(names):
@@ -441,6 +501,18 @@ def check_plugin(names):
     return problems
 
 
+def local_host(host):
+    """True for localhost and loopback, private, or link-local addresses,
+    which appear only in examples and cannot be checked from elsewhere."""
+    if host == "localhost" or host.endswith(".localhost"):
+        return True
+    try:
+        addr = ipaddress.ip_address(host)
+    except ValueError:
+        return False
+    return addr.is_loopback or addr.is_private or addr.is_link_local or addr.is_unspecified
+
+
 def check_links(cfg):
     lc = cfg["links"]
     urls = {}
@@ -456,6 +528,9 @@ def check_links(cfg):
     for url, where in sorted(urls.items()):
         if url in lc["skip_urls"]:
             print(f"SKIP    {url}  (skip_urls)")
+            continue
+        if local_host(urllib.parse.urlparse(url).hostname or ""):
+            print(f"SKIP    {url}  (local address)")
             continue
         req = urllib.request.Request(url, headers={"User-Agent": f"Mozilla/5.0 {lc['user_agent']}"})
         for attempt in range(3):  # two retries, for transient errors
@@ -502,29 +577,43 @@ def main(argv):
     cfg = load_config()
     print(version_line())
     today = datetime.date.today()
+    all_names = sorted(p.name for p in SKILLS.iterdir() if p.is_dir())
+    flags = {"--kb", "--links", "--freshness", "--kb-snapshot"}
+    only_kb = {a.upper() for a in argv if re.fullmatch(r"(?i)KB\d{7}", a)}
+    only_skills = [a for a in argv if a in all_names]
+    unknown = [a for a in argv if a not in flags and a not in all_names and a.upper() not in only_kb]
+    if unknown:
+        sys.exit(f"unknown arguments {unknown}; name skills from .agents/skills or KB numbers")
+    names = only_skills or all_names
     if "--kb-snapshot" in argv:
-        only = {a.upper() for a in argv if re.fullmatch(r"(?i)KB\d{7}", a)}
-        write_kb_snapshot(sorted(p.name for p in SKILLS.iterdir() if p.is_dir()), today, only)
+        if only_skills and not only_kb:
+            only_kb = set().union(*(linked_kb(SKILLS / n) for n in only_skills))
+            if not only_kb:
+                print("No KB articles linked from those skills; nothing recorded.")
+                return 0
+        write_kb_snapshot(all_names, today, only_kb)
         return 0
     checks = set(a.lstrip("-") for a in argv if a in ("--kb", "--links"))
     if "--freshness" in argv:
         checks |= set(cfg["freshness"]["checks"])
     failed = False
-    cache = {}
+    cache, to_record = {}, set()
     snapshot = load_kb_snapshot() if "kb" in checks else {}
-    names = sorted(p.name for p in SKILLS.iterdir() if p.is_dir())
     for name in names:
         problems = check_skill(SKILLS / name, cfg, today)
         if "kb" in checks:
-            problems += check_kb(SKILLS / name, cache, snapshot)
+            problems += check_kb(SKILLS / name, cache, snapshot, only_kb, to_record)
         for level, msg in problems:
             print(f"{level:5}  {name}: {msg}")
             failed |= level == "ERROR"
-    for level, msg in check_repo(names, cfg) + check_plugin(names):
+    for level, msg in check_repo(all_names, cfg) + check_plugin(all_names):
         print(f"{level:5}  repository: {msg}")
         failed |= level == "ERROR"
     if "kb" in checks:
         print(f"{len(cache)} KB articles checked.")
+        if to_record:
+            print("Once the skills match these articles, record them with:")
+            print(f"  tools/check-skills.py --kb-snapshot {' '.join(sorted(to_record))}")
     if "links" in checks and check_links(cfg):
         failed = True
     if "--freshness" in argv and run_commands(cfg):
