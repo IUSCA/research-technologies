@@ -20,69 +20,60 @@ and note the KB's figure as lagging. Do not open an item for it.
 
 ## When to review
 
-| Trigger | Scope |
-| --- | --- |
-| Any agent finds a wrong claim during real work | That claim, right away, in its own commit |
-| The day after monthly HPC maintenance (second Sunday) | Step 3, system facts, on Quartz and Big Red 200 |
-| Every quarter (January, April, July, October) | The full review below |
-| Each May, before RT Projects renewal opens on June 1 | `managing-rt-projects` and `requesting-accounts-and-allocations` |
-| A system or service is announced, renamed, or retired | Every skill that names it, plus `references/retired-and-renamed.md` |
-| An open issue labeled `freshness` | [Working a freshness issue](#working-a-freshness-issue) |
+| Trigger | Scope | How you notice |
+| --- | --- | --- |
+| Monthly | The `freshness` issue and the [monthly items](#monthly-items): the cluster check and the module commands | The `freshness` issue opened on the 1st, and the month's tracking issue on iu-research |
+| The day after monthly HPC maintenance (second Sunday) | The [cluster check](#monthly-items) on Quartz and Big Red 200 | The second Sunday (KB0023985). Watch HPC maintenance announcements and Status.IU for a moved date. |
+| Any agent finds a wrong claim during real work | That claim, right away, in its own commit | An issue on this repository, often from `reporting-a-skill-problem` |
+| Every quarter (January, April, July, October) | The full review below, after the monthly one | The calendar, and the month's tracking issue |
+| Each May, before RT Projects renewal opens on June 1 | `managing-rt-projects` and `requesting-accounts-and-allocations` | The calendar |
+| A system or service is announced, renamed, or retired | Every skill that names it, plus `references/retired-and-renamed.md` | HPC maintenance announcements, Status.IU, and new KB articles (step 6 below) |
 
 GitHub Actions runs two checks for you. On every pull request and push to
 `main`, `check-skills.yml` runs `tools/check-skills.py` and fails on any
 `ERROR`. On the 1st of each month, `freshness.yml` runs `tools/check-skills.py
 --freshness`, which here means `--kb` and `--links`. When it finds `STALE`,
 `BROKEN`, or `ERROR` lines, it opens an issue labeled `freshness`, or
-comments on the one already open. Close that issue once the lines are
-worked.
+comments on the one already open.
 
 ## Working a freshness issue
 
-A person or their agent works each `freshness` issue by hand. Nothing
-edits a skill on its own, because every fixed claim needs someone to read
-its source. An agent can do all of this; give it this section and the
-issue. A person reviews and merges the pull request.
+Follow the family runbook,
+[monthly-review.md](https://github.com/IUSCA/iu-research/blob/main/docs/monthly-review.md).
+It has the general steps: how to work each kind of line, the KB snapshot
+and Verified-line rules, commits, and the pull request. This section adds
+only what is specific to this repository.
 
-1. Make a branch from `main`. Run `tools/check-skills.py --freshness`
-   again. The issue may be days old, and some lines may have cleared.
-2. Work each line by kind:
-   - **STALE, KB article changed.** Read the whole article with
-     `iukb.py read KB0123456` (in research-technologies'
-     `searching-the-iu-knowledge-base` skill). Find every claim citing it,
-     in each skill the line names and in that skill's `references/`.
-     Fix what changed. Then record the reading with
-     `tools/check-skills.py --kb-snapshot KB0123456`.
-   - **INFO, text unchanged.** The article was touched but its text was
-     not. Record it with `--kb-snapshot KB0123456`. No skill changes.
-   - **STALE, not found by KB search.** The search runs without logging
-     in, so the article was retired, renumbered, or made login-only.
-     Search for its replacement. If there is none, name the article
-     without a link, with the date it went missing. Never quote or
-     summarize a login-only article, even if you can read it.
-   - **STALE, Verified date too old.** Re-read every source the skill
-     cites, then update its Verified line.
-   - **BROKEN.** Run `--links` again; a single failure is often transient.
-     If it still fails, find the page's new address. If the page is gone,
-     find another source or make the claim an open item.
-   - **CHANGED.** Run the snapshot script named in the line. Update the
-     catalog or directory file it compares against, and every skill that
-     names what changed.
-3. A claim the new source no longer supports is fixed, cut, or turned into
-   an open item in `docs/open-items.md`. A question the source now settles
-   leaves the open items.
-4. Update the Verified line of each skill you edited. For an article with
-   a snapshot entry, `--kb-snapshot` is the record, so the Verified line
-   does not need to list it as a partial re-read.
-5. Run `tools/check-skills.py --freshness` until no STALE, BROKEN, or
-   CHANGED line remains. Commit one skill per commit, with the snapshot
-   change in the same commit as the skill it supports.
-6. Open a pull request that says `Closes #<issue>`. List each line and
-   what you did with it: fixed, unchanged, or opened as an item.
+- `--freshness` runs `--kb` and `--links` only. There is no snapshot
+  script, so a run here never prints `CHANGED`.
+- The KB reader the runbook names lives in this repository, at
+  `.agents/skills/searching-the-iu-knowledge-base/scripts/iukb.py`.
+- KB0023515 is also cited in research-data, and KB0025237 in
+  research-cores. Look for a note on the tracking issue before you re-read
+  either one.
+- Record a retired or renamed system in
+  `.agents/skills/iu-research-computing-map/references/retired-and-renamed.md`.
+
+### Monthly items
+
+- **The cluster check, the day after maintenance.** It needs a person with
+  a Quartz and Big Red 200 account, a passphrase, and Duo. An agent cannot
+  log in on its own. Once the person has logged in, an agent can run the
+  commands over that login, as `checking-iu-research-access` shows.
+- Run [step 3 of the full review](#3-let-the-systems-report-their-own-facts)
+  on both clusters. Also re-run the module, conda, and pip commands that
+  "Keep this file current" names in `managing-python-environments` and
+  `running-llms-on-hpc`.
+- Record the result on the month's tracking issue on iu-research, with the
+  date, even when nothing changed. Fix a changed value in this repository
+  as in step 3.
+- If no one can do the check this month, say so on the tracking issue,
+  with an owner and a date.
 
 ## Full review
 
-Work on a branch. Make one commit per skill, as `CONTRIBUTING.md` asks.
+Work on a branch. Commit as the family runbook's "Commits" section says:
+one skill per commit, with each KB snapshot in the commit it supports.
 
 ### 1. Lint and find stale sources
 
@@ -91,19 +82,11 @@ tools/check-skills.py --freshness
 ```
 
 It checks each skill against the Agent Skills specification and the house
-rules. It then lists every cited KB article changed since it was last
-read, and any article that KB search no longer finds. An article in
-`tools/kb-snapshot.json` is compared with its snapshot: a newer update
-with the same text prints INFO, changed text prints STALE. Other articles
-are compared with the skill's Verified date. Last, it
-fetches every cited URL. The KB check takes about a minute.
+rules, then runs the KB and link checks. The KB check takes about a minute.
+Work its `STALE`, `INFO`, and `BROKEN` lines as the family runbook's step 3
+says.
 
 - `ERROR` lines must be fixed before merging.
-- `STALE` lines are the reading list for step 2. A skill whose Verified
-  date is over 120 days old also prints `STALE`.
-- `BROKEN` lines usually mean a page moved. Find the new page. A URL that
-  cannot load from a script on purpose, such as an API endpoint, goes in
-  `skip_urls` in `tools/check-skills.toml`.
 - `WARN` lines usually mean a KB number appears in the text but not in
   Sources.
 
@@ -121,9 +104,8 @@ changed. An article that search no longer finds may be retired. Search for
 its replacement, and record a retired system in
 `.agents/skills/iu-research-computing-map/references/retired-and-renamed.md`.
 
-Update a skill's Verified line only after re-reading every article in its
-Sources list. Otherwise use the partial form in `CONTRIBUTING.md`, which names the
-articles re-read and keeps the older date for the rest.
+Record each re-read article with `--kb-snapshot`, and update Verified
+lines, by the runbook's "Rules that trip people up".
 
 ### 3. Let the systems report their own facts
 
