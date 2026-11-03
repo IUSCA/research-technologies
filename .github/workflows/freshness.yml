@@ -7,9 +7,15 @@
 # date, BROKEN for a URL that no longer loads, and CHANGED for a snapshot
 # script that found a difference.
 #
+# It also prints INFO for a KB article edited without a change to its text;
+# the article still needs recording with the --kb-snapshot command the
+# report ends with, or it shows up again every month.
+#
 # When the report has any such line, or an ERROR, the run opens one issue
 # labeled freshness with the full output. If an open freshness issue exists,
-# the run comments on it instead. Work the issue with MAINTAINING.md.
+# the run comments on it instead. When a run on the default branch finds
+# nothing, it comments on the open freshness issue and closes it. Work the
+# issue with MAINTAINING.md and iu-research's docs/monthly-review.md.
 # This file is identical in every repository of the research skills family.
 name: freshness
 
@@ -26,8 +32,8 @@ jobs:
   freshness:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Run the freshness checks
@@ -40,9 +46,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ON_DEFAULT: ${{ github.ref_name == github.event.repository.default_branch }}
         run: |
-          if ! grep -qE "^(ERROR|STALE|BROKEN|CHANGED)" report.txt; then
+          issue=$(gh issue list --label freshness --state open --limit 1 \
+            --json number --jq '.[0].number // empty')
+          if ! grep -qE "^(ERROR|STALE|BROKEN|CHANGED|INFO)" report.txt; then
             echo "Nothing to report."
+            if [ -n "$issue" ] && [ "$ON_DEFAULT" = "true" ]; then
+              gh issue comment "$issue" --body "A run on $(date -u +%F) found nothing left to do, so this issue is closing. Reopen it if a step only a person can do is still open. Run: $RUN_URL"
+              gh issue close "$issue" --reason completed
+            fi
             exit 0
           fi
           {
@@ -50,13 +63,13 @@ jobs:
             echo "Work each line with MAINTAINING.md. Run: $RUN_URL"
             echo
             echo '```text'
-            cat report.txt
+            # An issue body holds at most 65,536 characters.
+            head -c 60000 report.txt
+            echo
             echo '```'
           } > body.md
           gh label create freshness --color D93F0B \
             --description "A skill's sources changed, moved, or went stale" 2>/dev/null || true
-          issue=$(gh issue list --label freshness --state open --limit 1 \
-            --json number --jq '.[0].number // empty')
           if [ -n "$issue" ]; then
             gh issue comment "$issue" --body-file body.md
           else
