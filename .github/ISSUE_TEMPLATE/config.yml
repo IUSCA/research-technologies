@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: A question about IU research computing
+    url: https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023697
+    about: Find the Research Technologies team for your system. Issues here are for the skills, not a help desk.

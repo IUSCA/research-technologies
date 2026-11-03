@@ -133,8 +133,12 @@ Observed values carry their own dates.
 
 Run `tools/check-skills.py` before committing. It must exit cleanly.
 
-`tools/check-skills.py` is the same file in every repository of this
-family. Do not edit it here. Change this repository's settings in
+`tools/check-skills.py` and the two workflows in `.github/workflows/` are
+the same in every repository of this family. Their canonical copies live in
+[iu-research](https://github.com/IUSCA/iu-research), with the family
+conventions and the monthly review runbook. Do not edit them here. Propose
+a change on iu-research; its `tools/sync-checker.sh` copies a merged change
+to every repository. Change this repository's settings in
 `tools/check-skills.toml`: allowed emails, the Required-source pattern,
 the STALE age, link skip lists, and the monthly checks. The first line it
 prints carries its version and hash, so copies can be compared.
