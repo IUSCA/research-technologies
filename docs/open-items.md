@@ -40,6 +40,8 @@ KB0022463 and KB0023515 changed again on 2026-10-28 and 2026-10-29 and were
 re-read on 2026-11-03. KB0022463 now lists its Linux client packages, so the
 HSI client question quotes them; it still conflicts with KB0023281.
 KB0023515 still lists neither RED nor Jetstream2. No item is settled.
+KB0024132 and KB0025948, re-read the same day, still support every RT
+Projects item as quoted.
 
 ### Settled on 2026-10-22
 

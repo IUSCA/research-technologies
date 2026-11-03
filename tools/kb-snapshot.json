@@ -379,9 +379,9 @@
     "title": "Use RT Projects to request and manage access to specialized Research Technologies resources",
     "version": "19.0",
     "published": "2026-06-25",
-    "updated": "2026-06-25",
-    "sha256": "cf019d436ed2121c4fddd0c75038cf8e2c2e858ddfe1f83d25f1c34132f39bde",
-    "taken": "2026-10-08"
+    "updated": "2026-10-29",
+    "sha256": "16957a7e1ddfe8389c188422f41e8d99f853ddfb7570c759722ef5a041a1f6ba",
+    "taken": "2026-11-03"
   },
   "KB0024193": {
     "title": "About Secure Share",
@@ -465,11 +465,11 @@
   },
   "KB0024639": {
     "title": "Eligibility for IU computing accounts at the School of Medicine",
-    "version": "1.0",
-    "published": "2024-09-16",
-    "updated": "2025-11-14",
-    "sha256": "a4d16ed8a60c61d6659b65a40f41153cdca85acf05b2a75d15d619341aa40965",
-    "taken": "2026-10-08"
+    "version": "2.0",
+    "published": "2026-10-26",
+    "updated": "2026-10-28",
+    "sha256": "4b98ea691bcbc645b97d488ec4ab2f84e7680edb7f48542d24ecd822d48d1ba2",
+    "taken": "2026-11-03"
   },
   "KB0024661": {
     "title": "Research computing services at IU",
@@ -707,9 +707,9 @@
     "title": "Get started on IU research HPC and storage systems",
     "version": "2.0",
     "published": "2025-02-14",
-    "updated": "2025-11-14",
-    "sha256": "997432e711cf3f6f396a192abd3b249f3efe7a733cca4417754c746800e0fd5c",
-    "taken": "2026-10-08"
+    "updated": "2026-10-28",
+    "sha256": "a9edfd90b866cc36b2b880b5eb16e1adc7fd06fe5bbd3ebff25193c5fd02af45",
+    "taken": "2026-11-03"
   },
   "KB0025963": {
     "title": "Use ACLs to provide additional access to Slate-Project files and directories",
