@@ -11,6 +11,7 @@ Step 7 of `MAINTAINING.md` explains the test.
 | Write an sbatch script for one H100 on Quartz. | `submitting-hpc-jobs` |
 | My Quartz job says invalid partition "gpu". Why? | `submitting-hpc-jobs` |
 | How many GPU nodes does Quartz have right now? | `submitting-hpc-jobs` (run `describe-cluster.sh`) |
+| Email me if any step of my three-step Quartz pipeline fails. | `submitting-hpc-jobs` |
 | A new grad student joins my lab. What do they need to run jobs on Quartz? | `requesting-accounts-and-allocations` |
 | Add a collaborator from another university to my RT Project. | `managing-rt-projects` |
 | Our Slurm account stopped working in July. | `managing-rt-projects` |
