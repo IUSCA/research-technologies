@@ -139,11 +139,21 @@ Plugin skills are namespaced, so `submitting-hpc-jobs` appears as
 `research-technologies:submitting-hpc-jobs`. The agent still picks a skill
 from its description, so you rarely type the name.
 
-To update, run `/plugin marketplace update iusca-research-technologies`.
+To update, run this in a shell, then restart Claude Code:
+
+```bash
+claude plugin update research-technologies@iusca-research-technologies
+```
+
+To update without asking, turn on **Enable auto-update** for the marketplace
+under `/plugin`, in the **Marketplaces** tab.
 
 The plugin reads the skills from `.agents/skills/`, the directory the other
 harnesses use, so no skill is duplicated. The manifests are
-`.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`.
+`.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`. They set
+no `version` on purpose, so Claude Code versions the plugin by git commit and
+every merge to `main` reaches users on their next update. A pinned `version`
+would hold users on the old copy until someone changed it.
 
 ### In another project
 
