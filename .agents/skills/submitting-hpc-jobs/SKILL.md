@@ -1,6 +1,6 @@
 ---
 name: submitting-hpc-jobs
-description: Submit, monitor, and cancel Slurm jobs on IU's Quartz and Big Red 200 supercomputers. Covers the Slurm Account Name from RT Projects, partitions including the GPU partitions, a batch script skeleton, interactive jobs, job arrays and PCP, Lmod modules, Python and Apptainer, where job data should live, and the limits that kill jobs. Use when writing or debugging an sbatch script, choosing a partition, or working out why an IU job did not run.
+description: Submit, monitor, and cancel Slurm jobs on IU's Quartz and Big Red 200 supercomputers. Covers the Slurm Account Name from RT Projects, partitions including the GPU partitions, a batch script skeleton, interactive jobs, job arrays and PCP, job chains with dependencies and failure email instead of a login-node watcher, Lmod modules, Python and Apptainer, where job data should live, and the limits that kill jobs. Use when writing or debugging an sbatch script, choosing a partition, or working out why an IU job did not run.
 ---
 
 # Submitting HPC jobs at IU
@@ -41,6 +41,12 @@ Do not compute on login nodes. Processes there are killed after 20 minutes of
 CPU time, without warning (KB0022436). **Practice:** `nohup`, `screen`, `tmux`,
 and `disown` do not change this; the limit counts CPU time, not the session.
 Use a batch job, an interactive job, or Research Desktop.
+
+**Practice:** do not leave a script running on a login node to watch your
+jobs and email you. A login node is shared, and it can fill its disk, reboot,
+or end your process. The watcher then stops without telling you, which is the
+moment you needed it. Let Slurm do the watching; see "Job chains and failure
+email".
 
 ## Batch job skeleton
 
@@ -94,6 +100,30 @@ sbatch quartz-minimal.sbatch
 - Use `--begin=YYYY-MM-DDTHH:MM:SS` to defer a job (KB0023298).
 - Use `--no-requeue` for a job that must not restart after an interruption
   (KB0023298).
+
+### Job chains and failure email
+
+To run steps in order and hear when one fails, submit each step with a
+dependency on the one before. Put `#SBATCH --mail-type=FAIL` in each step's
+script, or `END,FAIL` in the last. Slurm sends the mail itself (KB0023298),
+so nothing has to keep running on a login node.
+
+```bash
+a=$(sbatch --parsable step1.sbatch)
+b=$(sbatch --parsable --dependency=afterok:$a --kill-on-invalid-dep=yes step2.sbatch)
+c=$(sbatch --parsable --dependency=afterok:$b --kill-on-invalid-dep=yes step3.sbatch)
+```
+
+- `--parsable` prints only the job ID. **External:** Slurm `sbatch` manual.
+- `afterok` starts a step only if the one before exited with code 0.
+  `afternotok` starts a job only if it failed, which suits a cleanup or
+  summary job. **External:** Slurm `sbatch` manual.
+- Without `--kill-on-invalid-dep=yes`, a step whose earlier step failed stays
+  pending forever with reason `DependencyNeverSatisfied`. With it, Slurm
+  cancels the step. **Observed 2026-11-05** on Quartz with `sacct` after a
+  test chain whose first job exited 1: the `afterok` job without the flag
+  stayed `PENDING`, the one with it was `CANCELLED`, and the `afternotok`
+  job `COMPLETED`.
 
 ## Partitions
 
@@ -283,7 +313,15 @@ job's working directory.
   backed up (KB0022439).
 - **Data a group shares across jobs:** Slate-Project (KB0022586).
 - **Node-local temporary files:** Quartz nodes have 1.7 TB of `/tmp`, deleted
-  after 10 days (KB0022439).
+  after 10 days (KB0022439). Use it inside jobs.
+- **Large temporary files from tools on a login node:** **Practice:** set
+  `TMPDIR=/N/scratch/<user>/tmp` (create it first) for tools that write big
+  temporary files, such as R, pip, or conda. Every user on a login node
+  shares its `/` and `/tmp`, and they can fill up. Slate-Scratch is Lustre,
+  so do not send floods of tiny files there; see "Lustre good practice" in
+  `storing-and-moving-research-data`. **Observed 2026-11-05** on one Quartz
+  login node with `df -h / /tmp`: `/` was 252 GB and `/tmp` a separate 1.7
+  TB disk. Login nodes are not all built alike, so check the one you are on.
 - **Scripts, configuration, and source code:** home is fine. It is small and
   slow for data (KB0022439).
 
@@ -303,6 +341,8 @@ on the cause, not the message.
 | Job rejected or never eligible | Missing or wrong `-A`, or you are not on the allocation | KB0025948, KB0024132 |
 | All jobs stopped working in July | The RT Project was not renewed; Slurm accounts deactivate after the renewal window | KB0024132 |
 | A process on the login node vanished | It exceeded 20 minutes of CPU time | KB0022436 |
+| "No space left on device" on a login node, outside your own space | That node's `/` or `/tmp` is full. Check with `df -h / /tmp`. Report it to HPS with the host name from `hostname`, and set `TMPDIR` to scratch meanwhile | Practice |
+| A job pending with reason `DependencyNeverSatisfied` | An earlier job in its chain failed or was cancelled. Cancel it, or submit with `--kill-on-invalid-dep=yes` | Observed 2026-11-05, Quartz |
 | A RED process vanished | The session exceeded 100 GB of RAM | KB0023170 |
 | SSH session dropped | Idle for 60 minutes | KB0023985 |
 | Files missing from scratch | Not accessed for 30 days, or the file system passed 80% full | KB0022439, KB0025317 |
@@ -347,3 +387,5 @@ All IU KB articles, read 2026-10-01. URL form:
 - [KB0025672](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025672) Use Jupyter Notebook on Quartz
 - [KB0025948](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025948) Get started on IU research HPC and storage systems
 - [KB0026317](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0026317) About Big Red 200 at IU
+
+External: [Slurm `sbatch` manual](https://slurm.schedmd.com/sbatch.html), read 2026-11-05. Quartz ran Slurm 25.11.8 that day.
