@@ -56,7 +56,7 @@ from a terminal.
 | PHI, HIPAA, data classification, grant or DUA security terms | SecureMyResearch | securemyresearch@iu.edu | KB0025362 |
 | Biomedical computing, data management, life-science workflows | Biomedical and Health Research Services (BHRS) | bhrs@iu.edu | KB0023420 |
 | Research Databases (ResDB) | ResDB Administration | resdb@iu.edu | KB0023697 |
-| IU REDCap | IU REDCap Support | redcap@iu.edu | KB0025747 |
+| IU REDCap | IU REDCap Support | redcap@iu.edu | KB0023570 |
 | Visualization and the AVL | Advanced Visualization Lab | vishelp@iu.edu | KB0023697 |
 | Shared software installation | Faculty or PI files an HPC Software Request | `https://projects.rt.iu.edu/request_forms/software-request` | KB0022486 |
 | Jetstream2 allocation requests | IU Jetstream2 support | `https://jetstream-cloud.org/contact/index.html` | KB0024420 |
@@ -140,7 +140,7 @@ at `https://github.com/IUSCA/research-technologies/issues/new/choose`; see
 ## Sources
 
 All IU KB articles, read 2026-10-01. KB0023515, KB0024420, KB0025574, and
-KB0025747 re-read 2026-10-07. URL form:
+KB0025747 re-read 2026-10-07. KB0023570 read 2026-11-10. URL form:
 `https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=<number>`.
 
 - [KB0022478](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0022478) Secure research data containing HIPAA-regulated PHI on high performance file systems at IU
@@ -154,6 +154,7 @@ KB0025747 re-read 2026-10-07. URL form:
 - [KB0023420](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023420) Get computing help for biomedical research
 - [KB0023488](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023488) Sponsor a computing account for an IU affiliate
 - [KB0023515](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023515) UITS Research Technologies systems and services for researchers working with data containing HIPAA-regulated PHI
+- [KB0023570](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023570) Get started with IU REDCap
 - [KB0023697](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023697) Research computing support at IU
 - [KB0023985](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023985) About Quartz at IU
 - [KB0024086](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024086) About the IU HPC and AI User Community Slack
