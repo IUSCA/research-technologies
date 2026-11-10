@@ -106,7 +106,7 @@ $ hsi -A keytab -k <username>.keytab -l <username> pwd
 | Error `-50` on a host with several addresses or behind NAT | HSI advertises the wrong local address | `export HPSS_HOSTNAME=<host's reachable IP>` in the shell profile; setting it in `~/.hsirc` did not work (**Practice**) |
 | Transfers hang behind a firewall | Data connections blocked | `HPSS_PFTPC_PORT_RANGE`, or open inbound traffic (KB0023364) |
 | `Too many regions in file (-1420)` | A sparse file | Bundle it with `tar --sparse` first (**Practice**) |
-| Other negative numbers | An HPSS error code | Look it up in the HPSS Error Manual, then email store-admin@iu.edu with the account, file sizes, commands, and log lines (**Practice**) |
+| Other negative numbers | An HPSS error code | Look it up in the HPSS Error Manual, then email store-admin@iu.edu with the account, file sizes, commands, and log lines (**Practice**). Research Storage takes HSI and HTAR questions at that address (KB0023697) |
 
 ### Check where a file is and that it arrived
 
@@ -219,7 +219,7 @@ KB0024997 gives this order:
 2. Check Status.IU for an outage or maintenance.
 3. Try the Globus web app.
 4. Try HSI from a supercomputer.
-5. If both fail, email store-admin@iu.edu.
+5. If both fail, email store-admin@iu.edu (KB0024997).
 
 ## Sources
 
@@ -229,4 +229,6 @@ KB0024053, KB0024366, KB0024368, KB0024387, KB0024406, KB0024976, KB0024997,
 KB0025030, KB0025237, KB0025535, KB0025838, KB0026076. Titles are in the
 main `SKILL.md` Sources list, except
 [KB0024956](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0024956)
-Use a keytab (read 2026-10-02).
+Use a keytab (read 2026-10-02) and
+[KB0023697](https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0023697)
+Research computing support at IU (read 2026-11-10).

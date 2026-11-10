@@ -48,8 +48,8 @@ and the SDA. The sponsor emails the owning team with the person's IU username
 and a short justification (KB0022656):
 
 - Big Red 200: the High Performance Systems (HPS) team.
-- ResDB: resdb@iu.edu.
-- SDA: store-admin@iu.edu.
+- ResDB: resdb@iu.edu (KB0022656).
+- SDA: store-admin@iu.edu (KB0022656).
 
 **Open item:** KB0025016 and KB0022656 disagree on sponsorship for some staff.
 KB0022656 says graduate students, faculty, and staff can request ResDB and the
